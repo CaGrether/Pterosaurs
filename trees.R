@@ -59,3 +59,7 @@ length(unique(species.yu)) # 213 species in tree
 tree.species <- as.data.frame(cbind(species.pb, in.tree))
 names(tree.species) <- c("species", "Is in tree")
 tree.species
+
+# only FALSE taxa into csv
+new.sp <- tree.species[which(tree.species$`Is in tree`==FALSE),]
+#write.csv2(new.sp, "Data/Not_in_cis_tree.csv")
