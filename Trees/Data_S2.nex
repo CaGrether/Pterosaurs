@@ -1,0 +1,368 @@
+#NEXUS
+[written Sun May 02 14:15:50 CST 2021 by Mesquite  version 3.6 (build 917) at DESKTOP-DHPGQDJ/192.168.50.7]
+
+BEGIN TAXA;
+	TITLE Taxa;
+	DIMENSIONS NTAX=156;
+	TAXLABELS
+		Scleromochlus_taylori Peteinosaurus_zambellii Austriadactylus_cristatus Preondactylus_buffarinii Eudimorphodon_cromptonellus Eudimorphodon_ranzii Eudimorphodon_rosenfeldi Caviramus_schesaplanensis Raeticodactylus_filisurensis Rhamphinion_jenkinsi Dimorphodon_macronyx Parapsicephalus_purdoni Allkaruen_koi Campylognathoides_liasicus Campylognathoides_zitteli Fenghuangopterus_lii Scaphognathus_crassirostris Dorygnathus_banthensis Qinglongopterus_guoi Harpactognathus_gentryii Sericipterus_wucaiwanensis Angustinaripterus_longicephalus Rhamphorhynchus_muensteri Cacibupteryx_caribensis Nesodactylus_hesperius Orientognathus_chaoyangensis Douzhanopterus_zhengi Sordes_pilosus Pterorhynchus_wellnhoferi Wukongopterus_lii Wukongopterus_sp Darwinopterus_linglongtaensis Darwinopterus_modularis Darwinopterus_robustodens Kunpengopterus_sinensis Kunpengopterus_antipollexus Kunpengopterus_sp Changchengopterus_pani Dendrorhynchoides_mutoudengensis Dendrorhynchoides_curvidentatus Batrachognathus_volans Jeholopterus_ningchengensis Anurognathus_ammoni Kryptodrakon_progenitor Painten_pterodactyloid Kepodactylus_insperatus Elanodactylus_prolatus Ardeadactylus_longicollum Huanhepterus_quingyangensis Plataleorhynchus_streptophorodon Gnathosaurus_subulatus Gnathosaurus_macrurus Moganopterus_zhuiana Feilongus_youngi Ctenochasma_elegans Liaodactylus_primus Ctenochasma_porocristata Pterodaustro_guinazui Eosipterus_yangi Beipiaopterus_chenianus Gegepterus_changae Gallodactylus_canjuersensis Cycnorhamphus_suevicus Normannognathus_wellnhoferi Aurorazhdarcho_primordius Pterodactylus_antiquus Pterodactylus_kochi Cuspicephalus_scarfi Germanodactylus_cristatus Germanodactylus_rhamphastinus Haopterus_gracilis Piksi_barbarulna Hongshanopterus_lacustris Aetodactylus_halli Cimoliopterus_cuvieri Cimoliopterus_dunni Liaoningopterus_gui Anhanguera_araripensis Anhanguera_blittersdorffi Anhanguera_santanae Anhanguera_piscator Tropeognathus_mesembrinus Ornithocheirus_simus Siroccopteryx_moroccensis Coloborhynchus_clavirostris Coloborhynchus_wadleighi Brasileodactylus_araripensis Cearadactylus_atrox Ludodactylus_sibbicki Guidraco_venator Longchengpterus_zhaoi Nurhachius_ignaciobritoi Liaoxipterus_brachyognathus Istiodactylus_sinensis Istiodactylus_latidens Boreopterus_cuiae Zhenyuanopterus_longiristris Lonchodectes_compressirostris Lonchodraco_giganteus Tethydraco_regalis Ornithostoma_sedgwicki Pteranodon_longiceps Pteranodon_sternbergi Alamodactylus_byrdi Alcione_elainus Simurghia_robusta Cretornis_hlavaci Volgadraco_bogolubovi Muzquizopteryx_coahuilensis Nyctosaurus_grandis Nyctosaurus_lamegoi Nyctosaurus_gracilis Nyctosaurus_nanus Bennettazhia_oregonensis Nemicolopterus_crypticus Sinopterus_gui Sinopterus_dongi Bakonydraco_galaczi Caiuajara_dobruskii Tupandactylus_navigans Tupandactylus_imperator Tapejara_wellnhoferi Europejara_olcadesorum Vectidraco_daisymorrisae Huaxiapterus_benxiensis Huaxiapterus_corallatus Eopteranodon_lii Huaxiapterus_jii Dsungaripterus_weii Domeykodactylus_ceciliae Noripterus_parvus Noripterus_complicidens Tupuxuara_longicristatus Tupuxuara_leonardii Thalassodromeus_sethi Microtuban_altivolans Aerotitan_sudamericanus Alanqa_saharica Lacusovagus_magnificens Chaoyangopterus_zhangi Jidapterus_edentus LPM_L112113 Shenzhoupterus_chaoyangensis LPM_N081607 Eoazhdarcho_liaoxiensis Radiodactylus_langstoni Montanazhdarcho_minor Aralazhdarcho_bestobensis Eurazhdarcho_langendorfensis Phosphatodraco_mauritanicus Zhejiangopterus_linhaiensis Azhdarcho_lancicollis Hatzegopteryx_thambena Arambourgiania_philadelphiae Quetzalcoatlus_northropi OCP_DEK_GE_716 
+	;
+
+END;
+
+
+BEGIN TREES;
+	Title 'Trees from "parsimony_topology_based_on_combined_matrix.nex"';
+	ID 01792bb7b20e1;
+	LINK Taxa = Taxa;
+	TRANSLATE
+[0] 		1 Scleromochlus_taylori,
+[1] 		2 Peteinosaurus_zambellii,
+[2] 		3 Austriadactylus_cristatus,
+[3] 		4 Preondactylus_buffarinii,
+[4] 		5 Eudimorphodon_cromptonellus,
+[5] 		6 Eudimorphodon_ranzii,
+[6] 		7 Eudimorphodon_rosenfeldi,
+[7] 		8 Caviramus_schesaplanensis,
+[8] 		9 Raeticodactylus_filisurensis,
+[9] 		10 Rhamphinion_jenkinsi,
+[10] 		11 Dimorphodon_macronyx,
+[11] 		12 Parapsicephalus_purdoni,
+[12] 		13 Allkaruen_koi,
+[13] 		14 Campylognathoides_liasicus,
+[14] 		15 Campylognathoides_zitteli,
+[15] 		16 Fenghuangopterus_lii,
+[16] 		17 Scaphognathus_crassirostris,
+[17] 		18 Dorygnathus_banthensis,
+[18] 		19 Qinglongopterus_guoi,
+[19] 		20 Harpactognathus_gentryii,
+[20] 		21 Sericipterus_wucaiwanensis,
+[21] 		22 Angustinaripterus_longicephalus,
+[22] 		23 Rhamphorhynchus_muensteri,
+[23] 		24 Cacibupteryx_caribensis,
+[24] 		25 Nesodactylus_hesperius,
+[25] 		26 Orientognathus_chaoyangensis,
+[26] 		27 Douzhanopterus_zhengi,
+[27] 		28 Sordes_pilosus,
+[28] 		29 Pterorhynchus_wellnhoferi,
+[29] 		30 Wukongopterus_lii,
+[30] 		31 Wukongopterus_sp,
+[31] 		32 Darwinopterus_linglongtaensis,
+[32] 		33 Darwinopterus_modularis,
+[33] 		34 Darwinopterus_robustodens,
+[34] 		35 Kunpengopterus_sinensis,
+[35] 		36 Kunpengopterus_antipollexus,
+[36] 		37 Kunpengopterus_sp,
+[37] 		38 Changchengopterus_pani,
+[38] 		39 Dendrorhynchoides_mutoudengensis,
+[39] 		40 Dendrorhynchoides_curvidentatus,
+[40] 		41 Batrachognathus_volans,
+[41] 		42 Jeholopterus_ningchengensis,
+[42] 		43 Anurognathus_ammoni,
+[43] 		44 Kryptodrakon_progenitor,
+[44] 		45 Painten_pterodactyloid,
+[45] 		46 Kepodactylus_insperatus,
+[46] 		47 Elanodactylus_prolatus,
+[47] 		48 Ardeadactylus_longicollum,
+[48] 		49 Huanhepterus_quingyangensis,
+[49] 		50 Plataleorhynchus_streptophorodon,
+[50] 		51 Gnathosaurus_subulatus,
+[51] 		52 Gnathosaurus_macrurus,
+[52] 		53 Moganopterus_zhuiana,
+[53] 		54 Feilongus_youngi,
+[54] 		55 Ctenochasma_elegans,
+[55] 		56 Liaodactylus_primus,
+[56] 		57 Ctenochasma_porocristata,
+[57] 		58 Pterodaustro_guinazui,
+[58] 		59 Eosipterus_yangi,
+[59] 		60 Beipiaopterus_chenianus,
+[60] 		61 Gegepterus_changae,
+[61] 		62 Gallodactylus_canjuersensis,
+[62] 		63 Cycnorhamphus_suevicus,
+[63] 		64 Normannognathus_wellnhoferi,
+[64] 		65 Aurorazhdarcho_primordius,
+[65] 		66 Pterodactylus_antiquus,
+[66] 		67 Pterodactylus_kochi,
+[67] 		68 Cuspicephalus_scarfi,
+[68] 		69 Germanodactylus_cristatus,
+[69] 		70 Germanodactylus_rhamphastinus,
+[70] 		71 Haopterus_gracilis,
+[71] 		72 Piksi_barbarulna,
+[72] 		73 Hongshanopterus_lacustris,
+[73] 		74 Aetodactylus_halli,
+[74] 		75 Cimoliopterus_cuvieri,
+[75] 		76 Cimoliopterus_dunni,
+[76] 		77 Liaoningopterus_gui,
+[77] 		78 Anhanguera_araripensis,
+[78] 		79 Anhanguera_blittersdorffi,
+[79] 		80 Anhanguera_santanae,
+[80] 		81 Anhanguera_piscator,
+[81] 		82 Tropeognathus_mesembrinus,
+[82] 		83 Ornithocheirus_simus,
+[83] 		84 Siroccopteryx_moroccensis,
+[84] 		85 Coloborhynchus_clavirostris,
+[85] 		86 Coloborhynchus_wadleighi,
+[86] 		87 Brasileodactylus_araripensis,
+[87] 		88 Cearadactylus_atrox,
+[88] 		89 Ludodactylus_sibbicki,
+[89] 		90 Guidraco_venator,
+[90] 		91 Longchengpterus_zhaoi,
+[91] 		92 Nurhachius_ignaciobritoi,
+[92] 		93 Liaoxipterus_brachyognathus,
+[93] 		94 Istiodactylus_sinensis,
+[94] 		95 Istiodactylus_latidens,
+[95] 		96 Boreopterus_cuiae,
+[96] 		97 Zhenyuanopterus_longiristris,
+[97] 		98 Lonchodectes_compressirostris,
+[98] 		99 Lonchodraco_giganteus,
+[99] 		100 Tethydraco_regalis,
+[100] 		101 Ornithostoma_sedgwicki,
+[101] 		102 Pteranodon_longiceps,
+[102] 		103 Pteranodon_sternbergi,
+[103] 		104 Alamodactylus_byrdi,
+[104] 		105 Alcione_elainus,
+[105] 		106 Simurghia_robusta,
+[106] 		107 Cretornis_hlavaci,
+[107] 		108 Volgadraco_bogolubovi,
+[108] 		109 Muzquizopteryx_coahuilensis,
+[109] 		110 Nyctosaurus_grandis,
+[110] 		111 Nyctosaurus_lamegoi,
+[111] 		112 Nyctosaurus_gracilis,
+[112] 		113 Nyctosaurus_nanus,
+[113] 		114 Bennettazhia_oregonensis,
+[114] 		115 Nemicolopterus_crypticus,
+[115] 		116 Sinopterus_gui,
+[116] 		117 Sinopterus_dongi,
+[117] 		118 Bakonydraco_galaczi,
+[118] 		119 Caiuajara_dobruskii,
+[119] 		120 Tupandactylus_navigans,
+[120] 		121 Tupandactylus_imperator,
+[121] 		122 Tapejara_wellnhoferi,
+[122] 		123 Europejara_olcadesorum,
+[123] 		124 Vectidraco_daisymorrisae,
+[124] 		125 Huaxiapterus_benxiensis,
+[125] 		126 Huaxiapterus_corallatus,
+[126] 		127 Eopteranodon_lii,
+[127] 		128 Huaxiapterus_jii,
+[128] 		129 Dsungaripterus_weii,
+[129] 		130 Domeykodactylus_ceciliae,
+[130] 		131 Noripterus_parvus,
+[131] 		132 Noripterus_complicidens,
+[132] 		133 Tupuxuara_longicristatus,
+[133] 		134 Tupuxuara_leonardii,
+[134] 		135 Thalassodromeus_sethi,
+[135] 		136 Microtuban_altivolans,
+[136] 		137 Aerotitan_sudamericanus,
+[137] 		138 Alanqa_saharica,
+[138] 		139 Lacusovagus_magnificens,
+[139] 		140 Chaoyangopterus_zhangi,
+[140] 		141 Jidapterus_edentus,
+[141] 		142 LPM_L112113,
+[142] 		143 Shenzhoupterus_chaoyangensis,
+[143] 		144 LPM_N081607,
+[144] 		145 Eoazhdarcho_liaoxiensis,
+[145] 		146 Radiodactylus_langstoni,
+[146] 		147 Montanazhdarcho_minor,
+[147] 		148 Aralazhdarcho_bestobensis,
+[148] 		149 Eurazhdarcho_langendorfensis,
+[149] 		150 Phosphatodraco_mauritanicus,
+[150] 		151 Zhejiangopterus_linhaiensis,
+[151] 		152 Azhdarcho_lancicollis,
+[152] 		153 Hatzegopteryx_thambena,
+[153] 		154 Arambourgiania_philadelphiae,
+[154] 		155 Quetzalcoatlus_northropi,
+[155] 		156 OCP_DEK_GE_716;
+	TREE UNTITLED = (1,(2,((3,4),(((5,(6,7)),(8,9)),((10,(11,12,13)),((14,15),((16,(17,(18,((19,(20,(21,22))),(23,(24,25)))))),((26,27),(28,((29,((30,(31,(32,(33,34)))),(35,(36,37)))),(38,((39,(40,(41,(42,43)))),(44,(45,((((((46,(47,((48,(49,(50,(51,52)))),(53,54)))),(55,(56,(57,(58,(59,(60,61))))))),(62,(63,64,65))),(66,67)),(68,(69,70))),(71,((72,((73,((((74,(75,76)),((((77,(78,(79,(80,81)))),(82,(83,(84,(85,86))))),(87,88)),(89,90))),(91,(92,(93,(94,95))))),((96,97),(98,99)))),((100,101,(102,103)),(104,105,106,107,108,(109,((110,111),(112,113))))))),((114,(115,(116,((117,((118,((119,(120,121)),(122,123,124))),(125,126))),(127,128))))),(((129,130),(131,132)),((133,134,135,136,(137,(138,139))),(((140,(141,142)),(143,144)),(145,(146,(147,(148,149,150,151,152,153,154,155,156)))))))))))))))))))))))));
+
+END;
+
+
+Begin MESQUITE;
+		MESQUITESCRIPTVERSION 2;
+		TITLE AUTO;
+		tell ProjectCoordinator;
+		timeSaved 1619936150940;
+		getEmployee #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			setID 0 6712088373286377008;
+		endTell;
+		getWindow;
+		tell It;
+			suppress;
+			setResourcesState false false 103;
+			setPopoutState 300;
+			setExplanationSize 0;
+			setAnnotationSize 0;
+			setFontIncAnnot 0;
+			setFontIncExp 0;
+			setSize 1920 965;
+			setLocation -9 -9;
+			setFont SanSerif;
+			setFontSize 10;
+			getToolPalette;
+			tell It;
+			endTell;
+			desuppress;
+		endTell;
+		getEmployee  #mesquite.minimal.ManageTaxa.ManageTaxa;
+		tell It;
+			showTaxa #6712088373286377008 #mesquite.lists.TaxonList.TaxonList;
+			tell It;
+				setTaxa #6712088373286377008;
+				getWindow;
+				tell It;
+					useTargetValue off;
+					setTargetValue ;
+					newAssistant  #mesquite.lists.TaxonListCurrPartition.TaxonListCurrPartition;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1817 893;
+					setLocation -9 -9;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+				endTell;
+				showWindow;
+				getEmployee #mesquite.lists.ColorTaxon.ColorTaxon;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.lists.TaxonListAnnotPanel.TaxonListAnnotPanel;
+				tell It;
+					togglePanel off;
+				endTell;
+			endTell;
+		endTell;
+		getEmployee  #mesquite.trees.BasicTreeWindowCoord.BasicTreeWindowCoord;
+		tell It;
+			makeTreeWindow #6712088373286377008  #mesquite.trees.BasicTreeWindowMaker.BasicTreeWindowMaker;
+			tell It;
+				suppressEPCResponse;
+				setTreeSource  #mesquite.trees.StoredTrees.StoredTrees;
+				tell It;
+					setTreeBlock 1;
+					setTreeBlockID 01792bb7b20e1;
+					toggleUseWeights off;
+				endTell;
+				setAssignedID 2088.1619936133869.6521545560771321934;
+				getTreeWindow;
+				tell It;
+					setExplanationSize 30;
+					setAnnotationSize 20;
+					setFontIncAnnot 0;
+					setFontIncExp 0;
+					setSize 1817 893;
+					setLocation -9 -9;
+					setFont SanSerif;
+					setFontSize 10;
+					getToolPalette;
+					tell It;
+					endTell;
+					setActive;
+					getTreeDrawCoordinator #mesquite.trees.BasicTreeDrawCoordinator.BasicTreeDrawCoordinator;
+				tell It;
+					suppress;
+					setTreeDrawer  #mesquite.trees.SquareLineTree.SquareLineTree;
+					tell It;
+						setNodeLocs #mesquite.trees.NodeLocsStandard.NodeLocsStandard;
+						tell It;
+							branchLengthsToggle off;
+							toggleScale on;
+							toggleBroadScale off;
+							toggleCenter on;
+							toggleEven on;
+							setFixedTaxonDistance 0;
+						endTell;
+						setEdgeWidth 4;
+						showEdgeLines on;
+						orientUp;
+					endTell;
+					setBackground White;
+					setBranchColor Black;
+					showNodeNumbers off;
+					showBranchColors on;
+					labelBranchLengths off;
+					centerBrLenLabels on;
+					showBrLensUnspecified on;
+					showBrLenLabelsOnTerminals on;
+					setBrLenLabelColor 0 0 255;
+					setNumBrLenDecimals 6;
+					setSelectedTaxonHighlightMode 1;
+					desuppress;
+					getEmployee #mesquite.trees.BasicDrawTaxonNames.BasicDrawTaxonNames;
+					tell It;
+						setColor Black;
+						setTaxonNameStyler  #mesquite.trees.NoColorForTaxon.NoColorForTaxon;
+						toggleShadePartition off;
+						toggleShowFootnotes on;
+						toggleNodeLabels on;
+						toggleCenterNodeNames off;
+						toggleShowNames on;
+						namesAngle ?;
+					endTell;
+				endTell;
+					setTreeNumber 1;
+					setDrawingSizeMode 0;
+					toggleLegendFloat on;
+					scale 0;
+					toggleTextOnTree off;
+					togglePrintName off;
+					showWindow;
+				endTell;
+				desuppressEPCResponse;
+				getEmployee #mesquite.trees.ColorBranches.ColorBranches;
+				tell It;
+					setColor Red;
+					removeColor off;
+				endTell;
+				getEmployee #mesquite.ornamental.BranchNotes.BranchNotes;
+				tell It;
+					setAlwaysOn off;
+				endTell;
+				getEmployee #mesquite.ornamental.ColorTreeByPartition.ColorTreeByPartition;
+				tell It;
+					colorByPartition off;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocDoubles.DrawTreeAssocDoubles;
+				tell It;
+					setOn on;
+					toggleShow consensusFrequency;
+					toggleShow bootstrapFrequency;
+					toggleShow posteriorProbability;
+					toggleShow consensusFrequency;
+					toggleShow posteriorProbability;
+					toggleShow bootstrapFrequency;
+					setDigits 4;
+					setThreshold ?;
+					writeAsPercentage off;
+					toggleCentred off;
+					toggleHorizontal on;
+					toggleWhiteEdges on;
+					toggleShowOnTerminals on;
+					setFontSize 10;
+					setOffset 0  0;
+				endTell;
+				getEmployee #mesquite.ornamental.DrawTreeAssocStrings.DrawTreeAssocStrings;
+				tell It;
+					setOn on;
+					toggleCentred on;
+					toggleHorizontal on;
+					setFontSize 10;
+					setOffset 0  0;
+					toggleShowOnTerminals on;
+				endTell;
+				getEmployee #mesquite.trees.TreeInfoValues.TreeInfoValues;
+				tell It;
+					panelOpen false;
+				endTell;
+			endTell;
+		endTell;
+		endTell;
+end;
+
+
