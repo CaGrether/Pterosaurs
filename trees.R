@@ -32,13 +32,16 @@ dat.species <- dplyr::filter(dat, accepted_rank == "species") # only accepted sp
 
 # adjust species names to tree
 species.pb <- c() # vector for taxa in the tree
+in.tree <- c() # vector for T/F
 
-for(i in dat.species$accepted_name){
+for(i in unique(dat.species$accepted_name)){ # checking unique species names in pbdb
   
-  tmp <- gsub(" ", "_", i) # '_' in btw genus and species name for every tip label
+  tmp <- gsub(" ", "_", i) # change name for every tip label
   
-  # taxa in tree
-  species.pb <- c(species.pb, 
+  species.pb <- c(species.pb, tmp) # store new name
+  
+  # is species in Yu et al. tree
+  in.tree <- c(in.tree, 
                  (ifelse (tmp %in% species.yu, TRUE, FALSE)) )
   
   # cat("\r", i, "of", 100) How to count?
@@ -46,7 +49,13 @@ for(i in dat.species$accepted_name){
 }
 
 species.pb
+in.tree
 
-#dat.species$tree_occurrence <- species.pb
+length(unique(species.pb)) # 262 unique species in PBDB
+length(which(in.tree == FALSE)) # 74 of 262 not in cis tree
+length(unique(species.yu)) # 213 species in tree
 
-# match species.pb and species.yu
+# data frame for species in tree
+tree.species <- as.data.frame(cbind(species.pb, in.tree))
+names(tree.species) <- c("species", "Is in tree")
+tree.species
