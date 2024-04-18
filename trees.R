@@ -31,6 +31,23 @@ dat <- read.csv("pbdb_data.csv", skip = 18)
 dat.species <- dplyr::filter(dat, accepted_rank == "species") # only accepted species
 
 # adjust species names to tree
+# 1. for new names in data frame
+#### need column with the accepted name written with underscore, not unique but for all 440
+#### so that I can get all references into one column in my csv Not_in_cis
+#### problem: need to do 2nd for loop to make it not unique
+#### but now need to go through names but also know the rownumber for each name how??
+treename <- c()
+
+for(i in dat.species$accepted_name){ # checking species names in pbdb
+  
+  tmp <- gsub(" ", "_", i) # change name for every tip label
+  
+  treename <- c(treename, tmp)
+}
+
+dat.species$tree_name <- treename # put into pbdb data for later reference
+
+# 2. for actual analysis
 species.pb <- c() # vector for taxa in the tree
 in.tree <- c() # vector for T/F
 
@@ -63,3 +80,15 @@ tree.species
 # only FALSE taxa into csv
 new.sp <- tree.species[which(tree.species$`Is in tree`==FALSE),]
 #write.csv2(new.sp, "Data/Not_in_cis_tree.csv")
+
+
+### I only need the FALSE ones, so only 'new.sp'
+test <- c()
+
+for (x in new.sp$species) {
+  rownr <- which(dat.species$tree_name == x)
+  test <- c(test, rownr) # somehow differentiate between multiple occurrences
+}
+
+# later
+ref <- data.frame(species.pb, rep(NA, length(species.pb)))
