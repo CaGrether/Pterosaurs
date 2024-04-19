@@ -79,16 +79,37 @@ tree.species
 
 # only FALSE taxa into csv
 new.sp <- tree.species[which(tree.species$`Is in tree`==FALSE),]
-#write.csv2(new.sp, "Data/Not_in_cis_tree.csv")
-
 
 ### I only need the FALSE ones, so only 'new.sp'
-test <- c()
+new.sp$row_in_pbdb <- rep(NA, length(new.sp$species))
+new.sp$ref <- rep(NA, length(new.sp$species))
+i <- 1
 
 for (x in new.sp$species) {
-  rownr <- which(dat.species$tree_name == x)
-  test <- c(test, rownr) # somehow differentiate between multiple occurrences
+  rownr <- as.character(which(dat.species$tree_name == x))
+  
+  # get row number in original pbdb data
+  new.sp$row_in_pbdb[i] <- paste(rownr, sep = "", collapse = ",")
+  
+    # get reference (author, year) -> ref_author, ref_pubyr
+    ath.yr <- c() # author and year together
+    
+    for (v in length(rownr)) {
+      tmp <- as.integer(rownr[v])
+    
+      basket <- paste(dat.species$ref_author[tmp], dat.species$ref_pubyr[tmp], 
+                           sep = "", collapse = ",") # author and year for each specimen
+      ath.yr <- as.vector(c(ath.yr, basket)) # author(s) and year(s) for species
+    }
+  
+  # add reference into new species file  
+  new.sp$ref[i] <- paste(unique(ath.yr), sep = "", collapse = ",")
+  
+  # set counter
+  i <- i+1
 }
 
-# later
-ref <- data.frame(species.pb, rep(NA, length(species.pb)))
+# remove FALSE column
+new.sp <- new.sp[,-2]
+
+#write.csv2(new.sp, "Data/cis_missing.csv")
