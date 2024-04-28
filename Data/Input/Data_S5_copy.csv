@@ -1,0 +1,958 @@
+﻿Red numbers: estimated data taken from reference;;;;;;;;;;;;;;
+Name;Including in analyses;Ontogeny;Specimen;hu_length;ulna_length;ra_length;McIV_length;f1d4_length;f2d4_length;f3d4_length;f4d4_length;Femur;Tibia;Reference
+Eudimorphodon_rosenfeldi;YES;;MPUM 6009;25,95;35,51;32,805;10,63;36,62;35,72;36,305;33,73;37,0;54,2;Benson et al 2014&Chan 2017
+Eudimorphodon_rosenfeldi;YES;;MFSN 1797;40,5;55;;21;64;58,2;63,2;51,5;37,0;54,2;Chan et al 2017
+Preondactylus_buffarinii;YES;subadult, but used as adult in Venditti et al 2020;MFSN 1770;30,69;41,65;38,62;13,64;33,83;38,69;39,2;26,34;32,5;44,0;Benson et al 2014&Chan 2017
+Dimorphodon_macronyx;YES;largest individual from a large collection;GSM 1546;79;98;94;34;84;93;105;84;76,0;105,4;Benson et al 2014&Chan 2017
+Dimorphodon_macronyx;YES;;YPM 350;78,0;NA;NA;30,0;NA;97,0;105,0;NA;NA;104,0;Chan et al 2017
+Dimorphodon_macronyx;YES;;YPM 9180;NA;NA;NA;36,0;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Dimorphodon_macronyx;YES;;YPM 9182;63,0;NA;NA;NA;NA;74,0;NA;NA;59,0;85,0;Chan et al 2017
+Dimorphodon_macronyx;YES;;BMNH R1034;90,0;114,0;NA;46,0;108,0;124,0;139,0;NA;86,0;126,0;Chan et al 2017
+Campylognathoides_liassicus;YES;largest individuals from a large collection;CMNH 11424;47,7;60,88;59,38;22,57;90,37;96,34;84,53;68,43;43,0;53,0;Benson et al 2014&Chan 2017
+Campylognathoides_liassicus;YES;;GPIT 9533;42,0;52,0;NA;19,0;83,0;>80;NA;>56;NA;NA;Chan et al 2017
+Campylognathoides_liassicus;YES;;MNHN HLZ 50;50,0;64,0;NA;23,0;92,0;99,0;86,0;68,0;38,0;47,0;Chan et al 2017
+Campylognathoides_liassicus;YES;;UUPM R157;55,0;64,0;NA;23,0;97,0;102,0;>81;NA;40,0;53,0;Chan et al 2017
+Campylognathoides_liassicus;YES;;CM 11424;50,0;60,0;NA;23,0;83,0;81,0;73,0;63,0;38,0;47,0;Chan et al 2017
+Campylognathoides_liassicus;YES;;SMNS 18879;45,0;53,0;NA;23,0;83,0;81,0;73,0;63,0;32,0;34,0;Chan et al 2017
+Campylognathoides_liassicus;YES;;SMNS 50807;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Campylognathoides_liassicus;YES;;SMNS 54049;44,0;55,0;NA;20,0;86,0;NA;NA;NA;32,0;36,0;Chan et al 2017
+Campylognathoides_zitteli;YES;largest individuals from a large collection;SMNS 51100;67;71;68,56;28;196;199;155;115;NA;NA;Benson et al 2014&Chan 2017
+Campylognathoides_zitteli;YES;;SMNS 51100;78,32394366;83;NA;30;195;210;165;122;70,0;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BSP AS I 772/MB R 894, MB I 008 06;44,05;71,97;64,36;21,81;117,15;119,38;109,02;101,4;36,0;53,5;Benson et al 2014&Chan 2017
+Rhamphorynchus_muensteri;NO;Juvenile;TM 6294;16,5;26,7;NA;10,0;37,0;31,8;28,9;32,4;12,5;15,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;TM 6930;NA;NA;NA;NA;NA;NA;NA;NA;11,8;14,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MNHU;17,0;28,0;NA;10,0;37,5;33,0;29,7;33,5;13,8;16,4;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1877 X 1;14,5;23,8;NA;9,6;31,1;29,0;27,0;30,8;11,5;13,7;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1889 XI 1;15,5;24,0;NA;9,5;32,3;28,5;26,0;28,5;11,7;15,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;PIU R150 / RM St.18182;14,5;24,0;NA;8,0;NA;27,5;24,5;23,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1960 I 470;NA;NA;NA;NA;NA;NA;NA;NA;10,5;13,1;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1959 I 400;19,0;32,0;NA;12,0;44,0;40,0;35,0;39,0;15,7;19,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1938 I 503;17,0;29,5;NA;11,6;40,5;38,0;34,0;40,0;12,5;17,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;PTH 1966.6;16,8;27,0;NA;9,0;35,5;30,0;27,0;28,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MM;14,5;25,0;NA;9,0;31,0;26,7;26,0;28,5;14,0;15,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MM;14,0;23,0;NA;11,0;29,0;26,5;23,0;30,0;12,0;14,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;SL 010;15,3;25,5;NA;9,5;36,0;30,8;27,0;26,2;12,3;14,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;WE 128;NA;NA;NA;NA;NA;NA;NA;NA;14,7;18,3;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MB ;18,0;28,0;NA;11,2;39,5;36,0;34,2;38,0;13,5;18,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;JS;15,5;25,0;NA;9,0;32,5;28,5;25,0;27,0;10,5;14,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MNHU;16,0;26,0;NA;10,0;36,0;29,5;27,0;31,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MB;14,5;22,5;NA;7,8;29,3;24,0;22,0;24,8;11,0;12,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;CM 11433;16,5;26,0;NA;10,0;37,3;35,0;32,0;36,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MMK V 45/1;13,5;21,0;NA;8,5;30,0;25,3;23,0;26,0;11,0;13,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;MMk 1891.740;15,5;24,7;NA;9,5;33,2;29,3;27,3;28,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BSt 1934 I 36;19,5;30,0;NA;11,8;50,0;46,0;40,0;45,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;PTH/GIE;24,0;36,0;NA;14,0;48,0;42,0;36,5;37,0;18,0;20,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;UB E 554;21,8;37,5;NA;13,7;53,8;49,4;43,5;47,0;17,0;22,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;BM 42738;24,5;40,0;NA;15,0;60,0;55,0;48,5;53,0;16,5;22,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;KS;NA;34,0;NA;14,0;50,5;41,0;35,0;38,3;17,0;21,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;JS;19,0;33,5;NA;10,0;49,5;42,5;37,5;42,5;16,0;18,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;PTH 1954. 14;17,5;27,5;NA;6,0;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;GIE ;20,0;32,6;NA;12,5;45,7;43,3;39,0;44,3;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;Juvenile;SMF R 4185;NA;NA;NA;NA;NA;NA;NA;NA;17,3;22,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;YPM 1778;31,5;56,0;NA;17,0;95,0;75,0;74,0;80,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MLU;33,0;56,0;NA;19,0;91,0;86,0;77,0;80,5;28,0;36,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;SMD;34,0;58,0;NA;18,0;95,0;86,5;81,0;84,5;28,0;40,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;AMNH 1943;38,5;67,3;NA;21,0;114,1;108,6;97,7;92,0;35,0;49,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;TM 6920/21;42,0;66,1;NA;21,7;109,0;107,3;101,0;NA;36,0;50,3;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;BM 37003;NA;NA;NA;23,0;113,0;112,0;101,0;NA;32,0;49,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;BSt 1867 II 2;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BSt AS VI 34;39,5;68,5;NA;21,0;117,5;NA;NA;NA;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BM 37787;45,0;73,5;NA;24,0;123,5;119,0;112,0;111,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;SMF R4128;38,0;66,0;NA;21,0;114,5;114,0;106,5;101,0;33,0;48,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MM;32,0;59,5;NA;19,0;92,5;87,5;80,0;86,5;31,0;42,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;PTH 1954.39b;32,0;NA;NA;?18;101,0;97,0;90,0;89,0;31,0;38,5;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;XS;36,5;NA;NA;22,0;99,0;95,0;85,0;81,0;30,0;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;PMZ A/III 107;31,0;56,7;NA;17,3;83,0;78,5;70,0;69,9;36,7;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;HLD V432;34,0;56,0;NA;19,5;92,0;91,0;NA;NA;28,5;37,3;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BSt 1955 I 28;42,0;72,5;NA;25,0;120,0;112,0;NA;NA;37,0;51,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;ES ;35,5;64,0;NA;22,3;100,0;94,0;85,0;79,0;30,8;43,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MNHU;37,0;60,0;NA;21,0;102,5;100,0;NA;86,5;30,0;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BSt 1929 I 69;59,0;99,0;NA;34,0;178,0;NA;NA;NA;52,0;71,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;CM 11429;36,0;61,5;NA;20,0;88,5;84,0;76,0;NA;NA;38,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;CM 11432;34,5;59,0;NA;19,7;96,0;91,0;83,0;88,0;28,5;40,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BM R2786;38,0;62,0;NA;19,0;102,0;94,0;86,5;80,0;30,0;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;CM 11431;39,0;60,0;NA;19,0;100,0;95,0;NA;NA;31,0;48,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;BSt AS I 771;40,0;62,5;NA;21,0;105,4;99,0;89,5;90,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;BSt 1927 I 37;NA;NA;NA;21,5;101,0;103,0;95,0;NA;35,0;48,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;CM 11427;41,0;68,3;NA;24,5;99,4;104,2;93,2;86,8;29,1;50,2;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;BSt 1907 I 37;NA;NA;NA;25,0;NA;NA;100,0;98,0;35,5;52,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;WE;40,5;67,0;NA;21,0;111,0;108,0;99,0;92,0;NA;51,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;WE;41,0;71,0;NA;22,5;110,0;109,0;99,5;99,0;35,7;50,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;ES ;34,5;57,5;NA;19,5;96,0;92,0;81,0;81,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;ES ;31,0;55,0;NA;19,0;88,0;81,0;72,0;68,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;XS;44,0;68,0;NA;NA;117,0;105,0;NA;NA;36,5;53,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MSA;35,5;58,0;NA;16,7;93,0;87,5;78,0;75,5;NA;43,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;GPK;29,5;53,7;NA;19,0;NA;NA;NA;NA;25,5;34,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MSA;40,0;58,0;NA;20,0;99,0;95,0;86,0;81,5;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;PU 11984;35,0;60,0;NA;20,0;96,5;94,0;86,0;NA;30,5;39,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MMK 1891.738;30,0;50,5;NA;17,3;80,5;70,5;62,5;62,0;25,3;NA;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;MNHU 3965-3967;NA;64,0;NA;21,0;NA;NA;NA;NA;27,0;46,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;SMS;35,0;NA;NA;NA;NA;102,3;NA;NA;31,0;42,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MTM V 2008.33.1;34,0;60,0;NA;19,4;98,8;92,2;82,6;75,9;30,0;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;TMP 2008.41.001;33,0;62,0;NA;19,0;96,0;98,0;93,0;94,0;495,0;26,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;TM 6922/23;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;GPIH MYE.13;38,5;61,0;NA;18,0;102,5;100,0;90,5;94,3;27,5;41,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;USNM 2420;41,0;71,0;NA;22,0;112,0;110,0;103,0;101,5;30,0;50,6;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;PTH;43,0;68,0;NA;20,0;113,0;108,5;98,5;102,0;30,0;44,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;MM;NA;NA;NA;NA;NA;NA;NA;NA;NA;38,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;ES ;36,0;61,5;NA;21,0;99,5;99,0;92,5;94,0;26,0;38,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MB;33,0;58,5;NA;NA;93,5;87,0;NA;NA;NA;38,5;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MT;64,5;96,0;NA;35,0;149,0;NA;NA;NA;45,5;64,0;Chan et al 2017
+Rhamphorynchus_muensteri;NO;;BM 37002;79,0;NA;NA;NA;202,0;169,0;140,0;136,0;NA;NA;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;CM 11428;44,0;64,0;NA;20,0;100,0;92,5;86,0;81,0;30,0;42,0;Chan et al 2017
+Rhamphorynchus_muensteri;YES;;MB;34,0;54,5;NA;16,5;83,0;79,5;69,0;69,0;NA;37,4;Chan et al 2017
+Scaphognathus_crassirostris;NO;Juvenile;SMNS 59395/59395a;29,38;47,18;46,1;14,15;33,58;36,93;35,18;33,14;27,3;30,7;Benson et al 2014&Chan 2017
+Scaphognathus_crassirostris;YES;;GPIB 1304;53,5;94,0;NA;27,0;70,0;75,0;NA;NA;55,0;NA;Chan et al 2017
+Scaphognathus_crassirostris;NO;Juvenile;Maxberg specimen;30,0;49,0;NA;15,0;38,0;41,0;40,0;37,0;29,0;32,5;Chan et al 2017
+Sordes_pilosus;YES;;PIN 2585/3A/B;41,6;68,86;67,45;16,94;49,32;56,2;52,69;34,57;36,0;49,6;Benson et al 2014&Chan 2017
+Darwinopterus_modularis;YES;;YH-2000;44;64;64;26;48;55;59;53;40,0;54,0;Benson et al 2014&Chan 2017
+Darwinopterus_modularis;YES;;ZMNH M8782;59,0;87,0;NA;36,0;75,0;NA;NA;NA;NA;NA;Chan et al 2017
+Wukongopterus_lii;YES;;IVPP V15113;38,77;63,51;62,1;22,9;45,7;51,4;56,8;58,8;35,6;52,8;Benson et al 2014&Chan 2017
+Pterorhynchus_wellnhoferi;YES;;LPM0810A/B;52;91;91;28,5;57,5;72;66;46;NA;NA;Benson et al 2014
+Jeholopterus_ningchengensis;YES;adult/subadult, used as adult in Venditti et al 2020;IVPP V 12705;62,78;83,54;80,98;23,46;95,61;82;60,5;17;40,0;50,0;Benson et al 2014&Chan 2017
+Elanodactylus_prolatus;YES;adult;NGMC 99-07-1;149,215;165,245;162,63;126,48;208,94;238,61;211,46;143,7;NA;NA;Benson et al 2014&Chan 2017
+Pterodaustro_guinazui;YES;;PVL 3860;72,58;104,14;98,31;76,33;116,44;113,55;87,72;70,05;60,0;90,0;Benson et al 2014&Chan 2017
+Pterodaustro_guinazui;YES;;MIC V263;112,0;154,0;NA;117,0;182,0;175,0;132,0;93,0;94,0;145,0;Chan et al 2017
+Pterodaustro_guinazui;YES;;MIC V243;86,5;129,0;NA;100,6;152,3;143,5;112,1;88,8;78,8;129,5;Chan et al 2017
+Eosipterus_yangi;YES;Subadult (Wang et al. 2007);NGMC GMV 301;87,3;101,3;96,7;76;102,4;98,6;84,9;72,4;NA;NA;Benson et al 2014
+Eosipterus_yangi;YES;;GMV 2117;74,4;95,0;NA;73,0;96,0;95,0;80,0;73,0;60,0;96,0;Chan et al 2017
+Eosipterus_yangi;NO;Juvenile;D2541;47,0;60,0;NA;42,0;65,0;62,0;57,0;43,0;35,0;61,0;Chan et al 2017
+Beipiaopterus_chenianus;YES;"""Young individual"" (Lü 2003)";BPM 0002;73,52;99,18;100,9;76,1;68,18;107,37;89,82;75,12;42,0;102,0;Benson et al 2014&Chan 2017
+Cycnorhamphus_suevicus;NO;Juvenile;GPIT 80;66,76;87,09;86,7;108,8;141,71;114,84;85,18;70,72;77,5;121,0;Benson et al 2014&Chan 2017
+Ardeadactylus_longicollum;YES;Adult (Bennett 1996);SMNS 5802;78;104;104;130;160;109;77,5;65;99,0;149,0;Benson et al 2014&Chan 2017
+Ardeadactylus_longicollum;YES;;HM;NA;NA;NA;NA;NA;NA;NA;NA;97,0;NA;Chan et al 2017
+Ardeadactylus_longicollum;YES;;PTH ;NA;NA;NA;150,0;NA;NA;NA;NA;111,0;NA;Chan et al 2017
+Pterodactylus_kochi;YES;"""Specimens in the large size-class (skull length = 55-95 mm), which were considered adults, were older but still immature individuals, not adults"" Bennett (1996)";BSP 1883 X VI 1/MCZ 1505;38,66;53,19;52,91;42,03;54,94;52,26;39,84;34,48;NA;NA;Benson et al 2014
+Pterodactylus_kochi;YES;;SM R404/BSt AS XIX 3;28,5;41,5;NA;30,5;40,0;36,4;31,4;25,7;30,3;41,7;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSP AS I 739;31,69;46,15;45,89;33,63;48,64;44,14;37,03;28,46;34,7;48,5;Benson et al 2014&Chan 2017
+Pterodactylus_antiquus;NO;Juvenile;TM 10341;13,0;19,5;NA;14,3;19,2;17,9;16,2;15,0;15,4;19,2;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSt 1968 I 95;29,5;41,5;NA;31,5;44,0;40,5;38,0;30,0;31,0;44,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;HM ;30,5;45,0;NA;30,0;48,5;41,0;37,0;30,5;35,0;46,5;Chan et al 2017
+Pterodactylus_antiquus;YES;;RM St 18184;43,7;60,0;NA;44,0;53,0;57,5;50,5;39,0;45,0;59,0;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;BSt 1967 I 276;12,3;15,5;NA;10,5;14,6;12,5;13,2;12,5;11,0;12,2;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;TM 13105;12,8;15,7;NA;10,2;14,8;14,3;13,2;10,5;10,0;13,6;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;BM 42736;12,0;14,5;NA;10,5;13,5;13,0;11,5;NA;10,0;NA;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;PTH 29.III.1950;14,0;17,0;NA;12,5;16,5;15,5;14,1;13,3;11,8;15,5;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;MCZ 1503;15,5;18,5;NA;13,0;18,0;17,5;16,0;13,5;13,5;17,0;Chan et al 2017
+Pterodactylus_antiquus;NO;Juvenile;BSt 1924 V 1;14,5;19,0;NA;13,0;17,2;16,8;16,5;10,0;13,0;16,4;Chan et al 2017
+Pterodactylus_antiquus;YES;;SM R 4072;21,3;28,9;NA;20,0;27,0;25,8;23,3;19,0;21,5;28,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSt 1878 VI 1;25,6;36,5;NA;27,0;34,6;32,3;27,0;NA;NA;36,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;HM ;25,0;32,0;NA;22,5;30,0;29,0;27,0;23,0;23,0;32,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSt AS V 29;23,0;32,0;NA;23,0;31,0;29,0;26,0;21,5;22,0;32,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;PTH 1962.148;24,0;30,5;NA;25,0;32,5;31,5;27,8;23,2;24,0;34,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;MM;26,0;36,5;NA;28,0;34,0;32,5;27,0;25,5;26,8;34,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;Missing;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Pterodactylus_antiquus;YES;;ES ;26,5;40,0;NA;27,0;35,0;34,3;31,8;26,0;29,0;38,9;Chan et al 2017
+Pterodactylus_antiquus;YES;;AM 1942;31,0;39,0;NA;29,0;39,0;35,5;33,5;27,0;28,5;39,5;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSt 1937 I 18;29,0;39,0;NA;27,5;38,5;36,5;32,5;27,0;28,5;38,5;Chan et al 2017
+Pterodactylus_antiquus;YES;;SM R4074;29,0;38,0;NA;27,0;38,0;37,0;34,0;26,0;30,0;38,6;Chan et al 2017
+Pterodactylus_antiquus;YES;;PIU;30,0;43,0;NA;30,0;41,0;39,0;34,5;NA;32,5;42,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;Bst 1929 I 18;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Pterodactylus_antiquus;YES;;PTH;31,7;42,5;NA;31,8;43,0;41,5;36,5;29,0;32,0;44,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;AC/MM;32,5;41,5;NA;34,5;44,5;41,0;35,0;29,0;32,0;45,0;Chan et al 2017
+Pterodactylus_antiquus;YES;;BSt 1883 XVI1;41,0;52,0;NA;43,5;56,0;53,0;41,0;35,0;43,5;55,0;Chan et al 2017
+Germanodactylus_cristatus;YES;Adult (Bennett 1996);BSP 1892 IV 1/NMING F15005;57;75,3;73,34;64,41;81,16;76,55;64,72;52,54;56,5;87,5;Benson et al 2014&Chan 2017
+Germanodactylus_rhamphastinus;YES;Adult (Bennett 1996);BSP 1977 XIX 1/JME 111 21;52,96;76,81;73,67;57,83;71,74;59,2;58,18;50,57;NA;NA;Benson et al 2014
+Germanodactylus_rhamphastinus;YES;;BSt AS I 745;60,0;100,0;NA;70,0;90,0;80,0;72,0;60,0;67,0;92,0;Chan et al 2017
+Germanodactylus_rhamphastinus;YES;;MCZ 1886;NA;NA;NA;55,1;72,3;NA;NA;NA;NA;NA;Chan et al 2017
+Haopterus_gracilis;YES;Subadult;IVPP V11726;70,7;101,7;105,6;83,4;148,1;118,4;96,05;49;NA;NA;Benson et al 2014&Chan 2017
+Boreopterus_cuiae;YES;;JZMP-04-07-3;79;110;112;94;137;122,5;98;87;82,0;82,0;Benson et al 2014&Chan 2017
+Tapejara_wellnhoferi;YES;;IMCF 1061;82,775;114,68;113,63;105,4258205;163,33;131,82;105,47;71,07;NA;NA;Benson et al 2014
+Tupandactylus_navigans;NO;;SMNK PAL 2344;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Tupandactylus_navigans;NO;;SMNK 2344 PAL;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Huaxiapterus_corallatus;YES;subadult, but used as adult in Venditti et al 2020;ZMNH M8131;78,2;115,67;114,69;151,805;170,89;109,425;71,25;33,44;92,5;155,0;Benson et al 2014&Chan 2017
+Sinopterus_dongi;YES;used as adult in Venditti et al 2020;IVPP V13363;59,165;88,09;88,71;94,77;117,99;94,26;65,79;32,7;74,0;104,0;Benson et al 2014&Chan 2017
+Sinopterus_dongi;YES;adult;D2525;109,0;154,0;NA;170,0;215,0;156,0;106,0;43,0;135,0;185,0;Chan et al 2017
+Huaxiapterus_jii;YES;Subadult (Lü & Yuan 2005);GMN-03-11-001;79;117;115;132;161,5;127;91,5;45;100,0;141,0;Benson et al 2014&Chan 2017
+Eopteranodon_lii;YES;;BPV-078;65,06;97,265;96,855;100,11;131,75;101,84;68,75;45,67;NA;NA;Benson et al 2014
+Eopteranodon_lii;YES;;D2526;69,0;96,0;NA;106,0;137,0;103,0;76,0;62,0;80,0;117,0;Chan et al 2017
+Dsungaripterus_weii;YES;unclear; IVPP V.2776 ;133,9;215,1;214,4;262,9;321,05;267,75;256,25;186,8;221,0;NA;Benson et al 2014
+Chaoyangopterus_zhangi;YES;;IVPP V13397;92,23;126,14;125,35;181,21;200,23;131,84;78;47,99;133,0;208,0;Benson et al 2014&Chan 2017
+Chaoyangopterus_zhangi;NO;Juvenile;LPM R00076;78,0;111,3;NA;149,4;164,0;112,0;71,0;NA;107,7;156,0;Chan et al 2017
+Jidapterus_edentus;NO;Juvenile (Wu et al 2016);CAD-01;79,625;113,75;111,59;152,06;169,83;119,985;73,505;36,63;95,0;150,0;Benson et al 2014&Chan 2017
+Shenzhoupterus_chaoyangensis;YES;Adult;HGM 41HIII-305A;66;105;106;140;147;100;68;36;102,0;139,0;Benson et al 2014&Chan 2017
+Eoazhdarcho_liaoxiensis;YES;;GMN-03-11-002;90;122;122;135;178;139;93;50;94,0;160,0;Benson et al 2014&Chan 2017
+Eudimorphodon_ranzii;YES;Adult;MCSNB 2888;45,19;65,31;60,03;27,89;NA;NA;NA;NA;41,0;50,0;Benson et al 2014&Chan 2017
+Eudimorphodon_ranzii;YES;;MCSNB 2887;28,0;38,0;NA;NA;40,0;36,5;NA;NA;21,2;28,5;Chan et al 2017
+Eudimorphodon_ranzii;YES;;BSP 1994 I 51;40,0;NA;NA;NA;52,9;NA;NA;NA;NA;57,7;Chan et al 2017
+Eudimorphodon_cromptonellus;NO;Juvenile;MGUH VP 3393;18,2;20,1;19,5;8,4;18;20,5;20,5;NA;19,7;20,5;Benson et al 2014&Chan 2017
+Caviramus_schesaplanensis;NO;unknown;PIMUZ A/III;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Raeticodactylus_filisurensis;YES;Adult;BNM 14524;82;106;NA;NA;113;109;117;83;56,0;84,0;Benson et al 2014&Chan 2017
+Peteinosaurus_zambelli;YES;Skeletal fusion characters suggest immaturity;MCSNB 3359 (only tentatively referred [Dalla Vecchia 2003], but closely similar in size and propostions to the less complete holotype [MCSNB 2886]);39;49,5;NA;17;42,5;42,5;46,5;35;37,0;48,0;Benson et al 2014&Chan 2017
+Peteinosaurus_zambelli;NO;;MCSNB 2886;NA;NA;NA;16,5;42,5;41,0;NA;34,0;NA;51,5;Chan et al 2017
+Austriadactylus_cristatus;YES;;SMNS 56342;75;100;100;NA;98,5;101;103,5;85,5;NA;NA;Benson et al 2014&Chan 2017
+Austriadactylus_cristatus;NO;;SC 332466;36,0;50,0;;15,7;40,0;NA;NA;NA;NA;NA;Chan et al 2017
+Parapsicephalus_purdoni;NO;;GSM;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Sericipterus_wucaiwanensis;YES;;IVPP V14725;100,19;NA;NA;NA;127,38;117,43;NA;117,65;NA;NA;Benson et al 2014&Chan 2017
+Angustinaripterus_longicephalus;NO;;ZDM 8001;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Harpactognathus_gentryii;NO;;NAMAL 101/DMNH 44367;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Qinglongopterus_guoi;NO;juvenile;NA;17,6;25,8;NA;NA;28,22;NA;NA;NA;11,7;NA;Lv et al 2012
+Cacibupteryx_caribensis;NO;;IGO-V 208;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Nesodactylus_hesperius;YES;;AMNH 2000;46,5;80;79;26,7;137;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Dorygnathus_banthensis;YES;;HAUFF Dory3;78,54;125,11;NA;38,19;95,84;127,66;126,52;104,16;NA;NA;Benson et al 2014
+Dorygnathus_banthensis;YES;;BSP 1938 149;51,0;82,0;NA;25,0;60,0;72,0;74,0;62,0;42,0;59,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;MBR 1905.15;65,0;105,0;NA;32,0;79,0;93,0;93,0;82,0;53,0;70,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;MBR 1920.16;80,0;133,0;NA;38,0;99,0;119,0;119,0;92,0;65,0;92,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;MBR 1977.21;84,0;142,0;NA;42,0;>110;145,0;NA;NA;70,0;88,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;Museum Hauff;39,0;60,0;NA;19,0;45,0;52,0;52,0;45,0;30,0;37,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;U Lowen;60,0;93,0;NA;28,0;72,0;90,0;86,0;66,0;48,0;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;BMNH R10087;NA;112,0;NA;36,0;90,0;108,0;105,0;NA;57,0;76,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;GPIT 1645/1;60,0;101,0;NA;30,0;80,0;92,0;90,0;78,0;49,0;63,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;GPIT1645/2;NA;85,0;NA;28,0;72,0;82,0;79,0;>47;NA;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;GPIT (lost);57,5;92,0;NA;28,5;75,0;88,0;NA;NA;48,0;63,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;Swedish Museum;65,0;103,0;NA;34,0;81,0;95,0;96,0;NA;NA;100,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;UUPM R157;61,0;100,0;NA;29,0;73,0;88,0;88,0;71,0;50,0;67,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;NHMW Vienna;61,0;101,0;NA;32,0;79,0;102,0;103,0;90,0;50,0;>65;Chan et al 2017
+Dorygnathus_banthensis;YES;;U Zurich A/III 493;61,0;92,0;NA;27,0;75,0;86,0;90,0;74,0;44,0;65,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 18880;51,0;68,0;NA;25,0;60,0;70,0;>51;45,0;NA;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 18969;57,0;94,0;NA;29,0;78,0;93,0;80,0;>50;47,0;>66;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 50164;75,0;105,0;NA;33,0;76,0;97,0;95,0;73,0;55,0;73,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 50702;50,0;79,0;NA;26,0;63,0;70,0;68,0;60,0;39,0;50,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 50914;61,0;104,0;NA;31,0;80,0;98,0;98,0;84,0;50,0;74,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 51106;57,0;94,0;NA;28,0;74,0;85,0;84,0;70,0;NA;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 51826;NA;91,0;NA;29,0;76,0;>85;>75;NA;NA;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 51827;52,0;89,0;NA;28,0;70,0;82,0;82,0;70,0;45,0;58,0;Chan et al 2017
+Dorygnathus_banthensis;NO;Juvenile;SMNS 52998;47,0;76,0;NA;NA;NA;61,0;NA;53,0;37,0;49,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 52999;51,0;85,0;NA;29,0;72,0;80,0;79,0;66,0;42,0;68,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 55886;51,0;84,0;NA;27,0;67,0;78,0;76,0;NA;NA;54,5;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 56255;56,0;90,0;NA;29,0;71,0;82,0;NA;NA;NA;NA;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 59293;79,0;NA;NA;NA;NA;NA;NA;NA;69,0;95,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 59417;NA;NA;NA;NA;NA;NA;110,0;70,0;61,0;73,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 80439;NA;NA;NA;NA;NA;NA;NA;NA;75,0;95,0;Chan et al 2017
+Dorygnathus_banthensis;YES;;SMNS 81840;NA;>100;NA;NA;103,0;NA;NA;NA;NA;NA;Chan et al 2017
+Changchengopterus_pani;NO;Juvenile (Lü 2009);CYGB-0036;25,9;36,8;36,8;15,6;30;32;30;NA;21,0;25,0;Benson et al 2014&Chan 2017
+Changchengopterus_pani;YES;;PMOL AP 00010;50,2;76,0;NA;27,0;60,0;61,0;60,0;NA;43,0;53,3;Chan et al 2017
+Anurognathus_ammoni;NO;Juvenile (Bennett 2007);Private specimen;18,25;26,12;24,57;4,92;28,62;22,84;13,21;NA;14,5;20,2;Benson et al 2014&Chan 2017
+Anurognathus_ammoni;YES;adult according to Venditti et al 2020;BSP 1922 I 42;32,0;46,0;NA;11,0;58,0;NA;NA;NA;27,0;39,0;Chan et al 2017
+Batrachognathus_volans;YES;;PIN 2585/4A/B;29,25;47,06;NA;9,54;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Batrachognathus_volans;NO;;PIN 52-2;NA;NA;NA;NA;NA;NA;NA;NA;24,0;42,0;Chan et al 2017
+Dendrorhynchoides_curvidentatus;YES;subadult;NGMC 327;27,31;35,445;34,79;8,41;44,33;36,455;27,83;NA;NA;NA;Benson et al 2014
+Kryptodrakon_progenitor;YES;;NA;80,5;NA;NA;NA;NA;NA;NA;NA;NA;NA;Andres et al 2014
+Gnathosaurus_subulatus;NO;;JME SoS 4580;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Gnathosaurus_subulatus;NO;;BSt AS VII 369;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Gnathosaurus_subulatus;NO;;PTH 1951. 84;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Gnathosaurus_macrurus;NO;;CAMSM J5339/J5340;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Plataleorhynchus_streptophorodon;NO;;NHMUK PV R 11957;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Huanhepterus_quingyangensis;YES;;IVPP V9070;143,16;235,87;233,58;125,23;211,69;NA;NA;NA;130,0;277,0;"Benson et al 2014&Chan 2017;Dong 1982"
+Moganopterus_zhuiana;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Feilongus_youngi;NO;;IVPP V-12539;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Kepodactylus_insperatus;YES;;DMNH 21684;127,74;NA;NA;NA;NA;119,38;NA;NA;NA;NA;Benson et al 2014
+Ctenochasma_elegans;YES;according to Bennett 2007, The 8 small specimens are Juvenile, others are subadults or adults;BSP 1935 I 24 (Ctenochasma gracile);38,5;55;52,5;52;66;57;40,96;NA;35,0;55,0;Benson et al 2014&Chan 2017
+Ctenochasma_elegans;NO;Juvenile;BSP 1875.XIV.501;15,0;20,0;NA;16,5;21,3;19,5;15,5;13,8;12,5;17,5;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;BSP 1867.II.I;15,0;18,2;NA;16,5;19,5;17,8;14,3;12,8;12,3;17,6;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;Welln. Ex. 47;14,5;20,0;NA;16,0;22,0;19,5;16,0;15,0;14,0;19,0;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;PMZ A/III 100;17,0;22,0;NA;18,5;24,0;21,5;17,3;15,5;15,0;20,2;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;MBU (Welln. Ex. 49);16,9;21,5;NA;18,4;24,5;22,0;17,3;15,5;15,5;21,0;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;SoS 4007;19,2;22,0;NA;21,0;26,5;24,1;18,4;17,1;15,5;21,5;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;MBH (Welln. Ex. 51);19,5;23,5;NA;21,0;27,0;23,5;18,5;16,0;15,8;22,5;Chan et al 2017
+Ctenochasma_elegans;NO;Juvenile;GIE (Welln. Ex. 52);24,0;29,0;NA;26,0;32,5;28,5;21,5;18,0;19,0;27,0;Chan et al 2017
+Ctenochasma_elegans;YES;according to Bennett 2007, The 8 small specimens are Juvenile, others are subadults or adults;Schöpfl specimen;47,0;65,0;NA;62,0;NA;NA;NA;NA;44,0;67,0;Chan et al 2017
+Ctenochasma_elegans;YES;according to Bennett 2007, The 8 small specimens are Juvenile, others are subadults or adults;BSP 1920.I.57;54,7;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Ctenochasma_elegans;YES;according to Bennett 2007, The 8 small specimens are Juvenile, others are subadults or adults;SMNS 81803;74,0;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Ctenochasma_porocristata;NO;Adult (Bennett 2007 - specimen of Ctenochasma 'porocristata');JME SoS  2179;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;"Chan et al 2017;Bennett 2007"
+Gegepterus_changae;YES;Subadult (Wang et al. 2007);IVPP V 11981;52,7;69,3;NA;NA;69,3;68,3;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Gallodactylus_canjuersensis;YES;;MNHN - CNJ 71a,b;NA;NA;NA;NA;155;134;94;NA;103,0;144,0;Benson et al 2014&Chan 2017
+Normannognathus_wellnhoferi;NO;;MGCL 59'583 ;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Anhanguera_santanae;YES;;BSP 1982 I 90/1 to 5;NA;339,2;342,7;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Anhanguera_piscator;YES;;NSM-PV 19892;255;390;385;256;NA;NA;NA;NA;234,0;280,0;Benson et al 2014&Chan 2017
+Anhanguera_blittersdorffi;NO;;MN 4805-V;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Anhanguera_araripensis;YES;;BSP 1982 I 89/1 to 17;232,34;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Liaoningopterus_gui;NO;;IVPP V13291;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Tropeognathus_mesembrinus;NO;Adult;BSP 1987 I 46;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Tropeognathus_mesembrinus;NO;;BSP 1987 I 47;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Tropeognathus_mesembrinus;YES;;MN 6594-V;408,0;603,0;NA;412,0;893,0;777,0;604,0;384,0;374,0;448,0;ALEXANDER W. A. KELLNER et al 2013
+Ornithocheirus_simus;NO;;CAMSM B54.428;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Coloborhynchus_clavirostris;NO;;NHMUK PV 1822;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Ludodactylus_sibbicki;NO;;SMNK PAL 3828;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Brasileodactylus_araripensis;NO;;MN 4804-V;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Cearadactylus_atrox;NO;Juvenile;MN 7019-V;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Cearadactylus_atrox;NO;;F-PV-93;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Guidraco_venator;NO;;IVPP V17083;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Zhenyuanopterus_longiristris;YES;;NA;210,0;262,0;NA;230,0;360,0;275,0;210,0;19,0;210,0;200,0;Chan et al 2017
+Nurhachius_ignaciobritoi;YES;Subadult;IVPP V-13288;117,79;194,61;192,11;130,12;225,4;181,38;NA;NA;NA;NA;Benson et al 2014
+Longchengpterus_zhaoi;YES;;LPM 00023;88,3;156;156;101;188;157;120;100,0;100,0;NA;Benson et al 2014&Chan 2017
+Liaoxipterus_brachyognathus;NO;;CAD-0018;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Istiodactylus_sinensis;YES;Nearly osteologically mature subadult (Andres & Ji 200&), but used as adult in Venditti et al 2020;NGMC 9907-11;133,49;233,715;235,185;166,76;273,14;243,51;195,43;32,9;139,5;182,5;Benson et al 2014&Chan 2017
+Istiodactylus_latidens;YES;;NHMUK PV  R3877;220;381;368;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Lonchodectes_compressirostris;NO;;NHMUK PV 39410;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Hongshanopterus_lacustris;NO;;IVPP V14852;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Pteranodon_longiceps;YES;;PMU 197;168;234;223;366;422;NA;NA;NA;NA;NA;Benson et al 2014
+Pteranodon_longiceps;YES;;SMM 11402;200,0;255,0;NA;>387;482,0;NA;NA;NA;188,0;NA;Chan et al 2017
+Pteranodon_longiceps;YES;;YPM 2425;155,0;217,0;NA;360,0;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Pteranodon_sternbergi;YES;;USNM 12167;164,71;251;NA;392;483;339;261;NA;NA;NA;Benson et al 2014
+Pteranodon_sternbergi;YES;;YPM 2493;202,0;290,0;NA;454,0;550,0;474,0;NA;NA;192,0;290,0;Chan et al 2017
+Nyctosaurus_gracilis;YES;;FHSM 2148;103,62;NA;NA;263,88;298,75;256,6;209,44;125,06;NA;NA;Benson et al 2014
+Nyctosaurus_gracilis;YES;;KJ1;61,8;107;NA;202;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Nyctosaurus_gracilis;YES;;KJ2;72,3;142;NA;243;289;152;113;-;71,9;83,8;Benson et al 2014
+Nyctosaurus_lamegoi;YES;;DNPM 238-R;165;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Muzquizopteryx_coahuilensis;YES;Adult (Frey et al. 2006);UNAM IGM 8621;80,5;112;112;NA;NA;NA;NA;NA;78,0;109,0;Benson et al 2014&Chan 2017
+Europejara_olcadesorum;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Europejara_olcadesorum;NO;;MCCM-LH 9413;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Bakonydraco_galaczi;NO;;MTM 2007.110.1;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Tupandactylus_imperator;NO;;MCT 1622-R;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Tupandactylus_imperator;NO;;CPCA 3590;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan et al 2017
+Huaxiapterus_benxiensis;YES;used as adult in Venditti et al 2020;BXGM V0011;62;119;119;133;176;130;98;NA;112,0;154,0;Benson et al 2014&Chan 2017
+Sinopterus_gui;YES;subadult;BPV-077;37,2;54,38;50,41;NA;58,05;NA;NA;NA;NA;NA;Benson et al 2014
+Nemicolopterus_crypticus;YES;Young individual, but we also performed analyses with this species removed;IVPP V-14377;15,2;20;20;NA;22,5;20,9;16,2;9,74;16,5;23,1;Benson et al 2014&Chan 2017
+Bennettazhia_oregonensis;YES;;USNM 11925;175,11;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Domeykodactylus_ceciliae;NO;;UCNA 250973;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Noripterus_parvus;YES;Largest individuals from a large collection (Unwin & Bakhurina 2000);GIN125/1010;84;118,6;117;161;182,8;NA;NA;NA;NA;NA;Benson et al 2014
+Noripterus_complicidens;YES;;IVPP 64043-3;76;104;NA;142;174;124;NA;NA;NA;NA;Benson et al 2014
+Noripterus_complicidens;YES;;GIN125/1010;84,0;118,6;NA;161,0;182,8;>136;NA;NA;106,0;181,0;Chan 2017
+Thalassodromeus_sethi;NO;;DGM 1476-R;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014&Chan 2017
+Tupuxuara_longicristatus;NO;;MN 6591-V;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Tupuxuara_leonardii;YES;;IMCF 1052;232,015;291,875;284,09;368;507;309,74;208;NA;NA;NA;Benson et al 2014
+Azhdarcho_lancicollis;YES;Largest individuals from a large collection (Unwin & Bakhurina 2000);ZIN PH 12/44;136,37;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Zhejiangopterus_linhaiensis;YES;;ZMNH M1328;106;170,95;164;NA;158,75;136,25;NA;NA;122,0;185,0;Benson et al 2014&Chan 2017
+Zhejiangopterus_linhaiensis;YES;;M1330;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Zhejiangopterus_linhaiensis;YES;;M1323;137,0;234,0;NA;336,0;322,0;220,0;NA;NA;222,0;265,0;Chan 2017
+Zhejiangopterus_linhaiensis;YES;;M1325;90,0;130,0;NA;NA;NA;NA;NA;NA;168,0;NA;Chan 2017
+Arambourgiania_philadelphiae;YES;;VF1;NA;650;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Quetzalcoatlus_northropi;YES;;TMM 41450-3;520;733;709;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Quetzalcoatlus_northropi;YES;;TTU P10390;531,0;670,0;NA;1338,0;NA;NA;NA;NA;899,0;1340,0;Chan 2017
+Aetodactylus_halli;NO;;SMU 76383;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Alanqa_saharica;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Anhanguera_cuvieri;NO;Adult;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Camposipterus_nasutus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Aralazhdarcho_bestobensis;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Archaeoistiodactylus_linglongtaensis;YES;;JPM04 0006;47,0;70,0;NA;28,0;>35;63,0;63,0;51,0;44,0;62,0;Chan 2017
+Arthurdactylus_conandoylei;NO;Adult;SMK PAL 1132;230,0;312,0;NA;227,0;445,0;402,0;312,0;275,0;190,0;234,0;Chan 2017
+Aussiedraco_molnari;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Cathayopterus_grabaui;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Caulkicephalus_trimicrodon;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Coloborhynchus_capito;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Siroccopteryx_moroccensis;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Anhanguera_robustus;YES;;NA;290;NA;NA;NA;NA;NA;NA;NA;NA;NA;David W. E. Hone et al 2020
+Coloborhynchus_sedgwickii;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Ctenochasma_roemeri;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Ctenochasma_taqueti;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Darwinopterus_linglongtaensis;YES;"Subadult; not juvenile";IVPP V16049;40,4;58,0;NA;22,5;46,2;50,7;53,2;53,6;39,4;49,8;Chan 2017
+Dawndraco_kanzai;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Dimorphodon_weintraubi;YES;;NA;120;143;NA;60,5;NA;NA;NA;NA;NA;NA;J. M. Clark et al 1998
+Eurazhdarcho_langendorfensis;YES;;EME VP 312/6;NA;NA;NA;250,0;NA;NA;NA;NA;NA;NA;Chan 2017
+Fenghuangopterus_lii;YES;;NA;63;85;85;35;NA;NA;NA;NA;57,0;100,0;Junchang Lv et al 2010
+Geosternbergia_maiseyi;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Hatzegopteryx_thambena;YES;;NA;472;NA;NA;NA;NA;NA;NA;NA;NA;NA;E. Buffetaut et al 2002
+Herbstosaurus_pigmaeus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Kunpengopterus_sinensis;YES;Adult;IVPP V16047;36,2;59,2;NA;23,0;54,2;58,0;59,2;48,8;39,3;54,5;Chan 2017
+Lacusovagus_magnificens;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Lonchodraco_giganteus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Lonchodectes_machaerorhynchus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Lonchodectes_microdon;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Lonchodectes_platystomus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Mesadactylus_ornithosphyos;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Montanazhdarcho_minor;YES;Adult;NA;115,0;190,0;NA;169,0;>195;NA;NA;NA;NA;NA;Chan 2017
+Mythunga_camara;NO;Subadult;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Ningchengopterus_liuae;NO;;NA;15,0;20,0;NA;15,0;20,0;19,5;14,0;NA;14,0;NA;Chan 2017
+Nyctosaurus_nanus;YES;;NA;62;NA;NA;NA;NA;NA;NA;NA;NA;NA;O. C. Marsh. 1881
+Ornithostoma_sedgwicki;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Phosphatodraco_mauritanicus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Prejanopterus_curvirostra;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Pterodactylus_micronyx;NO;Juvenile;NA;28,1;39,6;NA;46,8;55,6;38,2;22,9;19,9;33,4;51,1;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;BSt (Ex. 29, Wellnhofer 1970);NA;19,0;NA;17,0;23,2;20,0;15,0;NA;15,0;18,0;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;BSP 1936 I 50;15,0;18,8;NA;16,1;21,8;16,0;13,7;13,9;14,0;17,6;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;PTH 1957.52;14,5;17,5;NA;14,0;17,7;16,4;15,5;14,5;12,2;16,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;BSP 1964 XXIII 100;16,5;20,5;NA;17,5;22,5;19,0;15,0;15,7;15,0;19,2;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;UB E552;16,9;21,8;NA;19,2;24,3;21,5;16,9;16,6;16,8;19,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;TM 13104;18,5;25,0;NA;19,8;28,5;24,0;19,8;18,4;18,4;23,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;RM ST 18183;18,8;23,0;NA;21,0;27,0;23,0;18,0;15,0;15,0;22,0;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;CM 11425;18,0;25,0;NA;24,0;32,0;25,0;22,0;19,0;20,0;26,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;SM R405;18,5;24,5;NA;21,0;27,5;25,0;20,0;17,0;16,0;23,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;BM 42735;19,0;23,5;NA;23,0;28,0;25,0;19,5;18,0;16,0;24,5;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;ELTE V256;20,5;26,0;NA;26,0;34,0;28,0;22,0;18,0;22,0;29,0;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;MB R 3581;23,0;30,5;NA;30,5;41,0;32,0;24,0;18,0;26,0;34,0;Chan 2017
+Pterodactylus_micronyx;NO;Juvenile;SNSD MMG BaJ 21;23,0;30,0;NA;31,0;38,0;31,0;23,5;21,0;24,0;33,0;Chan 2017
+Pterodactylus_micronyx;YES;;BSP 1911 I 31;25,0;31,0;NA;40,0;46,0;28,5;19,5;17,7;29,0;40,5;Chan 2017
+Pterodactylus_micronyx;YES;;PMU 24792;26,0;35,0;NA;38,0;48,0;35,5;26,0;23,0;30,0;44,0;Chan 2017
+Rhamphinion_jenkinsi;NO;Adult;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Rhamphocephalus_bucklandi;NO;Adult;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Tendaguripterus_recki;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Tupuxuara_deliradamus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Unwindia_trigonus;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Volgadraco_bogolubovi;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Yixianopterus_jingangshanensis;YES;Adult (Unwin & Lü 1997);NA;NA;168,6;NA;NA;NA;NA;NA;NA;NA;NA;Jiang et al 2020
+Alamodactylus_byrdi;YES;osteological adult based on fusion of the extensor tendon process of the first wing phalanx;SMU 76476;149,59;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Coloborhynchus_wadleighi;NO;;SMU 73058;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Radiodactylus_langstoni;YES;;SMU 72547;198,39;NA;NA;NA;NA;NA;NA;NA;NA;NA;Benson et al 2014
+Maaradactylus_spielbergi;YES;;;290,0;410,0;NA;NA;NA;NA;NA;NA;285,0;355,0;Chan 2017
+Aurorazhdarcho_primordius;YES;;NMB Sh 110;62,4;82,9;NA;94,6;119,0;70,8;50,6;50,5;79,0;116,0;Chan 2017
+Barbosania_gracilirostris;YES;;MHNS/00/85;155,0;223,0;NA;155,0;>191.9;NA;NA;NA;127,0;NA;Chan 2017
+Bellubrunnus_rothgaengeri;NO;Juvenile;BSP 1993 XVIII 2;14,0;22,0;NA;9,0;27,0;23,0;21,0;23,0;10,0;12,0;Chan 2017
+Caiuajara_dobruskii;NO;;CP.V 866a;38,8;49,5;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;NO;;CP. V 869;39,0;50,4;NA;NA;NA;NA;NA;NA;72,4;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V 872a;83,9;109,8;NA;NA;NA;121,4;NA;NA;84,1;103,0;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1001a;91,3;NA;NA;124,5;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1001b;79,2;113,7;NA;110,3;NA;NA;104,5;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1002;77,0;99,3;NA;;NA;NA;NA;NA;NA;95,0;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1006;90,6;NA;NA;NA;170,0;166,6;162,4;49,4;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1007;65,3;90,0;NA;NA;NA;NA;NA;NA;74,5;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1009;72,9;NA;NA;129,4;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1010;72,4;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1013;113,6;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1014;115,4;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1015;115,6;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;NO;;CP. V1023;NA;NA;NA;NA;165,0;137,7;NA;NA;69,3;NA;Chan 2017
+Caiuajara_dobruskii;YES;;CP. V1024;74,1;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chan 2017
+Caiuajara_dobruskii;NO;;Cp. V1025;NA;NA;NA;NA;NA;NA;NA;NA;118,6;NA;Chan 2017
+Caiuajara_dobruskii;NO;;CP. V2029;NA;NA;NA;NA;NA;NA;NA;NA;114,0;NA;Chan 2017
+Darwinopterus_robustodens;YES;;HGM 41HIII - 309 A;50,0;80,0;NA;30,0;65,0;75,0;75,0;67,0;43,0;60,0;Chan 2017
+Dendrorhynchoides_mutoudengensis;YES;;JZMP 04 07 3;27,0;42,0;NA;11,0;50,0;41,0;25,0;5,0;21,0;27,0;Chan 2017
+Douzhanopterus_zhengi;YES;;STM 19–35A & B;48,5;59,5;NA;31,7;53,3;56,2;53,2;45,5;41,2;69,9;Chan 2017
+Gladocephaloideus_jingangshanensis;YES;;IG-CAGS-08-07;NA;NA;NA;NA;NA;NA;NA;NA;NA;87,0;Chan 2017
+Gladocephaloideus_jingangshanensis;NO;Juvenile;JPM 2014-004;30,0;40,0;NA;32,4;45,5;42,1;37,5;33,3;27,5;45,0;Chan 2017
+Ikrandraco_avatar;YES;;IVPP V18199;78,7;122,5;NA;99,5;NA;NA;NA;NA;NA;NA;Chan 2017
+Jianchangnathus_robustus;YES;;IVPP V16866;NA;114,0;NA;31,5;78,2;89,4;NA;73,2;NA;NA;Chan 2017
+Microtuban_altivolans;YES;subadult;SMNK PAL 6595;67,5;92,0;NA;122,0;135,0;114,5;63,5;3,5;NA;NA;Chan 2017
+Orientognathus_chaoyangensis;NO;Juvenile;41HIII-0418;77,2;65,1;NA;29,3;85,7;118,3;NA;NA;68,3;69,1;Benson et al 2014
+Seazzadactylus_venieri;YES;;MFSN 21545;44;54;NA;20,7;60,5;63,5;72;NA;>32;55;Fabio Marco Dalla Vecchia 2019
+MCSNB_8950;NO;Juvenile;MCSNB_8950;26;33,5;NA;9;34;35,3;36,2;NA;19,6;25;Fabio Marco Dalla Vecchia 2019
+Austriadraco_dallavecchiai;YES;;BSP 1994 I 51;40;NA;NA;NA;52,9;NA;NA;NA;38;57,7;Fabio Marco Dalla Vecchia 2019
+Allkaruen_koi;NO;;MPEF-PV 3609;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Laura Codorniú et al 2016
+Klobiodon_rochei;NO;;NHMUK PV OR 47991;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;MICHAEL O’SULLIVAN and DAVID M. MARTILL 2018
+Liaodactylus_primus;NO;;PMOL-AP00031;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Chang-Fu Zhou et al 2016
+Sinomacrops_bondei;YES;;JPM-2012-001;23,6;36,3;NA;6,7;41,2;36;18,1;NA;13,6;26,6;Xuefang Wei et al 2021
+Wukongopterus_sp;YES;;IVPP V 17959;41;67,3;NA;27,6;55,3;59,8;NA;NA;NA;NA;Xin Cheng et al 2016
+Kunpengopterus_antipollexus;YES;;BPMC 0042;55;80;NA;28;62;69;59;44;52;72;Xuanyu Zhou et al 2021
+Kunpengopterus_sp;YES;;ZMNH M8802;52;70;NA;NA;NA;NA;NA;NA;41;61;Junchang Lü et al 2011
+Pterodactylus_cirinensis;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Cuspicephalus_scarfi;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Painten_pterodactyloid;YES;;NA;34,3;46,5;46,7;21,6;39,1;42,8;NA;33,8;32,7;38,5;Eichstätt 2013
+Rhamphorhynchus_etchesi;YES;;MJML K-1597;60;97;97;33;171;175;163;152;NA;NA;M. O'Sullivan and D. M. Martill. 2015
+Pterodactylus_spectabilis;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Aerodactylus_scolopaciceps;NO;Juvenile;NA;27;38;NA;26;36;36;31;26;28;38;Steven U. Vidovic and David M. Martill 2014
+Ornithocheirus_wiedenrothi;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Europejara_olcadesorum;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+LPM_L112113;YES;;LPM_L112113;55;78;78;75;101;NA;NA;NA;NA;NA;Wen-Hao Wu et al 2017
+LPM_N081607;NO;;LPM_N081607;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Wen-Hao Wu et al 2017
+Iberodactylus_andreui;NO;;MPZ-2014/1;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Borja Holgado et al 2019
+Vectidraco_daisymorrisae;NO;;NHMUK PV R36621;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Darren Naish et al 2013
+Pterofiltrus_qiui;NO;;IVPP V12339;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Shunxing Jiang and Xiaolin Wang 2011
+Luchibang xingzhe;NO;Juvenile;ELDM 1000;110;168,75;168,75;159,4;218,75;237,5;112,5;59,4;140,6;210;David W. E. Hone et al 2020
+Linlongopterus_jennyae;NO;;IVPP V15549;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Taissa Rodrigues et al 2015
+Hamipterus_tianshanensis;YES;;IVPP V18940.3;NA;238,6;NA;NA;NA;NA;NA;NA;NA;NA;Xiaolin Wang et al 2014
+Hamipterus_tianshanensis;YES;;IVPP V18931.1;NA;252,2;NA;NA;NA;NA;NA;NA;NA;NA;Xiaolin Wang et al 2014
+Caupedactylus_ybaka;YES;;MN 4726-V;167,5;NA;NA;NA;NA;NA;NA;NA;NA;NA;Alexander W. A. Kellner 2013
+Boreopterus_giganticus;NO;;IVPP V14585;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Shunxing Jiang et al 2014
+Versperopterylus_lamadongensis;YES;;BMNHC-PH-001311;71;96,4;92,9;25,8;117,8;95,4;71;14,3;52,6;71,9;Junchang Lu et al 2017
+Nurhachius_luei;NO;;BPMC-0204;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Xuanyu Zhou et al 2019
+Aymberedactylus_cearensis;NO;;MN 7596-V;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Rodrigo Vargas Pêgas et al 2016
+Lonchognathosaurus_acutirostris;NO;;SGP 2001/19;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;M. W. Maisch et al 2004
+Maaradactylus_kellneri;NO;;MPSC R 2357;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;RENAN A. M. BANTIM et al 2014
+Anhanguera_ligabuei;NO;;CSRL 12692;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;F. M. Dalla Vecchia 1993
+Banguela_oberlii;NO;;NMSG SAO 251093;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;J. A. Headden and H. B. N. Campos 2014
+Aussiedraco_molnari;NO;;QM F10613;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;ALEXANDER W.A. KELLNER et al 2011
+Afrotapejara_zouhri;NO;;FSAC-KK 5004;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;David M. Martill et al 2020
+Siroccopteryx_moroccensis;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Cimoliopterus_dunni;NO;;SMU 76892;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;T. S. Myers. 2015
+Mimodactylus_libanensis;YES;;MIM F1;52;84;NA;NA;128;119;105;92;NA;60;AlexanderW.A. Kellner et al 2019
+Coloborhynchus_fluviferox;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Cimoliopterus_cuvieri;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Ferrodraco_lentoni;YES;;AODF 876;NA;293;NA;NA;NA;NA;NA;NA;NA;NA;Adele H. Pentland et al 2019
+Cretornis_hlavaci;NO;;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;
+Keresdrakon_vilsoni;NO;Subadult;CP.V 1011;173;NA;NA;NA;NA;NA;NA;NA;NA;NA;ALEXANDER W.A. KELLNER et al 2019
+Keresdrakon_vilsoni;YES;;CP.V 2073;NA;224;NA;NA;NA;NA;NA;NA;NA;NA;ALEXANDER W.A. KELLNER et al 2019
+Keresdrakon_vilsoni;YES;;CP.V 2074;NA;223;NA;NA;NA;NA;NA;NA;NA;NA;ALEXANDER W.A. KELLNER et al 2019
+Keresdrakon_vilsoni;YES;;CP.V 2077;NA;227;NA;NA;NA;NA;NA;NA;NA;NA;ALEXANDER W.A. KELLNER et al 2019
+Nyctosaurus_bonneri;YES;;NA;97;NA;NA;NA;NA;NA;NA;NA;NA;NA;David W. E. Hone et al 2020
+Piksi_barbarulna;YES;;MOR 1113;NA;100;NA;NA;NA;NA;NA;NA;NA;NA;David J. Varricchio 2002
+Aerotitan_sudamericanus;NO;;MPCN-PV 0054;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Novas et al 2012
+Tethydraco_regalis;NO;;FSAC-OB 1;235,85;NA;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Tethydraco_regalis;YES;;FSAC-OB 200;NA;413,8;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Tethydraco_regalis;NO;;FSAC-OB 201;NA;NA;NA;NA;NA;NA;NA;NA;281;300;Nicholas R. Longrich et al 2018
+Tethydraco_regalis;YES;;FSAC-OB 199;NA;264,6;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Alcione_elainus;YES;;FSAC-OB 2;102;154,29;NA;NA;NA;NA;NA;NA;112,2;NA;Nicholas R. Longrich et al 2018
+Alcione_elainus;YES;;FSAC-OB 4;96,7;123,3;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Alcione_elainus;NO;;FSAC-OB 5;101,2;NA;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Simurghia_robusta;YES;;FSAC-OB 7;165;NA;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+Nyctosaurus_grandis;YES;;FSAC-OB 232;225;296,9;NA;NA;NA;NA;NA;NA;181,82;NA;Nicholas R. Longrich et al 2018
+OCP_DEK_GE_716;NO;;FSAC-OB 14;NA;NA;NA;NA;NA;NA;NA;NA;NA;NA;Nicholas R. Longrich et al 2018
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;

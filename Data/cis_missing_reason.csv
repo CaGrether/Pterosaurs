@@ -1,0 +1,75 @@
+;species;row_in_pbdb;ref;;reason
+3;Eurolimnornis_corneti;3;Benton et al.1997;;
+8;Arcticodactylus_cromptonellus;8;Jenkins et al.2001;;
+12;Uktenadactylus_wadleighi;12;Lee1994;;
+13;Mesadactylus_ornithosphyos;13;Jensen and Padian1989;;
+18;Agadirichnus_elegans;22;Ambroggi and Lapparent1954;;
+20;Rhamphocephalus_depressirostris;24;Huxley1859;;very old, few material (?)
+21;Pteraichnus_yanguoxiaensis;25;Li et al.2015;;
+23;Aralazhdarcho_bostobensis;28;Averianov2007;;!! Bestobensis is in tree!!
+35;Pteraichnus_koreanensis;40;Lee et al.2008;;
+37;Herbstosaurus_pigmaeus;42;Casamiquela1975;;
+43;Hatzegopteryx_thambema;49;Buffetaut et al.2002;;!! Thambena is in tree!!
+45;Tendaguripterus_recki;51;Unwin and Heinrich1999;;
+46;Purbeckopus_pentadactylus;52;Delair1963;;
+47;Pteraichnus_parvus;53;Sánchez-Hernández et al.2009;;
+48;Apatorhamphus_gyrostega;54,406;McPhee et al.2020;;
+51;Coloborhynchus_moroccensis;57,272;Ibrahim et al.2010;;!! Siroccopteryx as new genus?
+59;Antipus_bifidus;75;Hitchcock1858;;
+64;Wenupteryx_uzi;116,117;Codorniú and Gasparini2013;;
+73;Quetzalcoatlus_lawsoni;127;Andres and Langston2021;;
+78;Bogolubovia_orientalis;134;Bogoliubow1914;;
+84;Ningchengopterus_liuae;140;Lü2009;;
+99;Huaxiapterus_corollatus;156;Lü et al.2006;;!! Corallatus is in tree!!
+108;Serradraco_sagittirostris;165;Owen1874;;
+118;Pteraichnus_nipponensis;185;Lee et al.2010;;
+121;Peteinosaurus_zambelli;189,19;Dalla Vecchia2003;;!! Zambellii is in tree!!
+122;Aerodraco_sedgwickii;192;Owen1859;;
+127;Nicorhynchus_capito;200,205,331;Rodrigues and Kellner2013;;
+129;Arthurdactylus_conandoylei;208;Frey and Martill1994;;
+139;Haenamichnus_uhangriensis;239;Hwang et al.2002;;
+140;Pteraichnus_saltwashensis;240,242,415,416,417,418;Xing et al.2021;;
+141;Pteraichnus_stokesi;241,243;Unwin1997;;
+142;Santanadactylus_brasilensis;244;Buisonjé1980;;
+145;Santanadactylus_spixi;248;Wellnhofer1985;;
+158;Cryodrakon_boreas;266,267;Hone et al.2019;;
+159;Zhenyuanopterus_longirostris;268;Lü2010;;!! Longiristris is in tree!!
+161;Bergamodactylus_wildi;273;Kellner2015;;
+171;Rhamphocephalus_bucklandi;293,350,351,352,353;Huxley1859;;
+174;Pteraichnus_dongyangensis;296;Chen et al.2013;;
+176;Geosternbergia_maiseyi;301;Kellner2010;;
+177;Dawndraco_kanzai;302;Kellner2010;;
+178;Unwindia_trigonus;303;Martill2011;;
+181;Gegepterus_changi;310;Wang et al.2007;;!! Changae is in tree!!
+182;Jianchangopterus_zhaoianus;311;Lü and Bo2011;;
+185;Samrukia_nessovi;314;Naish et al.2012;;
+197;Navajodactylus_boerei;326,327;Sullivan and Fowler2011;;
+200;Osteornis_diomedeus;332;Rodrigues and Kellner2013;;
+202;Scaphognathus_robustus;340;Bennett2014;;
+212;Daohugoupterus_delicatus;356;Cheng et al.2015;;
+221;Xericeps_curvirostris;370;Martill et al.2018;;
+225;Barbaridactylus_grandis;374;Longrich et al.2018;;
+226;Vesperopterylus_lamadongensis;376;Lu et al.2017;;
+229;Ptenodracon_brevirostris;379;Lydekker1888;;
+231;Forfexopterus_jeholensis;383;Jiang et al.2016;;
+239;Nicorhynchus_fluviferox;393;Jacobs et al.2019;;
+240;Albadraco_tharmisensis;396;Solomon et al.2020;;
+241;Leptostomia_begaaensis;405;Smith et al.2020;;
+242;Kunpengopterus_antipollicatus;409;Zhou et al.2021;;!! Antipollexus is in tree!!
+243;Mistralazhdarcho_maggii;410;Vullo et al.2018;;
+244;Saraikisaurus_minhui;411;Malkani2014;;
+245;Anmolpakhi_alleni;412;Malkani2019;;
+248;Uktenadactylus_rodriguesae;420;Holgado and Pegas2020;;
+249;Tacuadactylus_luciae;421,427;Soto and Montenegro2021;;
+250;Wightia_declivirostris;422;Martill et al.2020;;
+251;Kariridraco_dianae;423;Cerqueira et al.2021;;
+252;Dearc_sgiathanach;424;Jagielska et al.2022;;
+253;Thanatosdrakon_amaru;425;Ortiz David et al.2022;;
+254;Yelaphomte_praderioi;426;Martínez et al.2022;;
+256;Pteraichnus_longipodus;429;Fuentes Vidarte et al.2004;;
+257;Ornithodesmus_cluniculus;431;Seeley1887;;
+258;Epapatelo_otyikokolo;433;Fernandes et al.2022;;
+259;Wellnhopterus_brevirostris;435;Andres and Langston2021;;
+260;Petrodactyle_wellnhoferi;438;Hone et al.2023;;described after
+261;Balaenognathus_maeuseri;439;Martill et al.2023;;described after
+262;Thapunngaka_shawi;440;Richards et al.2023;;described after
