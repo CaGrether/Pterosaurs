@@ -112,4 +112,17 @@ for (x in new.sp$species) {
 # remove FALSE column
 new.sp <- new.sp[,-2]
 
-#write.csv2(new.sp, "Data/cis_missing.csv")
+#write.csv2(new.sp, "Data/output/cis_missing.csv")
+
+#### why are they not in tree?
+
+# compare with online data S5 
+s5 <- read.csv2("Data/Input/Data_S5_copy.csv", skip = 1) # s5 data
+sp_missing<- read.csv2("Data/Output/cis_missing.csv") # missing species from tree
+
+# unique species in s5
+s5_sp <- unique(s5$Name)
+
+length(s5_sp)
+length(sp_missing$species)
+sp_missing$species %in% s5_sp  # continue here
