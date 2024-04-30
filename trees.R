@@ -65,8 +65,8 @@ for(i in unique(dat.species$accepted_name)){ # checking unique species names in 
   
 }
 
-species.pb
-in.tree
+species.pb # species renamed in PBDB
+in.tree # list of T or F whether PBDB are in tree or not
 
 length(unique(species.pb)) # 262 unique species in PBDB
 length(which(in.tree == FALSE)) # 74 of 262 not in cis tree
@@ -114,7 +114,10 @@ new.sp <- new.sp[,-2]
 
 #write.csv2(new.sp, "Data/output/cis_missing.csv")
 
-#### why are they not in tree?
+################################################################################
+#### why are they not in tree? Compare with Yu et al supplementary S5 listing
+#### missing species and the reason for why they're missing
+################################################################################
 
 # compare with online data S5 
 s5 <- read.csv2("Data/Input/Data_S5_copy.csv", skip = 1) # s5 data
@@ -125,4 +128,20 @@ s5_sp <- unique(s5$Name)
 
 length(s5_sp)
 length(sp_missing$species)
-sp_missing$species %in% s5_sp  # continue here
+
+miss_inS5 <-  # missing species that are (explained) in S5
+  sp_missing$species[which(sp_missing$species %in% s5_sp)]  
+
+
+# only need one reason for why it's not in (?)
+# don't need reason for every single specimen
+
+reason_miss <- s5[match(miss_inS5, s5$Name),]
+# many with NA, but why Peteinosaurus_zambelli in analysis but not in tree?
+
+#Name <- c()
+#for (x in miss_inS5) {
+#  Name <- c(Name, rep(x, length(which(s5$Name == x))))
+#}
+
+
