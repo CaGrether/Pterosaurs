@@ -1,7 +1,7 @@
 ;species;row_in_pbdb;ref;;reason;;;;;;;;
-3;Eurolimnornis_corneti;3;Benton et al.1997;;;;;;;;;;
+3;Eurolimnornis_corneti;3;Benton et al.1997;;Bird? Dyke et al 2011;;;;;;;;
 8;Arcticodactylus_cromptonellus;8;Jenkins et al.2001;;;;;;;;Notes;;s5 = supplementary
-12;Uktenadactylus_wadleighi;12;Lee1994;;;;;;;;;;
+12;Uktenadactylus_wadleighi;12;Lee1994;;Jacobs et al 2019;;;;;;;;
 13;Mesadactylus_ornithosphyos;13;Jensen and Padian1989;;R script no data;;;;;;R script no data;;is in s5, is not in analysis, there's only NAs for that species
 18;Agadirichnus_elegans;22;Ambroggi and Lapparent1954;;ichnofossil, Masrour et al 2018;;;;;;R script ;;is in s5, is not in analysis but has data
 20;Rhamphocephalus_depressirostris;24;Huxley1859;;very old, few material (?);;;;;;weird in R script;;s5 says it's in analysis, but is not in the tree for some reason
@@ -11,7 +11,7 @@
 37;Herbstosaurus_pigmaeus;42;Casamiquela1975;;R script no data;;;;;;;use;
 43;Hatzegopteryx_thambema;49;Buffetaut et al.2002;;!! Thambena is in tree!!;;;;;;;;
 45;Tendaguripterus_recki;51;Unwin and Heinrich1999;;R script no data;;;;;;;;
-46;Purbeckopus_pentadactylus;52;Delair1963;;;;;;;;;;
+46;Purbeckopus_pentadactylus;52;Delair1963;;ichnofossil, Wright et al 1997;;;;;;;;
 47;Pteraichnus_parvus;53;Sánchez-Hernández et al.2009;;;;;;;;;;
 48;Apatorhamphus_gyrostega;54,406;McPhee et al.2020;;;;;;;;;;
 51;Coloborhynchus_moroccensis;57,272;Ibrahim et al.2010;;!! Siroccopteryx as new genus?;;;;;;;;
@@ -30,8 +30,8 @@
 139;Haenamichnus_uhangriensis;239;Hwang et al.2002;;;;;;;;;;
 140;Pteraichnus_saltwashensis;240,242,415,416,417,418;Xing et al.2021;;;;;;;;;;
 141;Pteraichnus_stokesi;241,243;Unwin1997;;;;;;;;;;
-142;Santanadactylus_brasilensis;244;Buisonjé1980;;;;;;;;;;
-145;Santanadactylus_spixi;248;Wellnhofer1985;;;;;;;;;;
+142;Santanadactylus_brasilensis;244;Buisonjé1980;;? Don't know;;;;;;;;
+145;Santanadactylus_spixi;248;Wellnhofer1985;;? Don't know;;;;;;;;
 158;Cryodrakon_boreas;266,267;Hone et al.2019;;;;;;;;;;
 159;Zhenyuanopterus_longirostris;268;Lü2010;;!! Longiristris is in tree!!;;;;;;;;
 161;Bergamodactylus_wildi;273;Kellner2015;;;;;;;;;;
