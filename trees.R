@@ -113,6 +113,7 @@ for (x in new.sp$species) {
 new.sp <- new.sp[,-2]
 
 #write.csv2(new.sp, "Data/output/cis_missing.csv")
+#write_csv(new.sp, "Data/output/cis_missing2.csv") # for compatibility with Emma's computer lol! 
 
 ################################################################################
 #### why are they not in tree? Compare with Yu et al supplementary S5 listing
