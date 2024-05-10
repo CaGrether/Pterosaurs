@@ -1,6 +1,6 @@
 ;species;row_in_pbdb;ref;;reason;;;;;;;;
 3;Eurolimnornis_corneti;3;Benton et al.1997;;Bird? Dyke et al 2011;;;;;;;;
-8;Arcticodactylus_cromptonellus;8;Jenkins et al.2001;;take in? Kellner 2015;;;;;;Notes;;s5 = supplementary
+8;Arcticodactylus_cromptonellus;8;Jenkins et al.2001;;available with phylogeny Kellner 2015;;;;;;Notes;;s5 = supplementary
 12;Uktenadactylus_wadleighi;12;Lee1994;;Jacobs et al 2019;;;;;;;;
 13;Mesadactylus_ornithosphyos;13;Jensen and Padian1989;;R script no data;;;;;;R script no data;;is in s5, is not in analysis, there's only NAs for that species
 18;Agadirichnus_elegans;22;Ambroggi and Lapparent1954;;ichnofossil, Masrour et al 2018;;;;;;R script ;;is in s5, is not in analysis but has data
@@ -17,34 +17,34 @@
 51;Coloborhynchus_moroccensis;57,272;Ibrahim et al.2010;;!! Siroccopteryx as new genus?;;;;;;;;
 59;Antipus_bifidus;75;Hitchcock1858;;ichnofossil, doubtful, old;;;;;;;;
 64;Wenupteryx_uzi;116,117;Codorniú and Gasparini2013;;available, no phylogeny?;;;;;;;;
-73;Quetzalcoatlus_lawsoni;127;Andres and Langston2021;;;;;;;;;;
+73;Quetzalcoatlus_lawsoni;127;Andres and Langston2021;;available with phylogeny;;;;;;;;
 78;Bogolubovia_orientalis;134;Bogoliubow1914;;Can't find paper;;;;;;;;
 84;Ningchengopterus_liuae;140;Lü2009;;R script ;;;;;;;;
 99;Huaxiapterus_corollatus;156;Lü et al.2006;;!! Corallatus is in tree!!;;;;;;;;
 108;Serradraco_sagittirostris;165;Owen1874;;new genus? Lonchodectes (Rigal 2017);;;;;;;;
-118;Pteraichnus_nipponensis;185;Lee et al.2010;;;;;;;;;;
+118;Pteraichnus_nipponensis;185;Lee et al.2010;;ichnofossil;;;;;;;;
 121;Peteinosaurus_zambelli;189,19;Dalla Vecchia2003;;!! Zambellii is in tree!!, weird in R script;;;;;;;;
 122;Aerodraco_sedgwickii;192;Owen1859;;Holgado and Pegas 2020;;;;;;;;
-127;Nicorhynchus_capito;200,205,331;Rodrigues and Kellner2013;;;;;;;;;;
+127;Nicorhynchus_capito;200,205,331;Rodrigues and Kellner2013;;is in Holgado and Pegas 2020;;;;;;;;
 129;Arthurdactylus_conandoylei;208;Frey and Martill1994;;R script;;;;;;;;
-139;Haenamichnus_uhangriensis;239;Hwang et al.2002;;;;;;;;;;
-140;Pteraichnus_saltwashensis;240,242,415,416,417,418;Xing et al.2021;;;;;;;;;;
+139;Haenamichnus_uhangriensis;239;Hwang et al.2002;;ichnofossil;;;;;;;;
+140;Pteraichnus_saltwashensis;240,242,415,416,417,418;Xing et al.2021;;ichnofossil;;;;;;;;
 141;Pteraichnus_stokesi;241,243;Unwin1997;;ichnofossil (?);;;;;;;;
 142;Santanadactylus_brasilensis;244;Buisonjé1980;;? Don't know;;;;;;;;
 145;Santanadactylus_spixi;248;Wellnhofer1985;;? Don't know;;;;;;;;
-158;Cryodrakon_boreas;266,267;Hone et al.2019;;;;;;;;;;
+158;Cryodrakon_boreas;266,267;Hone et al.2019;;available, phylogeny in Holdago and Pegas 2020?;;;;;;;;
 159;Zhenyuanopterus_longirostris;268;Lü2010;;!! Longiristris is in tree!!;;;;;;;;
-161;Bergamodactylus_wildi;273;Kellner2015;;;;;;;;;;
+161;Bergamodactylus_wildi;273;Kellner2015;;doubtful? See dalla vecchia 2018;;;;;;;;
 171;Rhamphocephalus_bucklandi;293,350,351,352,353;Huxley1859;;very old, few material (?);;;;;;;;
-174;Pteraichnus_dongyangensis;296;Chen et al.2013;;;;;;;;;;
+174;Pteraichnus_dongyangensis;296;Chen et al.2013;;ichnofossil;;;;;;;;
 176;Geosternbergia_maiseyi;301;Kellner2010;;R script no data;;;;;;;;
 177;Dawndraco_kanzai;302;Kellner2010;;R script no data;;;;;;;;
 178;Unwindia_trigonus;303;Martill2011;;R script no data;;;;;;;;
 181;Gegepterus_changi;310;Wang et al.2007;;!! Changae is in tree!!;;;;;;;;
-182;Jianchangopterus_zhaoianus;311;Lü and Bo2011;;;;;;;;;;
-185;Samrukia_nessovi;314;Naish et al.2012;;;;;;;;;;
-197;Navajodactylus_boerei;326,327;Sullivan and Fowler2011;;;;;;;;;;
-200;Osteornis_diomedeus;332;Rodrigues and Kellner2013;;;;;;;;;;
+182;Jianchangopterus_zhaoianus;311;Lü and Bo2011;;doubtful? ;;;;;;;;
+185;Samrukia_nessovi;314;Naish et al.2012;;bird;;;;;;;;
+197;Navajodactylus_boerei;326,327;Sullivan and Fowler2011;;available, no phylogeny?;;;;;;;;
+200;Osteornis_diomedeus;332;Rodrigues and Kellner2013;;nomen dubium?;;;;;;;;
 202;Scaphognathus_robustus;340;Bennett2014;;;;;;;;;;
 212;Daohugoupterus_delicatus;356;Cheng et al.2015;;;;;;;;;;
 221;Xericeps_curvirostris;370;Martill et al.2018;;;;;;;;;;
