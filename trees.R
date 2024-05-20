@@ -137,11 +137,10 @@ miss_inS5 <-  # missing species that are (explained) in S5
 # don't need reason for every single specimen
 
 reason_miss <- s5[match(miss_inS5, s5$Name),]
+
+#write.csv2(reason_miss, "Data/output/reason_miss_s5.csv")
 # many with NA, but why Peteinosaurus_zambelli in analysis but not in tree?
 
-#Name <- c()
-#for (x in miss_inS5) {
-#  Name <- c(Name, rep(x, length(which(s5$Name == x))))
-#}
+
 
 
