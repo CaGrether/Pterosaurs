@@ -4,7 +4,7 @@
 12;Uktenadactylus_wadleighi;12;Lee1994;;Jacobs et al 2019;;;;;;;;
 13;Mesadactylus_ornithosphyos;13;Jensen and Padian1989;;R script no data;;;;;;R script no data;;is in s5, is not in analysis, there's only NAs for that species
 18;Agadirichnus_elegans;22;Ambroggi and Lapparent1954;;ichnofossil, Masrour et al 2018;;;;;;R script ;;is in s5, is not in analysis but has data
-20;Rhamphocephalus_depressirostris;24;Huxley1859;;very old, few material (?);;;;;;weird in R script;;s5 says it's in analysis, but is not in the tree for some reason
+20;Rhamphocephalus_depressirostris;24;Huxley1859;;very old, few material (?);;;;;;weird in R script;;s5 says it's in analysis, but is not in the tree for some reason (typo?)
 21;Pteraichnus_yanguoxiaensis;25;Li et al.2015;;ichnofossil;;;;;;;;
 23;Aralazhdarcho_bostobensis;28;Averianov2007;;!! Bestobensis is in tree!!;;;;;;use for new tree;;
 35;Pteraichnus_koreanensis;40;Lee et al.2008;;ichnofossil;;;;;;;(probably) not use;
@@ -12,7 +12,7 @@
 43;Hatzegopteryx_thambema;49;Buffetaut et al.2002;;!! Thambena is in tree!!;;;;;;;;
 45;Tendaguripterus_recki;51;Unwin and Heinrich1999;;R script no data;;;;;;;;
 46;Purbeckopus_pentadactylus;52;Delair1963;;ichnofossil, Wright et al 1997;;;;;;;;
-47;Pteraichnus_parvus;53;Sánchez-Hernández et al.2009;;;;;;;;;;
+47;Pteraichnus_parvus;53;Sánchez-Hernández et al.2009;;ichofossil;;;;;;;;
 48;Apatorhamphus_gyrostega;54,406;McPhee et al.2020;;available, no phylogeny?;;;;;;;;
 51;Coloborhynchus_moroccensis;57,272;Ibrahim et al.2010;;!! Siroccopteryx as new genus?;;;;;;;;
 59;Antipus_bifidus;75;Hitchcock1858;;ichnofossil, doubtful, old;;;;;;;;
@@ -45,8 +45,8 @@
 185;Samrukia_nessovi;314;Naish et al.2012;;bird;;;;;;;;
 197;Navajodactylus_boerei;326,327;Sullivan and Fowler2011;;available, no phylogeny?;;;;;;;;
 200;Osteornis_diomedeus;332;Rodrigues and Kellner2013;;nomen dubium?;;;;;;;;
-202;Scaphognathus_robustus;340;Bennett2014;;;;;;;;;;
-212;Daohugoupterus_delicatus;356;Cheng et al.2015;;;;;;;;;;
+202;Scaphognathus_robustus;340;Bennett2014;;? Can't really find anything on it;;;;;;;;
+212;Daohugoupterus_delicatus;356;Cheng et al.2015;;available, no phylogeny?;;;;;;;;
 221;Xericeps_curvirostris;370;Martill et al.2018;;;;;;;;;;
 225;Barbaridactylus_grandis;374;Longrich et al.2018;;;;;;;;;;
 226;Vesperopterylus_lamadongensis;376;Lu et al.2017;;;;;;;;;;
