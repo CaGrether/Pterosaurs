@@ -16,10 +16,6 @@
 library(ape)
 library(phytools)
 library(tidyverse)
-
-
-# ptero_tree <- read.nexus("Trees/Data_S1.nex")
-ptero_tree <- read.nexus("Trees/Data_S3.nex") # if using the most parsimonous tree
 library(strap)
 library(viridis)
 
@@ -33,7 +29,7 @@ library(viridis)
 ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
 
 # get list of taxa
-ptero_taxa <- ptero_tree$tip.label
+ptero_taxa <- ptero_tree_raw$tip.label
 ptero_taxa <- as.data.frame(ptero_taxa)
 
 write_csv(ptero_taxa, "Data/Output/ptero_taxa_s3.csv")
@@ -163,23 +159,18 @@ family_info <- select(occurrences_sp, accepted_name, family)
 
 
 ## add underscore to match names
-ptero_taxa_vec <- c()
+family_info$accepted_name <- gsub(" ", "_", family_info$accepted_name)
 
-for(i in family_info$accepted_name){ # checking species names in pbdb
-  
-  tmp <- gsub(" ", "_", i) # change name for every tip label
-  
-  ptero_taxa_vec <- c(ptero_taxa_vec, tmp)
-}
 
 ## merge
-family_info <- as.data.frame(cbind(ptero_taxa_vec, family_info$family))
 ptero_fam <- merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
-      by.y = "ptero_taxa_vec")
+      by.y = "accepted_name")
+
 
 ## remove duplicates
 ptero_groups <- ptero_fam[!duplicated(ptero_fam),]
 names(ptero_groups) <- c("ptero_taxa", "family")
+
 
 ## save a copy
 write_csv(ptero_groups, "Data/Output/ptero_groups.csv")
