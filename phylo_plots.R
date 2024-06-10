@@ -12,14 +12,28 @@
 # 
 # ******************************************************
 
-
+## Load packages
 library(ape)
 library(phytools)
+<<<<<<< HEAD
 library(tidyverse)
 
 
 # ptero_tree <- read.nexus("Trees/Data_S1.nex")
 ptero_tree <- read.nexus("Trees/Data_S3.nex") # if using the most parsimonous tree
+=======
+library(strap)
+library(viridis)
+
+
+
+
+# 1. Prep data ------------------------------------------------------------
+
+
+
+ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
+>>>>>>> 27fd824042120d3df6c707a56f2fc376ca476c1f
 
 # get list of taxa
 ptero_taxa <- ptero_tree$tip.label
@@ -48,12 +62,99 @@ glimpse(taxon_info)
 ## get stratographic ranges:
 ages_info <- taxon_info %>% group_by(accepted_name) %>% 
   summarise(FAD = max(max_ma), LAD = min(min_ma))
+glimpse(ages_info)
 
+## save a copy:
 write_csv(ages_info, "Data/Output/ages_info.csv")
 
 
+
+
+
+# 2. Load & organise tree files ------------------------------------------------
+
+## Load the tree file:
+ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
+
+## Replace spaces with underscores in the age data (see above) to match the tree
+ages_info$accepted_name <- gsub(" ", "_", ages_info$accepted_name)
+
+## Check that the tree and the age data match
+setdiff(ages_info$accepted_name, ptero_tree_raw$tip.label) # taxa in data but not on tree
+setdiff(ptero_tree_raw$tip.label, ages_info$accepted_name) # taxa on tree, but not in data
+
+## "Drop tips" (i.e. remove taxa) from tree that have no data in the dataset
+ptero_tree <- drop.tip(ptero_tree_raw, ptero_tree_raw$tip.label[!(ptero_tree_raw$tip.label %in% ages_info$accepted_name)])
+setdiff(ptero_tree$tip.label, ages_info$accepted_name) # taxa on tree, but not in data - should = "character(0)" 
+
+## Drop tips from data that are not on the tree
+ages_tree <- ages_info[(ages_info$accepted_name %in% ptero_tree_raw$tip.label), ]
+setdiff(ages_tree$accepted_name, ptero_tree_raw$tip.label) # taxa in data but not on tree - should = "character(0)" 
+
+## move accepted_name column to rownames
+ptero_timeData <- ages_tree %>% column_to_rownames(var = "accepted_name")
+
+## Add the ages to the tree to 'date' it
+ptero_tree_dated <- DatePhylo(ptero_tree, ptero_timeData, method = "equal", rlen = 1)
+
+
+
+
+# 3. Organise the climate data --------------------------------------------
+
+## Import climate data:
+species_climate <- read_csv("Data/climate/species_climate.csv")
+
+## Replace spaces with underscores in the species climate data (see above) to match the tree
+species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
+
+
+## Grab a list of species to subset the large dataset
+tree_species <- ptero_tree$tip.label
+
+## Remove taxa that are in this dataset but not on the tree:
+taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% tree_species ] # in MAT data but not on tree
+species_climate_tree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
+
+## drop tips for taxa on tree that do not have climate data (there should not be (m)any!)
+tree_pruned <- drop.tip(ptero_tree_dated, ptero_tree_dated$tip.label[!(ptero_tree_dated$tip.label %in% species_climate_tree$accepted_name)])
+setdiff(tree_pruned$tip.label, species_climate_tree$accepted_name) # taxa on tree, but not in data - should = "character(0)" 
+
+
+## Get averages of the climate variable for all species:
+climate_mean <- species_climate_tree %>% 
+  group_by(accepted_name) %>% 
+  summarise(mean_MAT = mean(MAT), mean_MAP = mean(MAP))
+
+## turn the accepted_name column into the row names
+climate_mean <- column_to_rownames(climate_mean, var = "accepted_name")
+
+## Convert to matrix:
+MAT_matrix <- as.matrix(climate_mean) [,1] # Mean annual temperature
+MAP_matrix <- as.matrix(climate_mean) [,2] # Mean annual precipitation
+
+## Temperature contMap()
+MATmapped <- contMap(tree_pruned, MAT_matrix, plot = FALSE)
+MATmapped <- setMap(MATmapped, invert = TRUE)
+n <- length(MATmapped$cols)
+MATmapped$cols[1:n] <- plasma(n)
+plot(MATmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+
+
+## Precipitation contMap()
+MAPmapped <- contMap(tree_pruned, MAP_matrix, plot = FALSE)
+MAPmapped <- setMap(MAPmapped, invert = TRUE)
+n <- length(MAPmapped$cols)
+MAPmapped$cols[1:n] <- viridis(n)
+plot(MAPmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
+
+
+
+
+# 4. Select groups of pterosaurs ----------------------------------------
+
 ## remove specimens
-# can't think of a way to do this, so doing it by force
+# doing it by force
 ptero_taxa_clean <- as.data.frame(ptero_taxa[-c(which(ptero_taxa == "OCP_DEK_GE_716"),
                                           which(ptero_taxa == "LPM_L112113"),
                                           which(ptero_taxa == "LPM_N081607")),])
@@ -64,8 +165,7 @@ names(ptero_taxa_clean) <- "ptero_taxa"
 family_info <- select(occurrences_sp, accepted_name, family)
 
 
-# merge?
-# add underscore
+## add underscore to match names
 ptero_taxa_vec <- c()
 
 for(i in family_info$accepted_name){ # checking species names in pbdb
@@ -75,7 +175,14 @@ for(i in family_info$accepted_name){ # checking species names in pbdb
   ptero_taxa_vec <- c(ptero_taxa_vec, tmp)
 }
 
+## merge
 family_info <- as.data.frame(cbind(ptero_taxa_vec, family_info$family))
+ptero_fam <- merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
+      by.y = "ptero_taxa_vec")
 
-merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
-      by.y = "ptero_taxa_vec", all.x = F)
+## remove duplicates
+ptero_groups <- ptero_fam[!duplicated(ptero_fam),]
+names(ptero_groups) <- c("ptero_taxa", "family")
+
+## save a copy
+write_csv(ptero_groups, "Data/Output/ptero_groups.csv")
