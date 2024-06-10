@@ -15,13 +15,11 @@
 ## Load packages
 library(ape)
 library(phytools)
-<<<<<<< HEAD
 library(tidyverse)
 
 
 # ptero_tree <- read.nexus("Trees/Data_S1.nex")
 ptero_tree <- read.nexus("Trees/Data_S3.nex") # if using the most parsimonous tree
-=======
 library(strap)
 library(viridis)
 
@@ -33,7 +31,6 @@ library(viridis)
 
 
 ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
->>>>>>> 27fd824042120d3df6c707a56f2fc376ca476c1f
 
 # get list of taxa
 ptero_taxa <- ptero_tree$tip.label
