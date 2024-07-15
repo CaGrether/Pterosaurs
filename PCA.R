@@ -74,9 +74,6 @@ PCA_data <- left_join(PCA_data, ints_standard, by = "interval_std") # only works
 ## Remove those that have NA (stratigraphic range is too long)
 PCA_data <- na.omit(PCA_data, epoch)
 
-## add empty row for numeric family values
-PCA_data$family_num<- rep(NA,length(PCA_data$family))
-
 ## Filter to the 4 specific intervals
 ## For example, the early Cretaceous:
 PCA_data_earlyK <- PCA_data %>% filter(epoch == "Early Cretaceous") 
@@ -86,93 +83,165 @@ PCA_data_lateT <- PCA_data %>% filter(epoch == "Late Triassic")
 
 unique(PCA_data_earlyK$family) # check all groups, best is n<6
 
-## make family groups numeric
-# late T
-PCA_data_lateT$family_num[which(PCA_data_lateT$family=="Pterosauria")] <- 1
-PCA_data_lateT$family_num[which(PCA_data_lateT$family=="Campylognathoididae")] <- 2
-PCA_data_lateT$family_num[which(PCA_data_lateT$family=="Lagerpetidae")] <- 3
-# early J
-PCA_data_earlyJ$family_num[which(PCA_data_earlyJ$family=="Macronychoptera")] <- 4
-PCA_data_earlyJ$family_num[which(PCA_data_earlyJ$family=="Campylognathoididae")] <- 2
-PCA_data_earlyJ$family_num[which(PCA_data_earlyJ$family=="Dimorphodontidae")] <- 5
-PCA_data_earlyJ$family_num[which(PCA_data_earlyJ$family=="Rhamphorhynchidae")] <- 6
-PCA_data_earlyJ$family_num[which(PCA_data_earlyJ$family=="Rhamphorhynchoidea")] <- 7
-# middle J
-PCA_data_midJ$family_num[which(PCA_data_midJ$family=="Rhamphorhynchidae")] <- 6
-PCA_data_midJ$family_num[which(PCA_data_midJ$family=="Macronychoptera")] <- 4
-PCA_data_midJ$family_num[which(PCA_data_midJ$family=="Anurognathidae")] <- 8
-PCA_data_midJ$family_num[which(PCA_data_midJ$family=="Scaphognathidae")] <- 9
-PCA_data_midJ$family_num[which(PCA_data_midJ$family=="Wukongopteridae")] <- 10
-# early K
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Ornithocheiroidea")] <- 11
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Lophocratia")] <- 12
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Azhdarchoidea")] <- 13
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Boreopteridae")] <- 14
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Anurognathidae")] <- 15
-PCA_data_earlyK$family_num[which(PCA_data_earlyK$family=="Rhamphorhynchidae")] <- 6
-
-length(PCA_data_lateT)
 # PCA: analysis and plots --------------------------------------------------
 
 ## Perform a separate PCA and plot for each interval and 
 
-
-
-#eEC_pca <- PCA_data_eEC[, 2:5] %>%
-  #prcomp(scale = TRUE) %>%
-  #as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  #mutate_rows(group = PCA_data_eEC$diet_group)
-
-#confellip_eEC <- eEC_pca %>% na.omit(diet_group) %>% 
-  #ggbiplot(aes(color = group)) +
-  #theme_bw() +
-  #geom_rows_point() +
-  #geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  #geom_cols_vector(color = "#444444") + # adds the arrows
-  #scale_colour_manual(values = c("#0891A3", "#1E44AA", "#248528", "#FFA93D", "#572AAC")) +
-  #scale_fill_manual(values = c("#0891A3", "#1E44AA", "#248528", "#FFA93D", "#572AAC"))
-#confellip_eEC
-
-
+# late Triassic
 lT_pca <- PCA_data_lateT[,2:5] %>%
   prcomp(scale = TRUE) %>%
-  ordr::as_tbl_ord() #%>% # if error, check package 'ordr' is installed correctly
-#mutate_rows(group = PCA_data_eEC$family)
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+mutate_rows(group = PCA_data_lateT$family)
 
-family_num <- PCA_data_lateT$family_num
+summary(lT_pca) # 1 explains ~73%, 2 explains ~17%
+lT_pca$rotation
+# in late Triassic: the variance of the (environmental?) data is explained best by precipitation
+# while temperature is less important?
 
-confellip_lT <- lT_pca %>% #na.omit(diet_group) %>% 
-  ordr::ggbiplot(aes(color = family_num)) +
-  theme_bw() +
+confellip_lT <- lT_pca %>% #na.omit(diet_group) %>%
+  ordr::ggbiplot(aes(color = group)) +
+  #theme_bw() +
   ordr::geom_rows_point() +
-  geom_polygon(aes(fill = family_num), color = NA, alpha = .25, stat = "rows_ellipse") +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c( "#1E44AA", "#248528", "#FFA93D")) + ## add more colours if >5 families!
   scale_fill_manual(values = c( "#1E44AA", "#248528", "#FFA93D")) ## add more colours if >5 families!
 confellip_lT
 
+### for ProgPal poster
+# confellip_lT <- lT_pca %>% #na.omit(diet_group) %>% 
+#   ordr::ggbiplot(aes(color = group)) +
+#   #theme_bw() +
+#   theme(plot.background = element_rect(fill = '#ECDDBF'))+
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c( "#63c77cff", "#1E44AA", "#f5950fff")) + ## add more colours if >5 families!
+#   scale_fill_manual(values = c( "#63c77cff", "#1E44AA", "#f5950fff")) ## add more colours if >5 families!
+# confellip_lT
 
 
-eK_pca <- PCA_data_earlyK[, c(2:5,10)] %>%
+# early Jurassic
+eJ_pca <- PCA_data_earlyJ[,2:5] %>%
   prcomp(scale = TRUE) %>%
-  ordr::as_tbl_ord() #%>% # if error, check package 'ordr' is installed correctly
-#mutate_rows(group = PCA_data_eEC$family)
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_data_earlyJ$family)
 
-confellip_eK <- eK_pca %>% #na.omit(diet_group) %>% 
-  ordr::ggbiplot(data = PCA_data_earlyK ,aes(color = family_num)) +
+summary(eJ_pca)
+eJ_pca$rotation
+
+confellip_eJ <- eJ_pca %>% #na.omit(diet_group) %>% 
+  ordr::ggbiplot(aes(color = group)) +
   theme_bw() +
   ordr::geom_rows_point() +
-  geom_polygon(aes(fill = family_num), color = NA, alpha = .25, stat = "rows_ellipse") +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c("#0891A3", "#1E44AA", "#248528", "#FFA93D", 
-                                 "#572AAC","#D7E05A")) + ## add more colours if >5 families!
-  scale_fill_manual(values = c("#0891A3", "#1E44AA", "#248528", "#FFA93D", 
-                               "#572AAC","#D7E05A")) ## add more colours if >5 families!
-confellip_eK
+  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >5 families!
+  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >5 families!
+confellip_eJ
+
+
+# middle Jurassic
+mJ_pca <- PCA_data_midJ[,2:5] %>%
+  prcomp(scale = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_data_midJ$family)
+
+summary(mJ_pca)
+mJ_pca$rotation 
+# does this make any sense? seasonal T and MAP have high influence, MAT and seasonal P not?
+
+confellip_mJ <- mJ_pca %>% #na.omit(diet_group) %>% 
+  ordr::ggbiplot(aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >5 families!
+  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >5 families!
+confellip_mJ
+
+
+# early Cretaceous
+eK_pca <- PCA_data_earlyK[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+mutate_rows(group = PCA_data_earlyK$family)
+
+summary(eK_pca)
+eK_pca$rotation # seasonal temp
+
+## Code for getting loadings
+loadings_scores_1 <- eK_pca$rotation[,1]  # write 2 for PC2
+climate_scores <- abs(loadings_scores_1) ## get the magnitudes
+climate_score_ranked <- sort(climate_scores, decreasing=TRUE)
+eK_pca$rotation[climate_score_ranked[1]] ## show the scores (and +/- sign)
+##### THIS MAKES NO SENSE CHECK OVER
+
+
+confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
+  ordr::ggbiplot(data = PCA_data_earlyK ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
+                                 "#248528","#D7E05A")) + ## add more colours if >5 families!
+  scale_fill_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
+                               "#248528","#D7E05A")) ## add more colours if >5 families!
+
+#### for ProgPal poster
+# confellip_eK <- eK_pca %>% #na.omit(diet_group) %>% 
+#   ordr::ggbiplot(data = PCA_data_earlyK ,aes(color = group)) +
+#   #theme_bw() +
+#   theme(plot.background = element_rect(fill = '#ECDDBF'))+
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c("#0891A3", "#63c77cff","#572AAC" , "#1E44AA",
+#                                  "#f5950fff","#D7E05A")) + ## add more colours if >5 families!
+#   scale_fill_manual(values = c("#0891A3", "#63c77cff","#572AAC" , "#1E44AA",
+#                                "#f5950fff","#D7E05A")) ## add more colours if >5 families!
+ confellip_eK
 
 
 
-## repeat for each interval!
-
-
+ ####### example for PCA
+ ## Change row names to occurrence numbers
+ #PCA_data_LT_df <- as.data.frame(PCA_data_LT_trunc) # switch to dataframe
+ rownames(PCA_data_earlyK) <- PCA_data_earlyK[,1] # copy occurrence_no to row name
+ PCA_data_earlyK$occurrence_no <- NULL # remove "occurrence_no" column
+ head(PCA_data_LT_df) #check
+ 
+ 
+ ## Pull out columns
+ LT_pca <- PCA_data_earlyK[, 1:4]
+ LT_groups <- as.factor(PCA_data_earlyK$group)
+ 
+ 
+ ## PCA
+ LT_pca_out <- prcomp(eK_pca, center = TRUE, scale. = TRUE) 
+ summary(LT_pca_out)
+ 
+ LT_pca.var <- LT_pca_out$sdev^2 # amount of variation each PC counts for
+ LT_pca.var.per <- round(LT_pca.var/sum(LT_pca.var)*100, 1) # percentages
+ 
+ barplot(LT_pca.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
+ 
+ 
+ ## get the name of the top 10 measurements that contribute most to pc1.
+ loading_scores <- LT_pca_out$rotation[,1]
+ climate_scores <- abs(loading_scores) ## get the magnitudes
+ climate_score_ranked <- sort(climate_scores, decreasing=TRUE)
+ top_4 <- names(climate_score_ranked[1:4])
+ 
+ LT_pca_out$rotation[top_4,1] ## show the scores (and +/- sign)
+ 
+ ## Plot
+ LT_PCA_plot <- ggbiplot::ggbiplot(LT_pca_out, obs.scale = 1, var.scale = 1, groups = LT_groups, ellipse = TRUE)
+ LT_PCA_plot <- LT_PCA_plot + scale_colour_manual(values = c("#0891A3", "#FFA93D", "#B00B69", "grey50")) +
+   theme(panel.background = element_blank(),
+         legend.position = "top", #legend.position = "none",
+         panel.border = element_rect(colour = "black", fill = NA))
+ LT_PCA_plot
 
