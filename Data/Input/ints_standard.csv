@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 early interval,stage,epoch
+=======
+early_interval,stage,epoch
+>>>>>>> 8978649963e069a88f1a5a9bf078454c5f951cf0
 Aalenian,Toarcian,Early Jurassic
 Albian,Albian,Early Cretaceous
 Late Albian,Albian,Early Cretaceous
@@ -80,4 +84,8 @@ Turonian,Turonian,Late Cretaceous
 Early Turonian,Turonian,Late Cretaceous
 Valanginian,Valanginian,Early Cretaceous
 Late Valanginian,Valanginian,Early Cretaceous
+<<<<<<< HEAD
 Early Valanginian,Valanginian,Early Cretaceous
+=======
+Early Valanginian,Valanginian,Early Cretaceous
+>>>>>>> 8978649963e069a88f1a5a9bf078454c5f951cf0
