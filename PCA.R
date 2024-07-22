@@ -177,6 +177,7 @@ climate_scores <- abs(loadings_scores_1) ## get the magnitudes
 climate_score_ranked <- sort(climate_scores, decreasing=TRUE)
 eK_pca$rotation[climate_score_ranked[1]] ## show the scores (and +/- sign)
 ##### THIS MAKES NO SENSE CHECK OVER
+which(eK_pca$rotation==climate_score_ranked[1])
 
 
 confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
@@ -208,40 +209,40 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
 
  ####### example for PCA
  ## Change row names to occurrence numbers
- #PCA_data_LT_df <- as.data.frame(PCA_data_LT_trunc) # switch to dataframe
- rownames(PCA_data_earlyK) <- PCA_data_earlyK[,1] # copy occurrence_no to row name
- PCA_data_earlyK$occurrence_no <- NULL # remove "occurrence_no" column
- head(PCA_data_LT_df) #check
+ PCA_data_earlyK_df <- as.data.frame(PCA_data_earlyK) # switch to dataframe
+ rownames(PCA_data_earlyK_df) <- PCA_data_earlyK_df[,1] # copy occurrence_no to row name
+ PCA_data_earlyK_df$occurrence_no <- NULL # remove "occurrence_no" column
+ head(PCA_data_earlyK_df) #check
  
  
  ## Pull out columns
- LT_pca <- PCA_data_earlyK[, 1:4]
- LT_groups <- as.factor(PCA_data_earlyK$group)
+ earlyK_pca <- PCA_data_earlyK_df[, 1:4]
+ earlyK_groups <- as.factor(PCA_data_earlyK_df$family)
  
  
  ## PCA
- LT_pca_out <- prcomp(eK_pca, center = TRUE, scale. = TRUE) 
- summary(LT_pca_out)
+ earlyK_pca_out <- prcomp(earlyK_pca, center = TRUE, scale. = TRUE) 
+ summary(earlyK_pca_out)
  
- LT_pca.var <- LT_pca_out$sdev^2 # amount of variation each PC counts for
- LT_pca.var.per <- round(LT_pca.var/sum(LT_pca.var)*100, 1) # percentages
+ earlyK_pca.var <- earlyK_pca_out$sdev^2 # amount of variation each PC counts for
+ earlyK_pca.var.per <- round(earlyK_pca.var/sum(earlyK_pca.var)*100, 1) # percentages
  
- barplot(LT_pca.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
+ barplot(earlyK_pca.var.per, main="Scree Plot", xlab="Principal Component", ylab="Percent Variation")
  
  
  ## get the name of the top 10 measurements that contribute most to pc1.
- loading_scores <- LT_pca_out$rotation[,1]
+ loading_scores <- earlyK_pca_out$rotation[,1]
  climate_scores <- abs(loading_scores) ## get the magnitudes
  climate_score_ranked <- sort(climate_scores, decreasing=TRUE)
  top_4 <- names(climate_score_ranked[1:4])
  
- LT_pca_out$rotation[top_4,1] ## show the scores (and +/- sign)
+ earlyK_pca_out$rotation[top_4,1] ## show the scores (and +/- sign)
  
  ## Plot
- LT_PCA_plot <- ggbiplot::ggbiplot(LT_pca_out, obs.scale = 1, var.scale = 1, groups = LT_groups, ellipse = TRUE)
- LT_PCA_plot <- LT_PCA_plot + scale_colour_manual(values = c("#0891A3", "#FFA93D", "#B00B69", "grey50")) +
+ earlyK_PCA_plot <- ggbiplot::ggbiplot(earlyK_pca_out, obs.scale = 1, var.scale = 1, groups = earlyK_groups, ellipse = TRUE)
+ earlyK_PCA_plot <- earlyK_PCA_plot + scale_colour_manual(values = c("#0891A3", "#FFA93D", "#B00B69", "grey50", "#248528","#572AAC" )) +
    theme(panel.background = element_blank(),
          legend.position = "top", #legend.position = "none",
          panel.border = element_rect(colour = "black", fill = NA))
- LT_PCA_plot
+ earlyK_PCA_plot
 
