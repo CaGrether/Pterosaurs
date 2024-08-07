@@ -185,7 +185,7 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
   theme_bw() +
   ordr::geom_rows_point() +
   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows, but where are the labels?
   scale_colour_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
                                  "#248528","#D7E05A")) + ## add more colours if >5 families!
   scale_fill_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
@@ -205,9 +205,21 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
 #                                "#f5950fff","#D7E05A")) ## add more colours if >5 families!
  confellip_eK
 
+ 
+ ## get new groups for PCA
+ groupings_help <- subset(species_climate_group, select = c(occurrence_no,
+                                                              family, ## ***** THIS WILL BE YOUR GROUPING VARIABLE **** 
+                                                              early_interval,
+                                                              accepted_name
+ ))
+ 
+ groupings_help <- rename(groupings_help, interval_std = early_interval)
+ groupings_help <- left_join(groupings_help, ints_standard, by = "interval_std")
+ 
+ groups_earlyK <- groupings_help %>% filter(epoch == "Early Cretaceous") 
 
 
- ####### example for PCA
+ ####### NEW WAY for PCA
  ## Change row names to occurrence numbers
  PCA_data_earlyK_df <- as.data.frame(PCA_data_earlyK) # switch to dataframe
  rownames(PCA_data_earlyK_df) <- PCA_data_earlyK_df[,1] # copy occurrence_no to row name
