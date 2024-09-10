@@ -37,7 +37,8 @@ library(ordr) # manipulating data objects
 species_climate <- read_csv("Data/climate/species_climate.csv")
 glimpse(species_climate)
 
-ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv")
+# ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") UNCOMMENT TO GET ALL PTEROS
+ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
 
 ## merge species climate and group data here
 # only take species that we're using
@@ -216,9 +217,18 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
  groupings_help <- rename(groupings_help, interval_std = early_interval)
  groupings_help <- left_join(groupings_help, ints_standard, by = "interval_std")
  
+ # 5 timeslices for PCA
  groups_earlyK <- groupings_help %>% filter(epoch == "Early Cretaceous") 
+ groups_midJ <- groupings_help %>% filter(epoch == "Early Cretaceous")
+ groups_lateJ <- groupings_help %>% filter(epoch == "Early Cretaceous")
+ # groups_JK <- groupings_help %>% filter(stage == "Kimmeridgian,Tithonian, Berriasian, Valanginian")
+ # but 13MA vs 9MA
+ # last group? midK or earlyJ?
 
 
+ 
+ 
+ 
  ####### NEW WAY for PCA
  ## Change row names to occurrence numbers
  PCA_data_earlyK_df <- as.data.frame(PCA_data_earlyK) # switch to dataframe
