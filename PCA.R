@@ -34,11 +34,11 @@ library(ordr) # manipulating data objects
 
 
 ## Import species/climate data if not already loaded:
-species_climate <- read_csv("Data/climate/species_climate.csv")
+species_climate <- read.csv("Data/climate/species_climate.csv")
 glimpse(species_climate)
 
-# ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") UNCOMMENT TO GET ALL PTEROS
-ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
+ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # UNCOMMENT TO GET ALL PTEROS
+#ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
 
 ## merge species climate and group data here
 # only take species that we're using
@@ -48,12 +48,20 @@ species_climate_group <- merge(species_climate, ptero_grouping, by.x = "accepted
 unique(species_climate_group$family)
 
 ## Take only the columns we need for the PCA:
-PCA_data <- subset(species_climate_group, select = c(occurrence_no,
-                                               MAT, seasonal_temp, 
-                                               MAP, seasonal_precip, 
-                                               family, ## ***** THIS WILL BE YOUR GROUPING VARIABLE **** 
-                                               early_interval
-))
+ PCA_data <- subset(species_climate_group, select = c(occurrence_no,  ## UNCOMMENT FOR ALL PTEROS
+                                                MAT, seasonal_temp, 
+                                                MAP, seasonal_precip, 
+                                                family, ## ***** THIS WILL BE YOUR GROUPING VARIABLE **** 
+                                                early_interval
+ ))
+
+#PCA_data <- subset(species_climate_group, select = c(occurrence_no,   ## ONLY FOR AZHD AND PTERAN
+#                                                     MAT, seasonal_temp, 
+#                                                     MAP, seasonal_precip, 
+#                                                     # family,
+#                                                     two.groups, ## ***** THIS WILL BE YOUR GROUPING VARIABLE **** 
+#                                                     early_interval
+#))
 
 
 ## Load auxillery dataset to standardise the time intervals
@@ -76,11 +84,15 @@ PCA_data <- left_join(PCA_data, ints_standard, by = "interval_std") # only works
 PCA_data <- na.omit(PCA_data, epoch)
 
 ## Filter to the 4 specific intervals
-## For example, the early Cretaceous:
+## For Azhd and Pteran, Cretaceous:
 PCA_data_earlyK <- PCA_data %>% filter(epoch == "Early Cretaceous") 
+PCA_data_lateK <- PCA_data %>% filter(epoch == "Late Cretaceous") 
+
+## UNCOMMENT FOR ALL PTEROS
 PCA_data_earlyJ <- PCA_data %>% filter(epoch == "Early Jurassic") 
-PCA_data_midJ <- PCA_data %>% filter(epoch == "Middle Jurassic")
+PCA_data_midJ <- PCA_data %>% filter(epoch == "Middle Jurassic") 
 PCA_data_lateT <- PCA_data %>% filter(epoch == "Late Triassic") 
+PCA_data_lateJ <- PCA_data %>% filter(epoch == "Late Jurassic") 
 
 unique(PCA_data_earlyK$family) # check all groups, best is n<6
 
@@ -92,7 +104,7 @@ unique(PCA_data_earlyK$family) # check all groups, best is n<6
 lT_pca <- PCA_data_lateT[,2:5] %>%
   prcomp(scale = TRUE) %>%
   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-mutate_rows(group = PCA_data_lateT$family)
+mutate_rows(group = PCA_data_lateT$family) ## 
 
 summary(lT_pca) # 1 explains ~73%, 2 explains ~17%
 lT_pca$rotation
@@ -167,7 +179,7 @@ confellip_mJ
 eK_pca <- PCA_data_earlyK[,2:5] %>%
   prcomp(center = T, scale. = TRUE) %>%
   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-mutate_rows(group = PCA_data_earlyK$family)
+mutate_rows(group = PCA_data_earlyK$two.groups) ## FOR ALL PTEROS $family
 
 summary(eK_pca)
 eK_pca$rotation # seasonal temp
@@ -187,10 +199,14 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
   ordr::geom_rows_point() +
   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows, but where are the labels?
-  scale_colour_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
-                                 "#248528","#D7E05A")) + ## add more colours if >5 families!
-  scale_fill_manual(values = c("#0891A3", "#1E44AA","#572AAC" , "#FFA93D",
-                               "#248528","#D7E05A")) ## add more colours if >5 families!
+  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+                                 "#572AAC" , "#FFA93D"
+                                 #,"#248528","#D7E05A"
+                                 )) + ## add more colours if >5 families!
+  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+                               "#572AAC" , "#FFA93D"
+                               #,"#248528","#D7E05A"
+                               )) ## add more colours if >5 families!
 
 #### for ProgPal poster
 # confellip_eK <- eK_pca %>% #na.omit(diet_group) %>% 
@@ -205,7 +221,29 @@ confellip_eK <- eK_pca %>% #na.omit(diet_group) %>%
 #   scale_fill_manual(values = c("#0891A3", "#63c77cff","#572AAC" , "#1E44AA",
 #                                "#f5950fff","#D7E05A")) ## add more colours if >5 families!
  confellip_eK
-
+ 
+ # Late Cretaceous
+ lK_pca <- PCA_data_lateK[,2:5] %>%
+   prcomp(center = T, scale. = TRUE) %>%
+   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+   mutate_rows(group = PCA_data_lateK$two.groups) ## FOR ALL PTEROS $family
+ 
+ confellip_lK <- lK_pca %>% #na.omit(diet_group) %>%
+   ordr::ggbiplot(data = PCA_data_lateK ,aes(color = group)) +
+   theme_bw() +
+   ordr::geom_rows_point() +
+   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+   ordr::geom_cols_vector(color = "#444444") + # adds the arrows, but where are the labels?
+   scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+      "#572AAC" , "#FFA93D"
+     #,"#248528","#D7E05A"
+   )) + ## add more colours if >5 families!
+   scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+     "#572AAC" , "#FFA93D"
+     #,"#248528","#D7E05A"
+   )) ## add more colours if >5 families!
+ 
+confellip_lK
  
  ## get new groups for PCA
  groupings_help <- subset(species_climate_group, select = c(occurrence_no,
