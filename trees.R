@@ -32,10 +32,6 @@ dat.species <- dplyr::filter(dat, accepted_rank == "species") # only accepted sp
 
 # adjust species names to tree
 # 1. for new names in data frame
-#### need column with the accepted name written with underscore, not unique but for all 440
-#### so that I can get all references into one column in my csv Not_in_cis
-#### problem: need to do 2nd for loop to make it not unique
-#### but now need to go through names but also know the rownumber for each name how??
 treename <- c()
 
 for(i in dat.species$accepted_name){ # checking species names in pbdb
@@ -61,16 +57,14 @@ for(i in unique(dat.species$accepted_name)){ # checking unique species names in 
   in.tree <- c(in.tree, 
                  (ifelse (tmp %in% species.yu, TRUE, FALSE)) )
   
-  # cat("\r", i, "of", 100) How to count?
-  
 }
 
 species.pb # species renamed in PBDB
 in.tree # list of T or F whether PBDB are in tree or not
 
-length(unique(species.pb)) # 262 unique species in PBDB
-length(which(in.tree == FALSE)) # 74 of 262 not in cis tree
-length(unique(species.yu)) # 213 species in tree
+length(unique(species.pb)) 
+length(which(in.tree == FALSE)) 
+length(unique(species.yu)) 
 
 # data frame for species in tree
 tree.species <- as.data.frame(cbind(species.pb, in.tree))
@@ -80,7 +74,7 @@ tree.species
 # only FALSE taxa into csv
 new.sp <- tree.species[which(tree.species$`Is in tree`==FALSE),]
 
-### I only need the FALSE ones, so only 'new.sp'
+### References
 new.sp$row_in_pbdb <- rep(NA, length(new.sp$species))
 new.sp$ref <- rep(NA, length(new.sp$species))
 i <- 1
@@ -91,7 +85,7 @@ for (x in new.sp$species) {
   # get row number in original pbdb data
   new.sp$row_in_pbdb[i] <- paste(rownr, sep = "", collapse = ",")
   
-    # get reference (author, year) -> ref_author, ref_pubyr
+    # get reference (author, year)
     ath.yr <- c() # author and year together
     
     for (v in length(rownr)) {
@@ -134,14 +128,8 @@ miss_inS5 <-  # missing species that are (explained) in S5
   sp_missing$species[which(sp_missing$species %in% s5_sp)]  
 
 
-# only need one reason for why it's not in (?)
-# don't need reason for every single specimen
-
 reason_miss <- s5[match(miss_inS5, s5$Name),]
 
 #write.csv2(reason_miss, "Data/output/reason_miss_s5.csv")
-# many with NA, but why Peteinosaurus_zambelli in analysis but not in tree?
-
-
-
+# Peteinosaurus_zambelli in analysis but not in tree?
 

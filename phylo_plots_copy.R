@@ -21,8 +21,8 @@ library(viridis)
 
 
 
-
 # 1. Prep data ------------------------------------------------------------
+
 
 
 ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
@@ -34,10 +34,11 @@ ptero_taxa <- as.data.frame(ptero_taxa)
 write_csv(ptero_taxa, "Data/Output/ptero_taxa_s3.csv")
 
 
+
 ## Get min and max ages for all taxa
 
 ## Import the cleaned data (species and ody fossils only)
-occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20) # fix file path if necessary!
+occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20) # your file path will be different!
 glimpse(occurrences)
 
 ## species only:
@@ -60,6 +61,8 @@ write_csv(ages_info, "Data/Output/ages_info.csv")
 
 
 
+
+
 # 2. Load & organise tree files ------------------------------------------------
 
 ## Load the tree file:
@@ -76,6 +79,11 @@ setdiff(ptero_tree_raw$tip.label, ages_info$accepted_name) # taxa on tree, but n
 ptero_tree <- drop.tip(ptero_tree_raw, ptero_tree_raw$tip.label[!(ptero_tree_raw$tip.label %in% ages_info$accepted_name)])
 setdiff(ptero_tree$tip.label, ages_info$accepted_name) # taxa on tree, but not in data - should = "character(0)" 
 
+## Drop two outlier taxa Bakonydraco galaczi Eurazhdarcho langendorfensis
+
+ptero_tree <- drop.tip(ptero_tree, "Eurazhdarcho_langendorfensis")
+ptero_tree <- drop.tip(ptero_tree, "Bakonydraco_galaczi")
+
 ## Drop tips from data that are not on the tree
 ages_tree <- ages_info[(ages_info$accepted_name %in% ptero_tree_raw$tip.label), ]
 setdiff(ages_tree$accepted_name, ptero_tree_raw$tip.label) # taxa in data but not on tree - should = "character(0)" 
@@ -88,8 +96,8 @@ ptero_tree_dated <- DatePhylo(ptero_tree, ptero_timeData, method = "equal", rlen
 
 ## Drop two outlier taxa Bakonydraco galaczi Eurazhdarcho langendorfensis
 
-#ptero_tree_dated <- drop.tip(ptero_tree_dated, "Eurazhdarcho_langendorfensis")
-#ptero_tree_dated <- drop.tip(ptero_tree_dated, "Bakonydraco_galaczi")
+ptero_tree_dated <- drop.tip(ptero_tree_dated, "Eurazhdarcho_langendorfensis")
+ptero_tree_dated <- drop.tip(ptero_tree_dated, "Bakonydraco_galaczi")
 
 
 # 3. Organise the climate data --------------------------------------------
@@ -142,14 +150,15 @@ MAPmapped <- setMap(MAPmapped, invert = TRUE)
 MAPmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
 MAPmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(MAPmapped$cols)
-MAPmapped$cols[1:n] <- turbo(n, direction = -1)
-plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)", par(bg="#ECDDBF"))
+MAPmapped$cols[1:n] <- viridis(n)
+plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
 
 
 
 # 4. Select groups of pterosaurs ----------------------------------------
 
 ## remove specimens
+# doing it by force
 ptero_taxa_clean <- as.data.frame(ptero_taxa[-c(which(ptero_taxa == "OCP_DEK_GE_716"),
                                           which(ptero_taxa == "LPM_L112113"),
                                           which(ptero_taxa == "LPM_N081607")),])

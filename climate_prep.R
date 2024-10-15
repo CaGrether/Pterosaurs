@@ -17,7 +17,6 @@
 library(tidyverse)  # data manipulation and organisation
 
 
-
 ## Climate data - Scotese model output
 climate_data_raw <- read.csv("Data/climate/tfks_ma.csv")
 
@@ -52,7 +51,7 @@ climate_data <- climate_data_varis %>% select(collection_no, plng, plat,
 
 
 ## Import the cleaned data (species and ody fossils only)
-occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20) # your file path will be different!
+occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20) # fix file path if necessary
 glimpse(occurrences)
 
 ## Combine both of these data by matching the species names (accepted_name)
