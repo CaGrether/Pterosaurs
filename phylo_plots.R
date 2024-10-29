@@ -72,7 +72,7 @@ ages_info$accepted_name <- gsub(" ", "_", ages_info$accepted_name)
 setdiff(ages_info$accepted_name, ptero_tree_raw$tip.label) # taxa in data but not on tree
 setdiff(ptero_tree_raw$tip.label, ages_info$accepted_name) # taxa on tree, but not in data
 
-## "Drop tips" (i.e. remove taxa) from tree that have no data in the dataset
+## Drop tips from tree that have no data in the dataset
 ptero_tree <- drop.tip(ptero_tree_raw, ptero_tree_raw$tip.label[!(ptero_tree_raw$tip.label %in% ages_info$accepted_name)])
 setdiff(ptero_tree$tip.label, ages_info$accepted_name) # taxa on tree, but not in data - should = "character(0)" 
 
