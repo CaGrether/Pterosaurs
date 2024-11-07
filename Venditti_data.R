@@ -46,6 +46,9 @@ ages_info <- read.csv("Data/Output/ages_info.csv")
 #### Use ptero_tree_dated from phylo_plots.R 
 
 #### phylo_plots.R Script modified
+# To include Quetzalcoatlus data, change eff.dat "Quetzalcoatlus spp" to "Quetzalcoatlus northropi"
+eff.dat$species[62] <- "Quetzalcoatlus_northropi"
+
 # compare species in tree and Venditti data
 setdiff(eff.dat$species, ptero_tree_dated$tip.label) # taxa in data but not on tree 1 (Quetzalcoatlus spp)
 setdiff(ptero_tree_dated$tip.label, eff.dat$species) # taxa on tree, but not in data 82
@@ -71,6 +74,8 @@ Inv_CoT_matrix <- sapply(Inv_CoT_matrix, as.numeric)
 ## Efficiency contMap() inv CoT
 CoTmapped <- contMap(ptero_tree_eff, Inv_CoT_matrix, plot = FALSE)
 CoTmapped <- setMap(CoTmapped, invert = TRUE)
+CoTmapped <- drop.tip(CoTmapped, "Bakonydraco_galaczi")
+#CoTmapped <- drop.tip(CoTmapped, "Eurazhdarcho_langendorfensis")
 n <- length(CoTmapped$cols)
 CoTmapped$cols[1:n] <- plasma(n)
 plot(CoTmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT")
