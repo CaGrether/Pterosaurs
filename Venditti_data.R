@@ -75,7 +75,7 @@ Inv_CoT_matrix <- sapply(Inv_CoT_matrix, as.numeric)
 CoTmapped <- contMap(ptero_tree_eff, Inv_CoT_matrix, plot = FALSE)
 CoTmapped <- setMap(CoTmapped, invert = TRUE)
 CoTmapped <- drop.tip(CoTmapped, "Bakonydraco_galaczi")
-#CoTmapped <- drop.tip(CoTmapped, "Eurazhdarcho_langendorfensis")
+CoTmapped <- drop.tip(CoTmapped, "Eurazhdarcho_langendorfensis")
 n <- length(CoTmapped$cols)
 CoTmapped$cols[1:n] <- plasma(n)
 plot(CoTmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT")
@@ -87,14 +87,6 @@ plot(CoTmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "Co
 # 
 # ******************************************************
 
-# Prepare for analysis
-
-library(phytools)
-library(tidyverse)
-library(strap)
-library(viridis)
-library(ape)
-
 ## Test the phlogenetic signal (Pagel's λ and Blomberg's K)
 lambdaEff <- phylosig(ptero_tree_eff, Inv_CoT_matrix, method = "lambda", test = TRUE)
 lambdaEff 
@@ -103,6 +95,44 @@ lambdaEff
 KEff <- phylosig(ptero_tree_eff, Inv_CoT_matrix, method = "K", test = TRUE, nsim = 10000)
 KEff
 # P-Value >0.001 and K 2.58778
+
+##### exclude pteranodontoidea group
+tip <- c("Pteranodon_sternbergi", "Anhanguera_blittersdorffi")
+test.tree <- drop.clade(ptero_tree_eff, tip)
+test.tree <- drop.tip(test.tree, "NA")
+
+## remove species from efficiency data
+spec_to_remove <- setdiff(ptero_tree_eff$tip.label, test.tree$tip.label) 
+
+tmp <- rownames_to_column(eff_set, var = "species")
+tmp <- tmp[!tmp$species %in% spec_to_remove, ]
+
+eff_set_pruned <- tmp %>% 
+          group_by(species) %>% 
+          column_to_rownames(var = "species")
+
+setdiff(test.tree$tip.label, tmp$species)
+
+## subset efficiency data for desired variable inv CoT
+Inv_CoT_pruned <- as.matrix(eff_set_pruned) [,10]
+Inv_CoT_pruned <- sapply(Inv_CoT_pruned, as.numeric)
+
+## Test the phlogenetic signal again
+lambdaEffpruned <- phylosig(test.tree, Inv_CoT_pruned, method = "lambda", test = TRUE)
+lambdaEffpruned
+
+KEffpruned <- phylosig(test.tree, Inv_CoT_pruned, method = "K", test = TRUE, nsim = 10000)
+KEffpruned
+
+# plot tree without Pteranodontoidea
+## Efficiency contMap() inv CoT
+CoTpruned <- contMap(test.tree, Inv_CoT_pruned, plot = FALSE)
+CoTpruned <- setMap(CoTpruned, invert = TRUE)
+CoTpruned <- drop.tip(CoTpruned, "Bakonydraco_galaczi")
+CoTpruned <- drop.tip(CoTpruned, "Eurazhdarcho_langendorfensis")
+n <- length(CoTpruned$cols)
+CoTpruned$cols[1:n] <- plasma(n)
+plot(CoTpruned, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT")
 
 
 # Combine with climate data
