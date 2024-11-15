@@ -39,7 +39,7 @@ glimpse(species_climate)
 
 # groups for PCA
 ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # ALL PTEROS
-#ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
+ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
 
 ## merge species climate and group data here
 species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
@@ -55,13 +55,13 @@ unique(species_climate_group$family)
                                                 early_interval
  ))
 
-#PCA_data <- subset(species_climate_group, select = c(occurrence_no,   ## ONLY FOR AZHD AND PTERAN
-#                                                     MAT, seasonal_temp, 
-#                                                     MAP, seasonal_precip, 
-#                                                     # family,
-#                                                     two.groups, ## ***** THIS IS THE GROUPING VARIABLE **** 
-#                                                     early_interval
-#))
+PCA_data <- subset(species_climate_group, select = c(occurrence_no,   ## ONLY FOR AZHD AND PTERAN
+                                                    MAT, seasonal_temp, 
+                                                     MAP, seasonal_precip, 
+                                                    # family,
+                                                     two.groups, ## ***** THIS IS THE GROUPING VARIABLE **** 
+                                                     early_interval
+))
 
 
 ## Load auxillary dataset to standardise the time intervals
