@@ -26,7 +26,6 @@ library(ordr) # manipulating data objects
 
 # 1. Organise data -----------------------------------------------------------
 
-
 ## Import species/climate data if not already loaded:
 species_climate <- read.csv("Data/climate/species_climate.csv")
 glimpse(species_climate)
@@ -82,6 +81,7 @@ PCA_data_midJ <- PCA_data %>% filter(epoch == "Middle Jurassic")
 PCA_data_lateJ <- PCA_data %>% filter(epoch == "Late Jurassic") 
 
 unique(PCA_data_lateK$family) # check all groups, best is n<6
+
 
 # PCA: analysis and plots --------------------------------------------------
 
@@ -176,6 +176,166 @@ confellip_lK <- lK_pca %>%
 
 confellip_lK
 
+
+# UNCOMMENT FOLLOWING FOR VENDITTI DATA
+# ------------------------------------------------------------------------
+
+## Import species/climate data if not already loaded:
+species_climate <- read.csv("Data/climate/species_climate.csv")
+
+## Venditti data
+Ven.dat <- read.csv2("Data/Output/Species_eff_data.csv")
+# To include Quetzalcoatlus data, change eff.dat "Quetzalcoatlus spp" to "Quetzalcoatlus northropi"
+Ven.dat$species[62] <- "Quetzalcoatlus_northropi"
+Ven.dat$species[36] <- "Hatzegopteryx_thambema" # fixed spelling
+Ven.dat$species[40] <- "Huaxiapterus_corollatus" # fixed spelling
+
+# groups for PCA
+ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv")
+
+# merge groupings and climate
+Ven_taxa <- merge(ptero_grouping, Ven.dat, by.x = "ptero_taxa", by.y = "species")
+Ven_climate <- merge(species_climate, Ven_taxa, by.x = "accepted_name", by.y = "ptero_taxa")
+
+
+## Only the columns needed for the PCA:
+PCA_Ven <- subset(Ven_climate, select = c(occurrence_no,  ## ALL PTEROS
+                                          MAT, seasonal_temp, 
+                                          MAP, seasonal_precip, 
+                                          family, ## ***** THIS IS THE GROUPING VARIABLE **** 
+                                          early_interval
+))
+
+## Load auxillary dataset to standardise the time intervals
+ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
+
+## rename 'early interval'
+PCA_Ven <- rename(PCA_Ven, interval_std = early_interval)
+ints_standard <- rename(ints_standard, interval_std = early_interval)
+
+## join aux. dataset to main PCA data
+PCA_Ven <- left_join(PCA_Ven, ints_standard, by = "interval_std")
+
+## Remove those that have NA (stratigraphic range is too long)
+PCA_Ven <- na.omit(PCA_Ven, epoch)
+
+## Filter to the specific intervals
+PCA_Ven_eJ <- PCA_Ven %>% filter(epoch == "Early Jurassic") 
+PCA_Ven_mJ <- PCA_Ven %>% filter(epoch == "Middle Jurassic") 
+PCA_Ven_lJ <- PCA_Ven %>% filter(epoch == "Late Jurassic") 
+PCA_Ven_eK <- PCA_Ven %>% filter(epoch == "Early Cretaceous") 
+PCA_Ven_lK <- PCA_Ven %>% filter(epoch == "Late Cretaceous") 
+
+unique(PCA_Ven_lJ$family) # check all groups, best is n<6
+
+## PCA
+# early Jurassic
+Ven_eJ_pca <- PCA_Ven_eJ[,2:5] %>%
+  prcomp(scale = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_eJ$family)
+
+summary(Ven_eJ_pca)
+Ven_eJ_pca$rotation
+
+confellip_Ven_eJ <- Ven_eJ_pca %>% 
+  ordr::ggbiplot(aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528")) + ## add more colours if >n families! #, "#FFA93D","#572AAC"
+  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528")) ## add more colours if >n families!
+confellip_Ven_eJ # error führende Minor der Ordnung 2 ist nicht positiv definit
+
+
+# middle Jurassic
+Ven_mJ_pca <- PCA_Ven_mJ[,2:5] %>%
+  prcomp(scale = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_mJ$family)
+
+summary(Ven_mJ_pca)
+Ven_mJ_pca$rotation 
+
+confellip_Ven_mJ <- Ven_mJ_pca %>% 
+  ordr::ggbiplot(aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c(  "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families! #"#0891A3","#1E44AA",
+  scale_fill_manual(values = c(  "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
+confellip_Ven_mJ
+
+
+# late Jurassic
+Ven_lJ_pca <- PCA_Ven_lJ[,2:5] %>%
+  prcomp(scale = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_lJ$family)
+
+summary(Ven_lJ_pca)
+Ven_lJ_pca$rotation 
+
+confellip_Ven_lJ <- Ven_lJ_pca %>% 
+  ordr::ggbiplot(aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families! #"#0891A3","#1E44AA",
+  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
+confellip_Ven_lJ
+
+
+# early Cretaceous
+eK_pca <- PCA_data_eK[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_data_earlyK$family) ## FOR AZHD AND PTER $two.groups
+
+summary(eK_pca)
+eK_pca$rotation
+
+confellip_eK <- eK_pca %>% 
+  ordr::ggbiplot(data = PCA_data_earlyK ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D"
+    #,"#248528","#D7E05A"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D"
+    #,"#248528","#D7E05A"
+  )) ## add more colours if >n families!
+confellip_eK
+
+# Late Cretaceous
+lK_pca <- PCA_data_lateK[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_data_lateK$family) ## FOR AZHD AND PTER $two.groups
+
+confellip_lK <- lK_pca %>% 
+  ordr::ggbiplot(data = PCA_data_lateK ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D"
+    #,"#248528","#D7E05A"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D"
+    #,"#248528","#D7E05A"
+  )) ## add more colours if >n families!
+
+confellip_lK
 
 
 
