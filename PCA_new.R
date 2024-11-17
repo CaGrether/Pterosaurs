@@ -234,12 +234,12 @@ K_two <- c("Aptian", "Albian")
 K_three <- c("Cenomanian", "Turonian", "Coniacian", "Santonian")
 K_four <- c("Campanian", "Maastrichtian")
 
-PCA_Ven_K1 <- PCA_Ven[PCA_Ven$stage%in%K_one,] 
+PCA_Ven_K1 <- PCA_Ven[PCA_Ven$stage%in%K_one,] # CHANGE CODE to PCA_data if checking "all"
 PCA_Ven_K2 <- PCA_Ven[PCA_Ven$stage%in%K_two,] 
 PCA_Ven_K3 <- PCA_Ven[PCA_Ven$stage%in%K_three,]
 PCA_Ven_K4 <- PCA_Ven[PCA_Ven$stage%in%K_four,]
 
-unique(PCA_Ven_K2$family) # check all groups, best is n<6
+unique(PCA_Ven_K1$family) # check all groups, best is n<6
 
 ## PCA
 # early Jurassic
@@ -369,11 +369,11 @@ confellip_K1 <- K1_pca %>%
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c("#0891A3", "#1E44AA",
     "#572AAC" , "#FFA93D","#248528"
-    #,"#248528","#D7E05A"
+    ,"#248528","#D7E05A", "#FFFF00", "#993344"
   )) + ## add more colours if >n families!
   scale_fill_manual(values = c("#0891A3", "#1E44AA",
     "#572AAC" , "#FFA93D","#248528"
-    #,"#248528","#D7E05A"
+    ,"#248528","#D7E05A","#FFFF00", "#993344"
   )) ## add more colours if >n families!
 confellip_K1
 
@@ -394,11 +394,11 @@ confellip_K2 <- K2_pca %>%
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c("#0891A3", "#1E44AA",
                                  "#572AAC" , "#FFA93D","#248528"
-                                 ,"#248528","#D7E05A", "#FFFF00"
+                                 ,"#248528","#D7E05A", "#FFFF00","#FF1199", "#993344"
   )) + ## add more colours if >n families!
   scale_fill_manual(values = c("#0891A3", "#1E44AA",
                                "#572AAC" , "#FFA93D","#248528"
-                               ,"#248528","#D7E05A", "#FFFF00"
+                               ,"#248528","#D7E05A", "#FFFF00","#FF1199", "#993344"
   )) ## add more colours if >n families!
 confellip_K2
 
@@ -419,15 +419,15 @@ confellip_K3 <- K3_pca %>%
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c("#0891A3", "#1E44AA",
                                  "#572AAC" , "#FFA93D","#248528"
-                                 #,"#248528","#D7E05A", "#FFFF00"
+                                 ,"#248528","#D7E05A", "#FFFF00","#993344"
   )) + ## add more colours if >n families!
   scale_fill_manual(values = c("#0891A3", "#1E44AA",
                                "#572AAC" , "#FFA93D","#248528"
-                               #,"#248528","#D7E05A", "#FFFF00"
+                               ,"#248528","#D7E05A", "#FFFF00","#993344"
   )) ## add more colours if >n families!
 confellip_K3
 
-# K3
+# K4
 K4_pca <- PCA_Ven_K4[,2:5] %>%
   prcomp(center = T, scale. = TRUE) %>%
   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
@@ -442,11 +442,11 @@ confellip_K4 <- K4_pca %>%
   ordr::geom_rows_point() +
   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+  scale_colour_manual(values = c("#0891A3", "#1E44AA",
                                  "#572AAC" , "#FFA93D","#248528"
                                  #,"#248528","#D7E05A", "#FFFF00"
   )) + ## add more colours if >n families!
-  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+  scale_fill_manual(values = c("#0891A3", "#1E44AA",
                                "#572AAC" , "#FFA93D","#248528"
                                #,"#248528","#D7E05A", "#FFFF00"
   )) ## add more colours if >n families!
