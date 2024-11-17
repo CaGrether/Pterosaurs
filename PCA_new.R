@@ -223,10 +223,23 @@ PCA_Ven <- na.omit(PCA_Ven, epoch)
 PCA_Ven_eJ <- PCA_Ven %>% filter(epoch == "Early Jurassic") 
 PCA_Ven_mJ <- PCA_Ven %>% filter(epoch == "Middle Jurassic") 
 PCA_Ven_lJ <- PCA_Ven %>% filter(epoch == "Late Jurassic") 
+
+# Cretaceous in 2
 PCA_Ven_eK <- PCA_Ven %>% filter(epoch == "Early Cretaceous") 
 PCA_Ven_lK <- PCA_Ven %>% filter(epoch == "Late Cretaceous") 
 
-unique(PCA_Ven_lJ$family) # check all groups, best is n<6
+# Cretaceous in 4
+K_one <- c("Berriasian", "Valanginian", "Hauterivian", "Barremian")
+K_two <- c("Aptian", "Albian")
+K_three <- c("Cenomanian", "Turonian", "Coniacian", "Santonian")
+K_four <- c("Campanian", "Maastrichtian")
+
+PCA_Ven_K1 <- PCA_Ven[PCA_Ven$stage%in%K_one,] 
+PCA_Ven_K2 <- PCA_Ven[PCA_Ven$stage%in%K_two,] 
+PCA_Ven_K3 <- PCA_Ven[PCA_Ven$stage%in%K_three,]
+PCA_Ven_K4 <- PCA_Ven[PCA_Ven$stage%in%K_four,]
+
+unique(PCA_Ven_K2$family) # check all groups, best is n<6
 
 ## PCA
 # early Jurassic
@@ -336,6 +349,108 @@ confellip_lK <- lK_pca %>%
   )) ## add more colours if >n families!
 
 confellip_lK
+
+################ Cretaceous in 4 slices
+
+# K 1
+K1_pca <- PCA_Ven_K1[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_K1$family) ## FOR AZHD AND PTER $two.groups
+
+summary(K1_pca)
+K1_pca$rotation
+
+confellip_K1 <- K1_pca %>% 
+  ordr::ggbiplot(data = PCA_Ven_K1 ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c("#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D","#248528"
+    #,"#248528","#D7E05A"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c("#0891A3", "#1E44AA",
+    "#572AAC" , "#FFA93D","#248528"
+    #,"#248528","#D7E05A"
+  )) ## add more colours if >n families!
+confellip_K1
+
+# K 2
+K2_pca <- PCA_Ven_K2[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_K2$family) ## FOR AZHD AND PTER $two.groups
+
+summary(K2_pca)
+K2_pca$rotation
+
+confellip_K2 <- K2_pca %>% 
+  ordr::ggbiplot(data = PCA_Ven_K2 ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c("#0891A3", "#1E44AA",
+                                 "#572AAC" , "#FFA93D","#248528"
+                                 ,"#248528","#D7E05A", "#FFFF00"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c("#0891A3", "#1E44AA",
+                               "#572AAC" , "#FFA93D","#248528"
+                               ,"#248528","#D7E05A", "#FFFF00"
+  )) ## add more colours if >n families!
+confellip_K2
+
+# K3
+K3_pca <- PCA_Ven_K3[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_K3$family) ## FOR AZHD AND PTER $two.groups
+
+summary(K3_pca)
+K3_pca$rotation
+
+confellip_K3 <- K3_pca %>% 
+  ordr::ggbiplot(data = PCA_Ven_K3 ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c("#0891A3", "#1E44AA",
+                                 "#572AAC" , "#FFA93D","#248528"
+                                 #,"#248528","#D7E05A", "#FFFF00"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c("#0891A3", "#1E44AA",
+                               "#572AAC" , "#FFA93D","#248528"
+                               #,"#248528","#D7E05A", "#FFFF00"
+  )) ## add more colours if >n families!
+confellip_K3
+
+# K3
+K4_pca <- PCA_Ven_K4[,2:5] %>%
+  prcomp(center = T, scale. = TRUE) %>%
+  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+  mutate_rows(group = PCA_Ven_K4$family) ## FOR AZHD AND PTER $two.groups
+
+summary(K4_pca)
+K4_pca$rotation
+
+confellip_K4 <- K4_pca %>% 
+  ordr::ggbiplot(data = PCA_Ven_K4 ,aes(color = group)) +
+  theme_bw() +
+  ordr::geom_rows_point() +
+  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+                                 "#572AAC" , "#FFA93D","#248528"
+                                 #,"#248528","#D7E05A", "#FFFF00"
+  )) + ## add more colours if >n families!
+  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+                               "#572AAC" , "#FFA93D","#248528"
+                               #,"#248528","#D7E05A", "#FFFF00"
+  )) ## add more colours if >n families!
+confellip_K4
 
 
 
