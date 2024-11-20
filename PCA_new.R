@@ -24,14 +24,14 @@ library(ggord)
 library(ordr) # manipulating data objects
 
 
-# 1. Organise data -----------------------------------------------------------
+# 1. ALL DATA (Yu et al.2023) Organise data -----------------------------------------------------------
 
 ## Import species/climate data if not already loaded:
 species_climate <- read.csv("Data/climate/species_climate.csv")
 glimpse(species_climate)
 
 # groups for PCA
-ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # JURASSIC AND CRETACEOUS
+ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
 #ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
 
 
@@ -178,7 +178,7 @@ confellip_lK
 
 
 # UNCOMMENT FOLLOWING FOR VENDITTI DATA
-# ------------------------------------------------------------------------
+# Organise data -----------------------------------------------------------------------------------
 
 ## Import species/climate data if not already loaded:
 species_climate <- read.csv("Data/climate/species_climate.csv")
@@ -535,3 +535,70 @@ midJ_PCA_plot <- midJ_PCA_plot + scale_colour_manual(values = c("#0891A3", "#FFA
         legend.position = "top", #legend.position = "none",
         panel.border = element_rect(colour = "black", fill = NA))
 midJ_PCA_plot # error führende Minor der Ordnung 2 ist nicht positiv definit
+
+
+
+
+# ------------------------------------------------------------------------------
+### trying new groups: those that are phylogenetically useful
+## Yu et al. 2023 tree 3 (most parsimonious) and (all) PBDB species
+
+# for every "family" that is in the edited PBDB data (ptero_grouping_copy.csv)
+
+### 1.
+ptero_grouping[(which(ptero_grouping$family == "Campylognathoididae")),] 
+# kick Campylognathoides_liasicus, Campylognathoides_zitteli
+ptero_grouping[(which(ptero_grouping$family == "Pterosauria")),] 
+
+# merge to one group, total of 6
+A <- c("Austriadactylus_cristatus", "Caviramus_schesaplanensis", "Preondactylus_buffarinii",
+       "Eudimorphodon_ranzii", "Eudimorphodon_rosenfeldi", "Raeticodactylus_filisurensis")
+
+### 2.
+ptero_grouping[(which(ptero_grouping$family == "Rhamphorhynchidae")),] 
+# kick Sordes Pilosus, Orientognathus chaoyangensis,Pterorhynchus wellnhoferi
+
+# one group, total of 8
+B <- c("Angustinaripterus_longicephalus", "Cacibupteryx_caribensis", "Dorygnathus_banthensis",
+       "Nesodactylus_hesperius", "Qinglongopterus_guoi", "Rhamphorhynchus_muensteri",
+       "Scaphognathus_crassirostris", "Sericipterus_wucaiwanensis")
+
+### 3.
+ptero_grouping[(which(ptero_grouping$family == "Anurognathidae")),] 
+
+# one group, total of 5
+C <- c("Anurognathus_ammoni", "Batrachognathus_volans", "Dendrorhynchoides_curvidentatus",
+       "Dendrorhynchoides_mutoudengensis", "Jeholopterus_ningchengensis")
+
+### 4.
+ptero_grouping[(which(ptero_grouping$family == "Pteranodontia")),] 
+# put Pterodactylus_antiquus, Pterodactylus_kochi into "Gretheroidae"
+ptero_grouping[(which(ptero_grouping$family == "Pterodactyloidea")),] 
+# kick Kryptodrakon_progenitor, put all 3 Nyctosaurus into Pteranodontia, Ardeadactylus into "Gretheroidae"
+
+# merge into one, total of 8
+D <- c("Alamodactylus_byrdi", "Alcione_elainus", "Pteranodon_longiceps",
+       "Pteranodon_sternbergi", "Simurghia_robusta", "Nyctosaurus_gracilis",
+       "Nyctosaurus_lamegoi", "Nyctosaurus_nanus")
+
+### 5.
+
+ptero_grouping[(which(ptero_grouping$family == "Lophocratia")),] 
+# kick Eosipterus_yangi
+# + Protazhdarchidae (Aurorazhdarcho_primordius), + Macronychoptera (Cuspicephalus) + Liaodactylus (ctenochasmatidae)
+# and Moganopterus (Boreopteridae)
+
+# merge into one, total of 20
+E <- c("Beipiaopterus_chenianus", "Ctenochasma_elegans", "Ctenochasma_porocristata",
+       "Cycnorhamphus_suevicus", "Elanodactylus_prolatus", "Feilongus_youngi",
+       "Gallodactylus_canjuersensis", "Germanodactylus_cristatus", "Germanodactylus_rhamphastinus",
+       "Gnathosaurus_macrurus", "Gnathosaurus_subulatus", "Huanhepterus_quingyangensis",
+       "Kepodactylus_insperatus", "Normannognathus_wellnhoferi", "Plataleorhynchus_streptophorodon",
+       "Pterodaustro_guinazui", "Aurorazhdarcho_primordius", "Cuspicephalus_scarfi",
+       "Liaodactylus_primus", "Moganopterus_zhuiana" )
+
+
+# Macronychoptera
+# Ctenochasmatidae
+# Boreopteridae
+# Ornithocheiroidea + 1 Borepteridae (Boreopterus_cuiae)
