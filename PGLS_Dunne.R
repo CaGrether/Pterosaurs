@@ -11,6 +11,13 @@
 # 
 # *********************************************************
 
+library(tidyverse)
+library(geiger)
+library(ape)
+library(phytools)
+library(caper)
+library(viridis)
+
 ## Let’s investigate the relationship between eye size in frogs 
 ##    and their body size. Theory leads us to believe that bigger 
 ##    animals will have bigger eyes, but is this true in frogs?
@@ -18,6 +25,8 @@
 ## Much of the information below assumes that you are familiar 
 ##    with fitting and interpreting linear models (regressions, 
 ##    ANOVA, ANCOVA) in R using the function lm.
+
+# MINE: relationship of climate with flight efficiency or with body mass
 
 ## Let's look at the phylogenetic non-independence/pseudoreplication 
 ##    on the graph by colouring the points by family.

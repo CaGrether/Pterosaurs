@@ -20,6 +20,7 @@ library(geoscale) # for plotting with the geological time scale on the x-axis (u
 library(viridis) # for colour scales
 library(vegan) # for diversity metrics
 library(rgplates) # palaeogeographic reconstructions
+library(stages) # age info
 
 select <- dplyr::select # ensure the select function is coming from dplyr
 
@@ -33,9 +34,19 @@ taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name,
 
 
 
-ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed da
+ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
+early_int <- read.csv2("Data/Input/stages_for_climate_data_early.csv")
+late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
+
+# data(stages)
 # ages_data <- read_delim("Data/Output/ages_info.csv", delim = ",")
 # ptero_data <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
+
+# 0. put data into correct format -----------------------------------------------------------
+
+# left join with early and late data respectively
+
+
 
 # 1(a). Sampling proxy counts ---------------------------------------------------
 
@@ -51,21 +62,13 @@ ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed
 # }
 # MINE
 count_taxa <- vector("numeric") # create empty vector for the loop below to populate
-for (i in 1:nrow(ints_standard)) {
+for (i in 1:nrow(ints_standard)) { # for-loop to count each taxon that appears in each interval
   out <- taxon_inf[which(taxon_inf$early_interval==ints_standard$early_interval[i]),]
   count_taxa[i] <- (length(unique(out$accepted_name)))
   print(count_taxa[i])
 }
 
-
 # Collections per interval
-# count_colls <- vector("numeric")
-# for (i in 1:nrow(intervals)) {
-#   out <- subset(occ_data, max_ma > intervals[i,]$min_ma & min_ma < intervals[i,]$max_ma)
-#   count_colls[i] <- (length(unique(out$collection_no)))
-#   print(count_colls[i])
-# }
-# MINE
 count_colls <- vector("numeric")
 for (i in 1:nrow(ints_standard)) {
   out <- taxon_inf[which(taxon_inf$early_interval==ints_standard$early_interval[i]),]
@@ -86,8 +89,12 @@ for (i in 1:nrow(ints_standard)) {
 ## For more info see: http://cran.nexr.com/web/packages/icosa/vignettes/icosaIntroShort.pdf
 
 
+intervals <- stages[52:81,]
+# need to do taxa in stages (?)
+
 ## Gather the proxy information together in a new dataframe for plotting:
 proxy_counts <- data.frame(intervals$interval_name, intervals$mid_ma, count_taxa, count_colls, count_formations)
+proxy_counts <- data.frame(intervals$stage, intervals$mid, count_taxa, count_colls, count_formations) #MINE
 ## Rename the columns for ease:
 proxy_counts <- rename(proxy_counts, 
                        "interval_name" = "intervals.interval_name", 
