@@ -35,7 +35,7 @@ taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name,
 
 
 ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
-early_int <- read.csv2("Data/Input/stages_for_climate_data_early.csv")
+#early_int <- read.csv2("Data/Input/stages_for_climate_data_early.csv", sep = ",")
 late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
 
 # data(stages)
@@ -46,7 +46,13 @@ late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
 
 # left join with early and late data respectively
 
+Adat <- left_join(taxon_inf, ints_standard, by = "early_interval")
+Bdat <- left_join(taxon_inf, late_int, by = "late_interval")
 
+# merge datasets
+big.dat <- rbind(Adat,Bdat)
+# remove duplicates
+taxon.dat <- big.dat[!duplicated(big.dat),]
 
 # 1(a). Sampling proxy counts ---------------------------------------------------
 
