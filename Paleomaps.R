@@ -132,9 +132,10 @@ proxy_counts[proxy_counts == 0] <- NA
 ## Set interval boundaries for the dotted lines on the plot
 ## We'll also use this vector again, so its handy to have :)
 #int_boundaries <- c(237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1)
-int_boundaries <- c(251.0, 250.0, 247.0, 241.0, 237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1,
-                    171.0, 168.0, 165.0, 162.0, 155.0, 149.0, 143.0, 138.0, 133.0, 126.5, 121.0, 113.0, 
-                    100.5, 94.0, 89.0, 86.0, 84.0, 72.0) # NOT EXACT AGES
+int_boundaries <- c( 250, 241, 209, 183, 165, 149, 133, 113, 
+                     89, 72) # NOT EXACT AGES
+#251.0,247.0,237.0, 228.0,201.3, 199.3, 190.8, 174.1,171.0, 168.0,162.0, 155.0, 143.0, 138.0, 
+#126.5, 121.0,100.5, 94.0, 86.0, 84.0,
 
 ## Set up your ggplot layers (first layer goes on the bottom, etc):
 proxy_plot <- ggplot() + 
@@ -173,7 +174,7 @@ ggsave(plot = proxy_plot,
 ## RStudio > Help panel (bottom right) > Search "geoscalePlot"
 
 ## Before you make the plot, set up parameters for exporting a PDF of the plot to:
-pdf("./plots/sampling_proxies_geoscale.pdf", width = 9, height = 7) 
+pdf("./plots/sampling_proxies_geoscale.pdf", width = 9, height = 8) 
 
 ## Set up the base of the plot with the timescale:
 geoscalePlot(proxy_counts$mid_ma, proxy_counts$count_taxa, # ages and main data points
@@ -182,9 +183,9 @@ geoscalePlot(proxy_counts$mid_ma, proxy_counts$count_taxa, # ages and main data 
              boxes = "Age", # option to include grey boxes for individual time bins
              abbrev = c("Age"), # option to abbreviate names of geological units
              lty = 1, pch = NA, 
-             cex.age = 1, cex.ts = 1, cex.pt = 1, # size of numbers, text, and points on the scale bar
-             age.lim = c(237.0, 174.1), # oldest and youngest ages of the entire time interval you're plotting (i.e. temporal range)
-             data.lim = c(0, 320), # range of the data you're plotting - check it matches the largest number in your dataframe!
+             cex.age = 0.6, cex.ts = 1, cex.pt = 1, # size of numbers, text, and points on the scale bar
+             age.lim = c(245.5, 72.0), # oldest and youngest ages of the entire time interval you're plotting (i.e. temporal range)
+             data.lim = c(0, 100), # range of the data you're plotting - check it matches the largest number in your dataframe!
              ts.col = TRUE, # include colours in the timescale? 
              ts.width = 0.17, # space taken up by plotting the time scale (value = 0-1)
              label = "Counts", # label for y-axis
@@ -227,7 +228,7 @@ dev.off() ## Turn off graphic device, to trigger the export of the pdf
 ##    Close et al. (2019) - code available here: https://github.com/emmadunne/local_richness
 
 ## Let's get our data set up:
-lat_data <- occ_data # rename object to keep the original separate
+lat_data <- occurrences_sp # rename object to keep the original separate
 
 ## Create new column for mid_ma
 lat_data$mid_ma <- (lat_data$max_ma + lat_data$min_ma)/2 
@@ -240,7 +241,7 @@ lat_data <- lat_data %>%
   select(collection_no, paleolat, paleolng, mid_ma) %>% 
   distinct() %>% na.omit()
 
-## Add add the frequency information:
+## And add the frequency information:
 lat_data <- left_join(taxa_freqs, lat_data, by = "collection_no")
 
 ## Before we plot, let's order the frequencies and remove any NAs that have crept in:
@@ -254,7 +255,7 @@ View(lat_data)
 lat_plot <- ggplot(data = lat_data, aes(x = mid_ma, y = paleolat, colour = n)) +
   geom_vline(xintercept = int_boundaries, lty = 2, col = "grey90") +
   geom_hline(yintercept = 0, colour = "grey10") +
-  scale_color_viridis(trans = "log", breaks = c(1, 2, 12), direction = -1, option = "D") + # set the break= to match your richness data
+  scale_color_viridis(trans = "log", breaks = c(1, 2, 6, 14), direction = -1, option = "D") + # set the break= to match your richness data
   #scale_y_continuous(labels = function(x) format(x, width = 5), limits = c(-70, 70), breaks = seq(from = -60, to = 60, by = 20)) +
   scale_x_reverse(breaks = int_boundaries) + 
   theme_minimal() + 
@@ -281,7 +282,7 @@ ggsave(plot = lat_plot,
 ## Let's do some simple regression plots:
 
 ## Raw richness vs. collections
-reg_colls <- ggplot(proxy_counts_NC, aes(x=count_taxa, y=count_colls)) + 
+reg_colls <- ggplot(proxy_counts, aes(x=count_taxa, y=count_colls)) + 
   geom_point(shape=17, size = 6, colour = "orange")+
   geom_smooth(method=lm, colour = "orange4", fill = "orange1")  +
   theme_minimal()
@@ -295,10 +296,10 @@ reg_forms <- ggplot(proxy_counts, aes(x=count_taxa, y=count_formations)) +
 reg_forms
 
 
-## Let's quantify these relationships through a liner model:
+## Let's quantify these relationships through a linear model:
 
 ## Raw richness vs. collections
-lm_colls = lm(count_colls ~ count_taxa, proxy_counts_NC)
+lm_colls = lm(count_colls ~ count_taxa, proxy_counts)
 summary(lm_colls) # summary of results
 
 lm_forms = lm(count_formations ~ count_taxa, proxy_counts)
@@ -325,7 +326,7 @@ proxy_counts_NC <- proxy_counts[-c(6,7),]
 
 ## First, get our data into shape:
 ## Table the number of each species per collection (abundance)
-abun_data <- table(occ_data$collection_no, occ_data$accepted_name)
+abun_data <- table(occurrences_sp$collection_no, occurrences_sp$accepted_name)
 ## If we want a presence/absence table, we can add this step:
 #abun_data[abun_data > 0] <- 1
 
@@ -351,7 +352,7 @@ plot(sp_accum, ci.type = "poly", col = "#0E6A8A", lwd = 2, ci.lty = 0, ci.col = 
 ##    any geographic (and even socio-economic) patterns...
 
 ## First, let's pear down or occurrence data to only keep the info we need for making the map
-locality_info <- occ_data %>% 
+locality_info <- occurrences_sp %>% 
   dplyr::select(collection_name, lat, lng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
   na.omit()
@@ -382,7 +383,7 @@ ggsave(plot = modern_map,
 ## Now let's look at our occurrences on a world map with palaeogeographic rotations
 
 ## First, create a new, simplified data object to build our palaeomap:
-paleomap_data <- occ_data %>% 
+paleomap_data <- occurrences_sp %>% 
   select(collection_name, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
   na.omit(collection_name)
@@ -390,8 +391,9 @@ paleomap_data <- occ_data %>%
 ## Now, let's split these data in Late Triassic and Early Jurassic 
 ## (This is a very crude splitting for simplicity, but for a publication I would recommend
 ##    being more specific about how intervals are divided)
-map_data_LT <- paleomap_data %>% filter(max_ma >= 201.4)
-map_data_EJ <- paleomap_data %>% filter(max_ma <= 201.4)
+#map_data_LT <- paleomap_data %>% filter(max_ma >= 201.4)
+map_data_EJ <- paleomap_data %>% filter(174.7 < max_ma < 201.4)
+map_data_MJ <- paleomap_data %>% filter(201.4 >= max_ma >= 201.4)
 
 ## Let's now grab our paleogeographies for the time bins from the GPlates (via rgplates)
 paleogeog_LT <- reconstruct("static_polygons", age = 215, model="MERDITH2021") 
