@@ -38,14 +38,14 @@ ints_standard <- read_csv2("Data/Input/ints_standard_copy.csv") # manually fixed
 #early_int <- read.csv2("Data/Input/stages_for_climate_data_early.csv", sep = ",")
 late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
 
-# data(stages)
+data(stages)
 # ages_data <- read_delim("Data/Output/ages_info.csv", delim = ",")
 # ptero_data <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
 
 # 0. put data into correct format -----------------------------------------------------------
 
+## add stage names to data
 # left join with early and late data respectively
-
 Adat <- left_join(taxon_inf, ints_standard, by = "early_interval")
 Bdat <- left_join(taxon_inf, late_int, by = "late_interval")
 
@@ -53,6 +53,10 @@ Bdat <- left_join(taxon_inf, late_int, by = "late_interval")
 big.dat <- rbind(Adat,Bdat)
 # remove duplicates
 taxon.dat <- big.dat[!duplicated(big.dat),]
+
+## add ages to intervals
+meso <- stages[52:81,]
+intervals <- meso[,c(4,6,7,8)]
 
 # 1(a). Sampling proxy counts ---------------------------------------------------
 
@@ -68,24 +72,24 @@ taxon.dat <- big.dat[!duplicated(big.dat),]
 # }
 # MINE
 count_taxa <- vector("numeric") # create empty vector for the loop below to populate
-for (i in 1:nrow(ints_standard)) { # for-loop to count each taxon that appears in each interval
-  out <- taxon_inf[which(taxon_inf$early_interval==ints_standard$early_interval[i]),]
+for (i in 1:nrow(intervals)) { # for-loop to count each taxon that appears in each interval
+  out <- taxon.dat[which(taxon.dat$stage==intervals$stage[i]),]
   count_taxa[i] <- (length(unique(out$accepted_name)))
   print(count_taxa[i])
 }
 
 # Collections per interval
 count_colls <- vector("numeric")
-for (i in 1:nrow(ints_standard)) {
-  out <- taxon_inf[which(taxon_inf$early_interval==ints_standard$early_interval[i]),]
+for (i in 1:nrow(intervals)) {
+  out <- taxon.dat[which(taxon.dat$stage==intervals$stage[i]),]
   count_colls[i] <- (length(unique(out$collection_no)))
   print(count_colls[i])
 }
 
 # Formations per interval
 count_formations <- vector("numeric")
-for (i in 1:nrow(ints_standard)) {
-  out <- taxon_inf[which(taxon_inf$early_interval==ints_standard$early_interval[i]),]
+for (i in 1:nrow(intervals)) {
+  out <- taxon.dat[which(taxon.dat$stage==intervals$stage[i]),]
   count_formations[i] <- (length(unique(out$formation)))
   print(count_formations[i])
 }
@@ -95,16 +99,16 @@ for (i in 1:nrow(ints_standard)) {
 ## For more info see: http://cran.nexr.com/web/packages/icosa/vignettes/icosaIntroShort.pdf
 
 
-intervals <- stages[52:81,]
+
 # need to do taxa in stages (?)
 
 ## Gather the proxy information together in a new dataframe for plotting:
-proxy_counts <- data.frame(intervals$interval_name, intervals$mid_ma, count_taxa, count_colls, count_formations)
+#proxy_counts <- data.frame(intervals$interval_name, intervals$mid_ma, count_taxa, count_colls, count_formations)
 proxy_counts <- data.frame(intervals$stage, intervals$mid, count_taxa, count_colls, count_formations) #MINE
 ## Rename the columns for ease:
 proxy_counts <- rename(proxy_counts, 
-                       "interval_name" = "intervals.interval_name", 
-                       "mid_ma" = "intervals.mid_ma")
+                       "interval_name" = "intervals.stage", 
+                       "mid_ma" = "intervals.mid")
 
 ## Finally, convert all zero's to NAs for plotting 
 ## This means that the plots won't register zero and instead will leave gaps 
@@ -127,7 +131,10 @@ proxy_counts[proxy_counts == 0] <- NA
 
 ## Set interval boundaries for the dotted lines on the plot
 ## We'll also use this vector again, so its handy to have :)
-int_boundaries <- c(237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1)
+#int_boundaries <- c(237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1)
+int_boundaries <- c(251.0, 250.0, 247.0, 241.0, 237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1,
+                    171.0, 168.0, 165.0, 162.0, 155.0, 149.0, 143.0, 138.0, 133.0, 126.5, 121.0, 113.0, 
+                    100.5, 94.0, 89.0, 86.0, 84.0, 72.0) # NOT EXACT AGES
 
 ## Set up your ggplot layers (first layer goes on the bottom, etc):
 proxy_plot <- ggplot() + 
@@ -146,7 +153,7 @@ proxy_plot <- ggplot() +
   # Make sure to reverse the x-axis to match geological time!
   scale_x_reverse(breaks = int_boundaries) +
   # And tidy up our y-axis with even breaks that match the totals in our dataframe:
-  scale_y_continuous(breaks = seq(0, 320, 20))
+  scale_y_continuous(breaks = seq(0, 100, 20))
 ## Call the finished plot to the RStudio plots tab:
 proxy_plot
 
