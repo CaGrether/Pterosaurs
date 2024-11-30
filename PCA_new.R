@@ -164,11 +164,11 @@ confellip_eK <- eK_pca %>%
   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
+    "#FFA93D", "#572AAC" 
     #,"#248528","#D7E05A"
   )) + ## add more colours if >n families!
   scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
+    "#FFA93D", "#572AAC" 
     #,"#248528","#D7E05A"
   )) ## add more colours if >n families!
 confellip_eK
@@ -177,7 +177,7 @@ confellip_eK
 lK_pca <- PCA_data_lateK[,2:5] %>%
   prcomp(center = T, scale. = TRUE) %>%
   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  mutate_rows(group = PCA_data_lateK$family) ## FOR AZHD AND PTER $two.groups
+  mutate_rows(group = PCA_data_lateK$two.groups) ## FOR AZHD AND PTER $two.groups
 
 confellip_lK <- lK_pca %>% 
   ordr::ggbiplot(data = PCA_data_lateK ,aes(color = group)) +
@@ -187,12 +187,12 @@ confellip_lK <- lK_pca %>%
   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
   scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A","#993344","#0891A3","#1E4466"
+    "#FFA93D", "#572AAC" 
+  #  ,"#248528","#D7E05A","#993344","#0891A3","#1E4466"
   )) + ## add more colours if >n families!
   scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A", "#993344", "#0891A3","#1E4466"
+    "#FFA93D", "#572AAC" 
+  #  ,"#248528","#D7E05A", "#993344", "#0891A3","#1E4466"
   )) ## add more colours if >n families!
 
 confellip_lK
