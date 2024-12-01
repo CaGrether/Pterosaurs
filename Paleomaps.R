@@ -20,9 +20,9 @@ library(geoscale) # for plotting with the geological time scale on the x-axis (u
 library(viridis) # for colour scales
 library(vegan) # for diversity metrics
 library(rgplates) # palaeogeographic reconstructions
-library(ggplot2)
-library(divDyn)
-library(dplyr)
+library(ggplot2) # for plotting
+library(divDyn) # stages info
+library(dplyr) # functions
 data(stages) # age info
 
 select <- dplyr::select # ensure the select function is coming from dplyr
