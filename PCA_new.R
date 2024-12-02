@@ -22,6 +22,8 @@ library(devtools) # to install ggord
 install_github("fawda123/ggord") # For PCA plots
 library(ggord)
 library(ordr) # manipulating data objects
+library(ggplot2)
+library(ggdist)
 
 
 # 1. ALL DATA (Yu et al.2023) Organise data -----------------------------------------------------------
@@ -527,6 +529,70 @@ confellip_K4 <- K4_pca %>%
   )) ## add more colours if >n families!
 confellip_K4
 
+
+###############################################################################
+###############################################################################
+#-----------------------------------------------------------------------------
+# RAINCLOUD PLOTS
+# for Pteranodontia and Azhdarchoidea
+
+#-----------------------------------------------------------------------------
+###############################################################################
+###############################################################################
+
+# rename data
+cloud_data <- PCA_data
+
+# one dataset each for Azhd and Pteran
+cloud_az <- cloud_data %>% 
+  arrange(two.groups) %>% 
+  .[which(.$two.groups=="Azhdarchoidea"),]
+
+cloud_pt <- cloud_data %>% 
+  arrange(two.groups) %>% 
+  .[which(.$two.groups=="Pteranodontoidea"),]
+
+# code found online
+# ggplot(data, aes(x = group, y = value)) + 
+#   ggdist::stat_halfeye(
+#     adjust = .5, 
+#     width = .6, 
+#     .width = 0, 
+#     justification = -.3, 
+#     point_colour = NA) + 
+#   geom_boxplot(
+#     width = .25, 
+#     outlier.shape = NA
+#   ) +
+#   geom_point(
+#     size = 1.5,
+#     alpha = .2,
+#     position = position_jitter(
+#       seed = 1, width = .1
+#     )
+#   ) + 
+#   coord_cartesian(xlim = c(1.2, 2.9), clip = "off")
+
+# MINE
+ggplot(cloud_az, aes(x = two.groups, y = MAT)) + 
+  ggdist::stat_halfeye(
+    adjust = .5, 
+    width = .6, 
+    .width = 0, 
+    justification = -.3, 
+    point_colour = NA) + 
+  geom_boxplot(
+    width = .25, 
+    outlier.shape = NA
+  ) +
+  geom_point(
+    size = 1.5,
+    alpha = .2,
+    position = position_jitter(
+      seed = 1, width = .1
+    )
+  ) + 
+  coord_cartesian(xlim = c(1.2, 2.9), clip = "off")
 
 
 # Work in progress ------------------------------------------------------- 
