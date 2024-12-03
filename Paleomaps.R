@@ -576,3 +576,9 @@ ggsave(plot = paleomap_LK,
 ggsave(plot = paleomap_llK,
        width = 12, height = 10, dpi = 600, 
        filename = "./plots/Palaeomap_laLateCretaceous.pdf", useDingbats=FALSE)
+
+## Grid -> 01 boxplots
+
+#ggpubr package - very useful
+Figure2 <- ggarrange(rain_LT_MAT, rain_LT_ST, rain_EJ_MAT, rain_EJ_ST, ncol = 2, nrow = 2,
+                     labels = c("(a)", "(b)", "(c)", "(d)"))

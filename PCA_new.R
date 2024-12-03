@@ -530,6 +530,14 @@ confellip_K4 <- K4_pca %>%
 confellip_K4
 
 
+########################################################################
+# remove Lagerstatten effect by removing fossils from Lagerstatten
+# Crato and Santana (Brazil), Solnhofen (Germany), Jehol (China)
+#######################################################################
+
+
+
+
 ###############################################################################
 ###############################################################################
 #-----------------------------------------------------------------------------
@@ -542,57 +550,138 @@ confellip_K4
 
 # rename data
 cloud_data <- PCA_data
+colnames(cloud_data)[6] <- "Pterosaur_taxa"
+colnames(cloud_data)
 
 # one dataset each for Azhd and Pteran
-cloud_az <- cloud_data %>% 
-  arrange(two.groups) %>% 
-  .[which(.$two.groups=="Azhdarchoidea"),]
+# cloud_az <- cloud_data %>% 
+#   arrange(Pterosaur_taxa) %>% 
+#   .[which(.$Pterosaur_taxa=="Azhdarchoidea"),]
+# 
+# cloud_pt <- cloud_data %>% 
+#   arrange(Pterosaur_taxa) %>% 
+#   .[which(.$Pterosaur_taxa=="Pteranodontoidea"),]
 
-cloud_pt <- cloud_data %>% 
-  arrange(two.groups) %>% 
-  .[which(.$two.groups=="Pteranodontoidea"),]
 
-# code found online
-# ggplot(data, aes(x = group, y = value)) + 
-#   ggdist::stat_halfeye(
-#     adjust = .5, 
-#     width = .6, 
-#     .width = 0, 
-#     justification = -.3, 
-#     point_colour = NA) + 
-#   geom_boxplot(
-#     width = .25, 
-#     outlier.shape = NA
-#   ) +
-#   geom_point(
-#     size = 1.5,
-#     alpha = .2,
-#     position = position_jitter(
-#       seed = 1, width = .1
-#     )
-#   ) + 
-#   coord_cartesian(xlim = c(1.2, 2.9), clip = "off")
-
-# MINE
-ggplot(cloud_az, aes(x = two.groups, y = MAT)) + 
+# Raincloud plots - entire Cretaceous
+## MAT
+ggplot(cloud_data, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
     .width = 0, 
     justification = -.3, 
-    point_colour = NA) + 
+    point_colour = NA,
+    alpha = 0.6) + 
   geom_boxplot(
+    aes(fill = Pterosaur_taxa, colour = Pterosaur_taxa),
     width = .25, 
-    outlier.shape = NA
+    outlier.shape = NA,
+    alpha = 0.15
   ) +
   geom_point(
-    size = 1.5,
-    alpha = .2,
+    aes(colour = Pterosaur_taxa),
+    size = 1.3,
+    alpha = .3,
     position = position_jitter(
       seed = 1, width = .1
     )
   ) + 
-  coord_cartesian(xlim = c(1.2, 2.9), clip = "off")
+  scale_color_manual(values = c("#FFA93D", "#572AAC")) +
+  scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
+  labs(x = NULL, y = "Mean Annual Temperature (°C)") + #coord_flip()
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+
+## seasonal temp
+ggplot(cloud_data, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
+  ggdist::stat_halfeye(
+    adjust = .5, 
+    width = .6, 
+    .width = 0, 
+    justification = -.3, 
+    point_colour = NA,
+    alpha = 0.6) + 
+  geom_boxplot(
+    aes(fill = Pterosaur_taxa, colour = Pterosaur_taxa),
+    width = .25, 
+    outlier.shape = NA,
+    alpha = 0.15
+  ) +
+  geom_point(
+    aes(colour = Pterosaur_taxa),
+    size = 1.3,
+    alpha = .3,
+    position = position_jitter(
+      seed = 1, width = .1
+    )
+  ) + 
+  scale_color_manual(values = c("#FFA93D", "#572AAC")) +
+  scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
+  labs(x = NULL, y = "Seasonal Temperature (°C)") + #coord_flip()
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+
+## MAP
+ggplot(cloud_data, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) + 
+  ggdist::stat_halfeye(
+    adjust = .5, 
+    width = .6, 
+    .width = 0, 
+    justification = -.3, 
+    point_colour = NA,
+    alpha = 0.6) + 
+  geom_boxplot(
+    aes(fill = Pterosaur_taxa, colour = Pterosaur_taxa),
+    width = .25, 
+    outlier.shape = NA,
+    alpha = 0.15
+  ) +
+  geom_point(
+    aes(colour = Pterosaur_taxa),
+    size = 1.3,
+    alpha = .3,
+    position = position_jitter(
+      seed = 1, width = .1
+    )
+  ) + 
+  scale_color_manual(values = c("#FFA93D", "#572AAC")) +
+  scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
+  labs(x = NULL, y = "Mean Annual Precipitation") + #coord_flip()
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+## seasonal Precip
+ggplot(cloud_data, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_taxa)) + 
+  ggdist::stat_halfeye(
+    adjust = .5, 
+    width = .6, 
+    .width = 0, 
+    justification = -.3, 
+    point_colour = NA,
+    alpha = 0.6) + 
+  geom_boxplot(
+    aes(fill = Pterosaur_taxa, colour = Pterosaur_taxa),
+    width = .25, 
+    outlier.shape = NA,
+    alpha = 0.15
+  ) +
+  geom_point(
+    aes(colour = Pterosaur_taxa),
+    size = 1.3,
+    alpha = .3,
+    position = position_jitter(
+      seed = 1, width = .1
+    )
+  ) + 
+  scale_color_manual(values = c("#FFA93D", "#572AAC")) +
+  scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
+  labs(x = NULL, y = "Seasonal Precipitation") + #coord_flip()
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+
+# fix seasonal temp that is above 40°C
+fix_occ <- cloud_data$occurrence_no[which(cloud_data$seasonal_temp > 40)]
+
 
 
 # Work in progress ------------------------------------------------------- 
