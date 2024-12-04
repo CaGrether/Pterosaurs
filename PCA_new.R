@@ -679,8 +679,36 @@ ggplot(cloud_data, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
 
 
-# fix seasonal temp that is above 40°C
-fix_occ <- cloud_data$occurrence_no[which(cloud_data$seasonal_temp > 40)]
+### fix seasonal temp that is above 40°C
+# taxa that need fixing
+fix_occ <- cloud_data[which(cloud_data$seasonal_temp > 40),] # taxa that are >40
+
+# dataset to get names of taxa that need fixing
+fix_data <- occurrences_sp # rename to keep original
+fix_data$accepted_name <- gsub(" ", "_", fix_data$accepted_name)
+fix_data$mid_ma <- (fix_data$max_ma + fix_data$min_ma)/2 # add mean age
+
+fix_info <- fix_data %>% 
+  select(occurrence_no, accepted_name, mid_ma,
+         collection_no, paleolat, paleolng, collection_name, taxon_environment)
+
+# merge for occurrence numbers
+fix_taxa <- merge(fix_occ, fix_info, by = "occurrence_no")
+
+# arrange columns for better readability
+fix_taxa <- fix_taxa %>% 
+  select(accepted_name, everything()) %>% 
+  arrange(accepted_name)
+
+### check localities - is one locality "faulty"?
+# add localities to raincloud data
+occ_info <- fix_data %>% 
+  select(occurrence_no,collection_name, paleolat, paleolng, taxon_environment, lagerstatten)
+cloud_all <- merge(cloud_data, occ_info, by = "occurrence_no")
+
+# check unique localities - how many occ nos are in there and are they the same as the >40 taxa?
+length(which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)"))
+length(which(fix_taxa$collection_name == "Chaoyang pterosaurs (PROXY)")) # same length
 
 
 
