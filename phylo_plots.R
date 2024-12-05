@@ -108,7 +108,6 @@ tree_species <- ptero_tree$tip.label
 ## Remove taxa that are in this dataset but not on the tree:
 taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% tree_species ] # in MAT data but not on tree
 species_climate_tree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
-species_climate_tree <- species_climate_tree[!species_climate_tree$accepted_name =="Bakonydraco_galaczi", ]
 
 ## drop tips for taxa on tree that do not have climate data (there should not be (m)any!)
 tree_pruned <- drop.tip(ptero_tree_dated, ptero_tree_dated$tip.label[!(ptero_tree_dated$tip.label %in% species_climate_tree$accepted_name)])
@@ -130,21 +129,21 @@ MAP_matrix <- as.matrix(climate_mean) [,2] # Mean annual precipitation
 ## Temperature contMap()
 MATmapped <- contMap(tree_pruned, MAT_matrix, plot = FALSE)
 MATmapped <- setMap(MATmapped, invert = TRUE)
-MATmapped <- drop.tip(MATmapped, "Bakonydraco_galaczi")
-MATmapped <- drop.tip(MATmapped, "Eurazhdarcho_langendorfensis")
+#MATmapped <- drop.tip(MATmapped, "Bakonydraco_galaczi")
+#MATmapped <- drop.tip(MATmapped, "Eurazhdarcho_langendorfensis")
 n <- length(MATmapped$cols)
 MATmapped$cols[1:n] <- plasma(n)
-plot(MATmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+plot(MATmapped, fsize = c(0.4, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
 
 
 ## Precipitation contMap()
 MAPmapped <- contMap(tree_pruned, MAP_matrix, plot = FALSE)
 MAPmapped <- setMap(MAPmapped, invert = TRUE)
-MAPmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
-MAPmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
+#MAPmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
+#MAPmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(MAPmapped$cols)
 MAPmapped$cols[1:n] <- turbo(n, direction = -1)
-plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)", par(bg="#ECDDBF"))
+plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
 
 
 

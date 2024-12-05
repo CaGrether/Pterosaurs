@@ -680,35 +680,42 @@ ggplot(cloud_data, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur
 
 
 ### fix seasonal temp that is above 40°C
-# taxa that need fixing
-fix_occ <- cloud_data[which(cloud_data$seasonal_temp > 40),] # taxa that are >40
+## why is their seasonal temp so high? Is there a bias?
 
-# dataset to get names of taxa that need fixing
+# dataset to get info of raincloud taxa
 fix_data <- occurrences_sp # rename to keep original
 fix_data$accepted_name <- gsub(" ", "_", fix_data$accepted_name)
 fix_data$mid_ma <- (fix_data$max_ma + fix_data$min_ma)/2 # add mean age
 
-fix_info <- fix_data %>% 
-  select(occurrence_no, accepted_name, mid_ma,
-         collection_no, paleolat, paleolng, collection_name, taxon_environment)
-
-# merge for occurrence numbers
-fix_taxa <- merge(fix_occ, fix_info, by = "occurrence_no")
-
-# arrange columns for better readability
-fix_taxa <- fix_taxa %>% 
-  select(accepted_name, everything()) %>% 
-  arrange(accepted_name)
-
-### check localities - is one locality "faulty"?
-# add localities to raincloud data
+# merge with all raincloud taxa
 occ_info <- fix_data %>% 
-  select(occurrence_no,collection_name, paleolat, paleolng, taxon_environment, lagerstatten)
-cloud_all <- merge(cloud_data, occ_info, by = "occurrence_no")
+  select(accepted_name, occurrence_no, mid_ma, collection_name, paleolat, paleolng, 
+         taxon_environment, lagerstatten, collection_no) # columns that are of interest
+cloud_all <- cloud_data %>% 
+  merge(., occ_info, by = "occurrence_no") %>% 
+  select(accepted_name, everything()) %>% 
+  arrange(accepted_name) 
 
+# subset for only >40°C taxa
+cloud_40 <- cloud_all %>% 
+  subset(.,.$seasonal_temp>40)
+
+####1. "Problematic" localities
 # check unique localities - how many occ nos are in there and are they the same as the >40 taxa?
-length(which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)"))
-length(which(fix_taxa$collection_name == "Chaoyang pterosaurs (PROXY)")) # same length
+# length(which(cloud_40$collection_name == "Chaoyang pterosaurs (PROXY)"))
+# length(which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)")) # same length
+
+## Chaoyang pterosaurs (PROXY)
+cloud_all$occurrence_no[which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)")] %in% cloud_40$occurrence_no
+# all Chaoyang pterosaurs (PROXY) are >40
+
+## Yuanjiawa, Dapingfang
+cloud_all$occurrence_no[which(cloud_all$collection_name == "Yuanjiawa, Dapingfang")] %in% cloud_40$occurrence_no
+# all are > 40
+
+#### 2. Lagerstatten
+cloud_all$occurrence_no[which(cloud_all$lagerstatten == "conservation")] %in% cloud_40$occurrence_no
+# not all conservation Lagerstatten are >40
 
 
 
