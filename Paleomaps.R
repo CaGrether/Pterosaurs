@@ -21,6 +21,7 @@ library(viridis) # for colour scales
 library(vegan) # for diversity metrics
 library(rgplates) # palaeogeographic reconstructions
 library(ggplot2) # for plotting
+library(ggpubr) # for plotting
 library(divDyn) # stages info
 library(dplyr) # functions
 data(stages) # age info
@@ -101,8 +102,6 @@ for (i in 1:nrow(intervals)) {
 ## For more info see: http://cran.nexr.com/web/packages/icosa/vignettes/icosaIntroShort.pdf
 
 
-
-# need to do taxa in stages (?)
 
 ## Gather the proxy information together in a new dataframe for plotting:
 #proxy_counts <- data.frame(intervals$interval_name, intervals$mid_ma, count_taxa, count_colls, count_formations)
@@ -390,6 +389,9 @@ paleomap_data <- occurrences_sp %>%
   distinct(collection_name, .keep_all = TRUE) %>% 
   na.omit(collection_name)
 
+# add mean age to each species
+paleomap_data$mid_ma <- (paleomap_data$max_ma + paleomap_data$min_ma)/2
+
 ## Now, let's split these data in Late Triassic and Early Jurassic 
 ## (This is a very crude splitting for simplicity, but for a publication I would recommend
 ##    being more specific about how intervals are divided)
@@ -400,20 +402,20 @@ map_data_LT <- paleomap_data %>% filter(max_ma >= 201.4) # one from MT
 map_data_EJ <- paleomap_data %>% filter(174.7 < max_ma & max_ma < 201.4)
 map_data_MJ <- paleomap_data %>% filter(161.5 < max_ma & max_ma < 174.7)
 map_data_LJ <- paleomap_data %>% filter(145.0 < max_ma & max_ma < 161.5)
-map_data_eeK <- paleomap_data %>% filter(127.7 < max_ma & max_ma < 145.0)
-map_data_EK <- paleomap_data %>% filter(100.5 < max_ma & max_ma < 127.7)
-map_data_LK <- paleomap_data %>% filter(86.3 < max_ma & max_ma < 100.5)
-map_data_llK <- paleomap_data %>% filter(66.0 < max_ma & max_ma < 86.3) # only 2 - worth splitting?
+map_data_EK <- paleomap_data %>% filter(127.7 < max_ma & max_ma < 145.0)
+map_data_LEK <- paleomap_data %>% filter(100.5 < max_ma & max_ma < 127.7)
+map_data_ELK <- paleomap_data %>% filter(86.3 < max_ma & max_ma < 100.5)
+map_data_LK <- paleomap_data %>% filter(66.0 < max_ma & max_ma < 86.3) # only 2 - worth splitting?
 
 ## Let's now grab our paleogeographies for the time bins from the GPlates (via rgplates)
 paleogeog_LT <- reconstruct("static_polygons", age = 215, model="MERDITH2021") 
 paleogeog_EJ <- reconstruct("coastlines", age = 190, model="MERDITH2021") 
 paleogeog_MJ <- reconstruct("coastlines", age = 167, model="MERDITH2021")
 paleogeog_LJ <- reconstruct("coastlines", age = 153, model="MERDITH2021")
-paleogeog_eeK <- reconstruct("coastlines", age = 135, model="MERDITH2021")
-paleogeog_EK <- reconstruct("coastlines", age = 113, model="MERDITH2021")
-paleogeog_LK <- reconstruct("coastlines", age = 93, model="MERDITH2021")
-paleogeog_llK <- reconstruct("coastlines", age = 76, model="MERDITH2021")
+paleogeog_EK <- reconstruct("coastlines", age = 135, model="MERDITH2021")
+paleogeog_LEK <- reconstruct("coastlines", age = 113, model="MERDITH2021")
+paleogeog_ELK <- reconstruct("coastlines", age = 93, model="MERDITH2021")
+paleogeog_LK <- reconstruct("coastlines", age = 76, model="MERDITH2021")
 
 ## Now let's start the map:
 ## Begin by setting a theme (these settings are pretty minimal):
@@ -484,21 +486,6 @@ paleomap_LJ <-  ggplot() +
 paleomap_LJ
 
 ## Early early Cretaceous (eeK)
-paleomap_eeK <-  ggplot() +
-  ## Add the landmasses
-  geom_sf(data = paleogeog_eeK, colour = "grey75", fill = "grey75") +
-  ## Add the occurrence data (and set your colour!):
-  geom_point(data = map_data_eeK, aes(x = paleolng, y = paleolat), color = "#0DA69B", size = 4,  alpha = 0.8) + 
-  ## Add lines from the x and y axes
-  #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
-  #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
-  ## Add the interval name to the title of each map 
-  ggtitle("Early early Cretaceous") +
-  ## Finally, add the custom theme
-  palaeomap_theme
-paleomap_eeK
-
-## Early Cretaceous
 paleomap_EK <-  ggplot() +
   ## Add the landmasses
   geom_sf(data = paleogeog_EK, colour = "grey75", fill = "grey75") +
@@ -513,7 +500,37 @@ paleomap_EK <-  ggplot() +
   palaeomap_theme
 paleomap_EK
 
+## Early Cretaceous
+paleomap_LEK <-  ggplot() +
+  ## Add the landmasses
+  geom_sf(data = paleogeog_LEK, colour = "grey75", fill = "grey75") +
+  ## Add the occurrence data (and set your colour!):
+  geom_point(data = map_data_LEK, aes(x = paleolng, y = paleolat), color = "#0DA69B", size = 4,  alpha = 0.8) + 
+  ## Add lines from the x and y axes
+  #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
+  #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
+  ## Add the interval name to the title of each map 
+  ggtitle("Late Early Cretaceous") +
+  ## Finally, add the custom theme
+  palaeomap_theme
+paleomap_LEK
+
 ## Late Cretaceous
+paleomap_ELK <-  ggplot() +
+  ## Add the landmasses
+  geom_sf(data = paleogeog_ELK, colour = "grey75", fill = "grey75") +
+  ## Add the occurrence data (and set your colour!):
+  geom_point(data = map_data_ELK, aes(x = paleolng, y = paleolat), color = "#0DA69B", size = 4,  alpha = 0.8) + 
+  ## Add lines from the x and y axes
+  #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
+  #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
+  ## Add the interval name to the title of each map 
+  ggtitle("Early Late Cretaceous") +
+  ## Finally, add the custom theme
+  palaeomap_theme
+paleomap_ELK
+
+## Late late Cretaceous (llK)
 paleomap_LK <-  ggplot() +
   ## Add the landmasses
   geom_sf(data = paleogeog_LK, colour = "grey75", fill = "grey75") +
@@ -527,21 +544,6 @@ paleomap_LK <-  ggplot() +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_LK
-
-## Late late Cretaceous (llK)
-paleomap_llK <-  ggplot() +
-  ## Add the landmasses
-  geom_sf(data = paleogeog_llK, colour = "grey75", fill = "grey75") +
-  ## Add the occurrence data (and set your colour!):
-  geom_point(data = map_data_llK, aes(x = paleolng, y = paleolat), color = "#0DA69B", size = 4,  alpha = 0.8) + 
-  ## Add lines from the x and y axes
-  #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
-  #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
-  ## Add the interval name to the title of each map 
-  ggtitle("Late late Cretaceous") +
-  ## Finally, add the custom theme
-  palaeomap_theme
-paleomap_llK
 
 
 ## And finally, save as a .pdf
@@ -560,25 +562,25 @@ ggsave(plot = paleomap_MJ,
 ggsave(plot = paleomap_LJ,
        width = 12, height = 10, dpi = 600, 
        filename = "./plots/Palaeomap_LateJurassic.pdf", useDingbats=FALSE)
-# eeK
-ggsave(plot = paleomap_eeK,
-       width = 12, height = 10, dpi = 600, 
-       filename = "./plots/Palaeomap_erEarlyCretaceous.pdf", useDingbats=FALSE)
 # EK
 ggsave(plot = paleomap_EK,
        width = 12, height = 10, dpi = 600, 
        filename = "./plots/Palaeomap_EarlyCretaceous.pdf", useDingbats=FALSE)
+# LEK
+ggsave(plot = paleomap_LEK,
+       width = 12, height = 10, dpi = 600, 
+       filename = "./plots/Palaeomap_ltEarlyCretaceous.pdf", useDingbats=FALSE)
+# ELK
+ggsave(plot = paleomap_ELK,
+       width = 12, height = 10, dpi = 600, 
+       filename = "./plots/Palaeomap_erLateCretaceous.pdf", useDingbats=FALSE)
 # LK
 ggsave(plot = paleomap_LK,
        width = 12, height = 10, dpi = 600, 
        filename = "./plots/Palaeomap_LateCretaceous.pdf", useDingbats=FALSE)
-# llK
-ggsave(plot = paleomap_llK,
-       width = 12, height = 10, dpi = 600, 
-       filename = "./plots/Palaeomap_laLateCretaceous.pdf", useDingbats=FALSE)
 
-## Grid -> 01 boxplots
-
-#ggpubr package - very useful
-Figure2 <- ggarrange(rain_LT_MAT, rain_LT_ST, rain_EJ_MAT, rain_EJ_ST, ncol = 2, nrow = 2,
-                     labels = c("(a)", "(b)", "(c)", "(d)"))
+# plot as 2 grids
+T_and_J <- ggarrange(paleomap_LT, paleomap_EJ, paleomap_MJ, paleomap_LJ, ncol = 2, nrow = 2)
+K_in_4 <- ggarrange(paleomap_EK, paleomap_LEK, paleomap_ELK, paleomap_LK, ncol = 2, nrow = 2)
+FAD_all <- ggarrange(paleomap_LT, paleomap_EJ, paleomap_MJ, paleomap_LJ, 
+          paleomap_EK, paleomap_LEK, paleomap_ELK, paleomap_LK, ncol = 4, nrow = 2) 
