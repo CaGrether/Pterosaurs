@@ -717,6 +717,9 @@ cloud_all$occurrence_no[which(cloud_all$collection_name == "Yuanjiawa, Dapingfan
 cloud_all$occurrence_no[which(cloud_all$lagerstatten == "conservation")] %in% cloud_40$occurrence_no
 # not all conservation Lagerstatten are >40
 
+#### 3. cold MAT's 
+cloud_all$occurrence_no[which(cloud_all$MAT < 10)] %in% cloud_40$occurrence_no
+# not all MAT < 10 are in seasonal temp > 40
 
 
 # Work in progress ------------------------------------------------------- 
