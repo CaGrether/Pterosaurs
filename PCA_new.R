@@ -33,7 +33,7 @@ species_climate <- read.csv("Data/climate/species_climate.csv")
 glimpse(species_climate)
 
 # groups for PCA
-ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
+#ptero_grouping <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
 ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # ONLY AZHDARCHOIDEA AND PTERANODONTIA
 
 
@@ -47,14 +47,14 @@ unique(species_climate_group$family)
 # PCA_data <- subset(species_climate_group, select = c(occurrence_no,  ## ALL PTEROS
 #                                                      MAT, seasonal_temp,
 #                                                      MAP, seasonal_precip,
-#                                                      family, ## ***** THIS IS THE GROUPING VARIABLE ****
+#                                                      family, 
 #                                                      early_interval
 # ))
 
 PCA_data <- subset(species_climate_group, select = c(occurrence_no,   ## ONLY FOR AZHD AND PTERAN
                                                      MAT, seasonal_temp,
                                                      MAP, seasonal_precip,
-                                                     two.groups, ## ***** THIS IS THE GROUPING VARIABLE ****
+                                                     two.groups, 
                                                      early_interval
 ))
 
@@ -78,30 +78,30 @@ PCA_data_earlyK <- PCA_data %>% filter(epoch == "Early Cretaceous")
 PCA_data_lateK <- PCA_data %>% filter(epoch == "Late Cretaceous") 
 
 ## REST (FOR ALL PTEROS)
-PCA_data_earlyJ <- PCA_data %>% filter(epoch == "Early Jurassic") 
-PCA_data_midJ <- PCA_data %>% filter(epoch == "Middle Jurassic") 
-PCA_data_lateJ <- PCA_data %>% filter(epoch == "Late Jurassic") 
+# PCA_data_earlyJ <- PCA_data %>% filter(epoch == "Early Jurassic") 
+# PCA_data_midJ <- PCA_data %>% filter(epoch == "Middle Jurassic") 
+# PCA_data_lateJ <- PCA_data %>% filter(epoch == "Late Jurassic") 
 
-unique(PCA_data_all_lateK$family) # check all groups, best is n<6
+unique(PCA_data_lateK$family) # check all groups, best is n<6
 
 
 ####### ALL PTEROS: merge some groups in Late K
 
- PCA_all_lateK_prun <- PCA_data_lateK[-c(which(PCA_data_lateK$family == "Lonchodraconidae")),]
- PCA_all_lateK_prun <- PCA_all_lateK_prun[-c(which(PCA_all_lateK_prun$family == "Nyctosauridae")),]
- PCA_all_lateK_prun <- PCA_all_lateK_prun[-c(which(PCA_all_lateK_prun$family == "Azhdarchoidea")),]
+ # PCA_all_lateK_prun <- PCA_data_lateK[-c(which(PCA_data_lateK$family == "Lonchodraconidae")),]
+ # PCA_all_lateK_prun <- PCA_all_lateK_prun[-c(which(PCA_all_lateK_prun$family == "Nyctosauridae")),]
+ # PCA_all_lateK_prun <- PCA_all_lateK_prun[-c(which(PCA_all_lateK_prun$family == "Azhdarchoidea")),]
 
 # keep
- PCA_concise_LK <- PCA_all_lateK_prun
- 
- # Pteranodontoidea
- PCA_concise_LK$family[which(PCA_concise_LK$family=="Pteranodontia")] <- "Pteranodontoidea"
- PCA_concise_LK$family[which(PCA_concise_LK$family=="Pteranodontidae")] <- "Pteranodontoidea"
- PCA_con_LK <- PCA_concise_LK
- 
- # Ornithocheiroidea
- PCA_concise_LK$family[which(PCA_concise_LK$family=="Ornithocheiridae")] <- "Ornithocheiroidea"
-
+ # PCA_concise_LK <- PCA_all_lateK_prun
+ # 
+ # # Pteranodontoidea
+ # PCA_concise_LK$family[which(PCA_concise_LK$family=="Pteranodontia")] <- "Pteranodontoidea"
+ # PCA_concise_LK$family[which(PCA_concise_LK$family=="Pteranodontidae")] <- "Pteranodontoidea"
+ # PCA_con_LK <- PCA_concise_LK
+ # 
+ # # Ornithocheiroidea
+ # PCA_concise_LK$family[which(PCA_concise_LK$family=="Ornithocheiridae")] <- "Ornithocheiroidea"
+ # 
 
 
 # PCA: analysis and plots --------------------------------------------------
@@ -110,43 +110,43 @@ unique(PCA_data_all_lateK$family) # check all groups, best is n<6
 
 
 # early Jurassic
-eJ_pca <- PCA_data_earlyJ[,2:5] %>%
-  prcomp(scale = TRUE) %>%
-  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  mutate_rows(group = PCA_data_earlyJ$family)
-
-summary(eJ_pca)
-eJ_pca$rotation
-
-confellip_eJ <- eJ_pca %>% 
-  ordr::ggbiplot(aes(color = group)) +
-  theme_bw() +
-  ordr::geom_rows_point() +
-  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families!
-  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
-confellip_eJ # error führende Minor der Ordnung 2 ist nicht positiv definit
-
-
-# middle Jurassic
-mJ_pca <- PCA_data_midJ[,2:5] %>%
-  prcomp(scale = TRUE) %>%
-  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  mutate_rows(group = PCA_data_midJ$family)
-
-summary(mJ_pca)
-mJ_pca$rotation 
-
-confellip_mJ <- mJ_pca %>% 
-  ordr::ggbiplot(aes(color = group)) +
-  theme_bw() +
-  ordr::geom_rows_point() +
-  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families!
-  scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
-confellip_mJ
+# eJ_pca <- PCA_data_earlyJ[,2:5] %>%
+#   prcomp(scale = TRUE) %>%
+#   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+#   mutate_rows(group = PCA_data_earlyJ$family)
+# 
+# summary(eJ_pca)
+# eJ_pca$rotation
+# 
+# confellip_eJ <- eJ_pca %>% 
+#   ordr::ggbiplot(aes(color = group)) +
+#   theme_bw() +
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families!
+#   scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
+# confellip_eJ # error führende Minor der Ordnung 2 ist nicht positiv definit
+# 
+# 
+# # middle Jurassic
+# mJ_pca <- PCA_data_midJ[,2:5] %>%
+#   prcomp(scale = TRUE) %>%
+#   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+#   mutate_rows(group = PCA_data_midJ$family)
+# 
+# summary(mJ_pca)
+# mJ_pca$rotation 
+# 
+# confellip_mJ <- mJ_pca %>% 
+#   ordr::ggbiplot(aes(color = group)) +
+#   theme_bw() +
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) + ## add more colours if >n families!
+#   scale_fill_manual(values = c( "#0891A3","#1E44AA", "#248528", "#FFA93D","#572AAC")) ## add more colours if >n families!
+# confellip_mJ
 
 
 # early Cretaceous
@@ -200,59 +200,59 @@ confellip_lK <- lK_pca %>%
 confellip_lK
 
 # LK concise Ornithocheiridae + Ornithocheiroidea
-lK_pca_con <- PCA_con_LK[,2:5] %>%
-  prcomp(center = T, scale. = TRUE) %>%
-  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  mutate_rows(group = PCA_con_LK$family) ## FOR AZHD AND PTER $two.groups
-
-confellip_lK_con <- lK_pca_con %>% 
-  ordr::ggbiplot(data = PCA_con_LK ,aes(color = group)) +
-  theme_bw() +
-  ggtitle("Late Cretaceous") +
-  ordr::geom_rows_point() +
-  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A","#993344"
-    #"#0891A3","#1E4466"
-  )) + ## add more colours if >n families!
-  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A", "#993344"
-    #"#0891A3","#1E4466"
-  )) ## add more colours if >n families!
-
-confellip_lK_con
-
-# LK concise, only Ornithocheiroidea
-lK_pca_concise <- PCA_concise_LK[,2:5] %>%
-  prcomp(center = T, scale. = TRUE) %>%
-  ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
-  mutate_rows(group = PCA_concise_LK$family) ## FOR AZHD AND PTER $two.groups
-
-confellip_lK_concise <- lK_pca_concise %>% 
-  ordr::ggbiplot(data = PCA_concise_LK ,aes(color = group)) +
-  theme_bw() +
-  ggtitle("Late Cretaceous") +
-  ordr::geom_rows_point() +
-  geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
-  ordr::geom_cols_vector(color = "#444444") + # adds the arrows
-  scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A"
-    #,"#993344"
-    #"#0891A3","#1E4466"
-  )) + ## add more colours if >n families!
-  scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
-    "#572AAC" , "#FFA93D"
-    ,"#248528","#D7E05A"
-    #, "#993344"
-    #"#0891A3","#1E4466"
-  )) ## add more colours if >n families!
-
-confellip_lK_concise
-
+# lK_pca_con <- PCA_con_LK[,2:5] %>%
+#   prcomp(center = T, scale. = TRUE) %>%
+#   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+#   mutate_rows(group = PCA_con_LK$family) ## FOR AZHD AND PTER $two.groups
+# 
+# confellip_lK_con <- lK_pca_con %>% 
+#   ordr::ggbiplot(data = PCA_con_LK ,aes(color = group)) +
+#   theme_bw() +
+#   ggtitle("Late Cretaceous") +
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+#     "#572AAC" , "#FFA93D"
+#     ,"#248528","#D7E05A","#993344"
+#     #"#0891A3","#1E4466"
+#   )) + ## add more colours if >n families!
+#   scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+#     "#572AAC" , "#FFA93D"
+#     ,"#248528","#D7E05A", "#993344"
+#     #"#0891A3","#1E4466"
+#   )) ## add more colours if >n families!
+# 
+# confellip_lK_con
+# 
+# # LK concise, only Ornithocheiroidea
+# lK_pca_concise <- PCA_concise_LK[,2:5] %>%
+#   prcomp(center = T, scale. = TRUE) %>%
+#   ordr::as_tbl_ord() %>% # if error, check package 'ordr' is installed correctly
+#   mutate_rows(group = PCA_concise_LK$family) ## FOR AZHD AND PTER $two.groups
+# 
+# confellip_lK_concise <- lK_pca_concise %>% 
+#   ordr::ggbiplot(data = PCA_concise_LK ,aes(color = group)) +
+#   theme_bw() +
+#   ggtitle("Late Cretaceous") +
+#   ordr::geom_rows_point() +
+#   geom_polygon(aes(fill = group), color = NA, alpha = .25, stat = "rows_ellipse") +
+#   ordr::geom_cols_vector(color = "#444444") + # adds the arrows
+#   scale_colour_manual(values = c(#"#0891A3", "#1E44AA",
+#     "#572AAC" , "#FFA93D"
+#     ,"#248528","#D7E05A"
+#     #,"#993344"
+#     #"#0891A3","#1E4466"
+#   )) + ## add more colours if >n families!
+#   scale_fill_manual(values = c(#"#0891A3", "#1E44AA",
+#     "#572AAC" , "#FFA93D"
+#     ,"#248528","#D7E05A"
+#     #, "#993344"
+#     #"#0891A3","#1E4466"
+#   )) ## add more colours if >n families!
+# 
+# confellip_lK_concise
+# 
 
 # UNCOMMENT FOLLOWING FOR VENDITTI DATA
 # Organise data -----------------------------------------------------------------------------------

@@ -147,32 +147,32 @@ plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MA
 
 
 
-# 4. Select groups of pterosaurs ----------------------------------------
+# 4. Select groups of pterosaurs (work in progress) ----------------------------------------
 
-## remove specimens
-ptero_taxa_clean <- as.data.frame(ptero_taxa[-c(which(ptero_taxa == "OCP_DEK_GE_716"),
-                                          which(ptero_taxa == "LPM_L112113"),
-                                          which(ptero_taxa == "LPM_N081607")),])
-names(ptero_taxa_clean) <- "ptero_taxa"
-
-
-## get families from PBDB
-family_info <- select(occurrences_sp, accepted_name, family)
-
-
-## add underscore to match names
-family_info$accepted_name <- gsub(" ", "_", family_info$accepted_name)
-
-
-## merge
-ptero_fam <- merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
-      by.y = "accepted_name")
-
-
-## remove duplicates
-ptero_groups <- ptero_fam[!duplicated(ptero_fam),]
-names(ptero_groups) <- c("ptero_taxa", "family")
-
-
-## save a copy
-write_csv(ptero_groups, "Data/Output/ptero_groups.csv")
+# ## remove specimens
+# ptero_taxa_clean <- as.data.frame(ptero_taxa[-c(which(ptero_taxa == "OCP_DEK_GE_716"),
+#                                           which(ptero_taxa == "LPM_L112113"),
+#                                           which(ptero_taxa == "LPM_N081607")),])
+# names(ptero_taxa_clean) <- "ptero_taxa"
+# 
+# 
+# ## get families from PBDB
+# family_info <- select(occurrences_sp, accepted_name, family)
+# 
+# 
+# ## add underscore to match names
+# family_info$accepted_name <- gsub(" ", "_", family_info$accepted_name)
+# 
+# 
+# ## merge
+# ptero_fam <- merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
+#       by.y = "accepted_name")
+# 
+# 
+# ## remove duplicates
+# ptero_groups <- ptero_fam[!duplicated(ptero_fam),]
+# names(ptero_groups) <- c("ptero_taxa", "family")
+# 
+# 
+# ## save a copy
+# write_csv(ptero_groups, "Data/Output/ptero_groups.csv")

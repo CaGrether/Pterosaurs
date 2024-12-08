@@ -1,21 +1,20 @@
 # ******************************************************
 #
-#   Analytical Paleobiology Workshop 2024
+#   AMaster Thesis
 #
-#   Module 2: Paleodiversity analyses in R
-#   Day 3 | Wednesday, August 7th
+#   Mapping occurrences of pterosaurs
 #
-#   Emma Dunne (emma.dunne@fau.de)
+#   Carolin Grether
 # ______________________________________________________
 #
-#   2. Exploring fossil record biases
+#   Various data mapping
 # 
 # ******************************************************
 
 
 # 0. Packages used in this script -----------------------------------------
 
-#library(tidyverse)
+library(tidyverse)
 library(geoscale) # for plotting with the geological time scale on the x-axis (uses base R syntax)
 library(viridis) # for colour scales
 library(vegan) # for diversity metrics
@@ -765,5 +764,5 @@ ggsave(plot = Mid_all,
        filename = "./plots/Palaeomap_mid_all.pdf", useDingbats=FALSE)
 
 ### find collection with lowest paleolat
-paleomap_data[which(paleomap_data$paleolat == min(as.integer(paleomap_data$paleolat))),]
-# work on this 
+paleomap_data[which(paleomap_data$paleolat == min(abs(paleomap_data$paleolat))),]
+

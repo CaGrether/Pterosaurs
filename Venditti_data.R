@@ -128,8 +128,8 @@ KEffpruned
 ## Efficiency contMap() inv CoT
 CoTpruned <- contMap(test.tree, Inv_CoT_pruned, plot = FALSE)
 CoTpruned <- setMap(CoTpruned, invert = TRUE)
-CoTpruned <- drop.tip(CoTpruned, "Bakonydraco_galaczi")
-CoTpruned <- drop.tip(CoTpruned, "Eurazhdarcho_langendorfensis")
+#CoTpruned <- drop.tip(CoTpruned, "Bakonydraco_galaczi")
+#CoTpruned <- drop.tip(CoTpruned, "Eurazhdarcho_langendorfensis")
 n <- length(CoTpruned$cols)
 CoTpruned$cols[1:n] <- plasma(n)
 plot(CoTpruned, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT")
@@ -155,8 +155,8 @@ tree_eff_species <- ptero_tree_eff$tip.label
 ## Remove taxa that are in this dataset but not on the tree:
 taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% tree_eff_species ] # in MAT data but not on tree
 species_climEff_tree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
-species_climEff_tree <- species_climEff_tree[!species_climEff_tree$accepted_name =="Bakonydraco_galaczi", ]
-species_climEff_tree <- species_climEff_tree[!species_climEff_tree$accepted_name =="Eurazhdarcho_langendorfensis", ]
+#species_climEff_tree <- species_climEff_tree[!species_climEff_tree$accepted_name =="Bakonydraco_galaczi", ]
+#species_climEff_tree <- species_climEff_tree[!species_climEff_tree$accepted_name =="Eurazhdarcho_langendorfensis", ]
 
 ## drop tips for taxa on tree that do not have climate data (there should not be (m)any!)
 tree_eff_pruned <- drop.tip(ptero_tree_eff, ptero_tree_eff$tip.label[!(ptero_tree_eff$tip.label %in% species_climEff_tree$accepted_name)])
