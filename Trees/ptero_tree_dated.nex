@@ -1,0 +1,291 @@
+#NEXUS
+[R-package PHYTOOLS, Thu Jan  9 16:09:21 2025]
+
+BEGIN TAXA;
+	DIMENSIONS NTAX = 139;
+	TAXLABELS
+		Aerotitan_sudamericanus
+		Aetodactylus_halli
+		Alamodactylus_byrdi
+		Alanqa_saharica
+		Alcione_elainus
+		Allkaruen_koi
+		Angustinaripterus_longicephalus
+		Anhanguera_araripensis
+		Anhanguera_blittersdorffi
+		Anhanguera_piscator
+		Anhanguera_santanae
+		Anurognathus_ammoni
+		Arambourgiania_philadelphiae
+		Ardeadactylus_longicollum
+		Aurorazhdarcho_primordius
+		Austriadactylus_cristatus
+		Azhdarcho_lancicollis
+		Bakonydraco_galaczi
+		Batrachognathus_volans
+		Beipiaopterus_chenianus
+		Bennettazhia_oregonensis
+		Boreopterus_cuiae
+		Brasileodactylus_araripensis
+		Cacibupteryx_caribensis
+		Caiuajara_dobruskii
+		Campylognathoides_liasicus
+		Campylognathoides_zitteli
+		Caviramus_schesaplanensis
+		Cearadactylus_atrox
+		Changchengopterus_pani
+		Chaoyangopterus_zhangi
+		Cimoliopterus_cuvieri
+		Cimoliopterus_dunni
+		Coloborhynchus_clavirostris
+		Cretornis_hlavaci
+		Ctenochasma_elegans
+		Ctenochasma_porocristata
+		Cuspicephalus_scarfi
+		Cycnorhamphus_suevicus
+		Darwinopterus_linglongtaensis
+		Darwinopterus_modularis
+		Darwinopterus_robustodens
+		Dendrorhynchoides_curvidentatus
+		Dendrorhynchoides_mutoudengensis
+		Dimorphodon_macronyx
+		Domeykodactylus_ceciliae
+		Dorygnathus_banthensis
+		Douzhanopterus_zhengi
+		Dsungaripterus_weii
+		Elanodactylus_prolatus
+		Eoazhdarcho_liaoxiensis
+		Eopteranodon_lii
+		Eosipterus_yangi
+		Eudimorphodon_ranzii
+		Eudimorphodon_rosenfeldi
+		Eurazhdarcho_langendorfensis
+		Europejara_olcadesorum
+		Feilongus_youngi
+		Fenghuangopterus_lii
+		Gallodactylus_canjuersensis
+		Germanodactylus_cristatus
+		Germanodactylus_rhamphastinus
+		Gnathosaurus_macrurus
+		Gnathosaurus_subulatus
+		Guidraco_venator
+		Haopterus_gracilis
+		Harpactognathus_gentryii
+		Hongshanopterus_lacustris
+		Huanhepterus_quingyangensis
+		Huaxiapterus_benxiensis
+		Huaxiapterus_jii
+		Istiodactylus_latidens
+		Istiodactylus_sinensis
+		Jeholopterus_ningchengensis
+		Jidapterus_edentus
+		Kepodactylus_insperatus
+		Kryptodrakon_progenitor
+		Kunpengopterus_sinensis
+		Lacusovagus_magnificens
+		Liaodactylus_primus
+		Liaoningopterus_gui
+		Liaoxipterus_brachyognathus
+		Lonchodectes_compressirostris
+		Lonchodraco_giganteus
+		Longchengpterus_zhaoi
+		Ludodactylus_sibbicki
+		Microtuban_altivolans
+		Moganopterus_zhuiana
+		Montanazhdarcho_minor
+		Muzquizopteryx_coahuilensis
+		Nemicolopterus_crypticus
+		Nesodactylus_hesperius
+		Noripterus_complicidens
+		Noripterus_parvus
+		Normannognathus_wellnhoferi
+		Nurhachius_ignaciobritoi
+		Nyctosaurus_gracilis
+		Nyctosaurus_lamegoi
+		Nyctosaurus_nanus
+		Orientognathus_chaoyangensis
+		Ornithocheirus_simus
+		Ornithostoma_sedgwicki
+		Parapsicephalus_purdoni
+		Phosphatodraco_mauritanicus
+		Piksi_barbarulna
+		Plataleorhynchus_streptophorodon
+		Preondactylus_buffarinii
+		Pteranodon_longiceps
+		Pteranodon_sternbergi
+		Pterodactylus_antiquus
+		Pterodactylus_kochi
+		Pterodaustro_guinazui
+		Pterorhynchus_wellnhoferi
+		Qinglongopterus_guoi
+		Quetzalcoatlus_northropi
+		Radiodactylus_langstoni
+		Raeticodactylus_filisurensis
+		Rhamphinion_jenkinsi
+		Rhamphorhynchus_muensteri
+		Scaphognathus_crassirostris
+		Scleromochlus_taylori
+		Sericipterus_wucaiwanensis
+		Shenzhoupterus_chaoyangensis
+		Simurghia_robusta
+		Sinopterus_dongi
+		Sinopterus_gui
+		Sordes_pilosus
+		Tapejara_wellnhoferi
+		Tethydraco_regalis
+		Thalassodromeus_sethi
+		Tropeognathus_mesembrinus
+		Tupandactylus_imperator
+		Tupandactylus_navigans
+		Tupuxuara_leonardii
+		Tupuxuara_longicristatus
+		Vectidraco_daisymorrisae
+		Volgadraco_bogolubovi
+		Wukongopterus_lii
+		Zhejiangopterus_linhaiensis
+	;
+END;
+BEGIN TREES;
+	TRANSLATE
+		1	Aerotitan_sudamericanus,
+		2	Aetodactylus_halli,
+		3	Alamodactylus_byrdi,
+		4	Alanqa_saharica,
+		5	Alcione_elainus,
+		6	Allkaruen_koi,
+		7	Angustinaripterus_longicephalus,
+		8	Anhanguera_araripensis,
+		9	Anhanguera_blittersdorffi,
+		10	Anhanguera_piscator,
+		11	Anhanguera_santanae,
+		12	Anurognathus_ammoni,
+		13	Arambourgiania_philadelphiae,
+		14	Ardeadactylus_longicollum,
+		15	Aurorazhdarcho_primordius,
+		16	Austriadactylus_cristatus,
+		17	Azhdarcho_lancicollis,
+		18	Bakonydraco_galaczi,
+		19	Batrachognathus_volans,
+		20	Beipiaopterus_chenianus,
+		21	Bennettazhia_oregonensis,
+		22	Boreopterus_cuiae,
+		23	Brasileodactylus_araripensis,
+		24	Cacibupteryx_caribensis,
+		25	Caiuajara_dobruskii,
+		26	Campylognathoides_liasicus,
+		27	Campylognathoides_zitteli,
+		28	Caviramus_schesaplanensis,
+		29	Cearadactylus_atrox,
+		30	Changchengopterus_pani,
+		31	Chaoyangopterus_zhangi,
+		32	Cimoliopterus_cuvieri,
+		33	Cimoliopterus_dunni,
+		34	Coloborhynchus_clavirostris,
+		35	Cretornis_hlavaci,
+		36	Ctenochasma_elegans,
+		37	Ctenochasma_porocristata,
+		38	Cuspicephalus_scarfi,
+		39	Cycnorhamphus_suevicus,
+		40	Darwinopterus_linglongtaensis,
+		41	Darwinopterus_modularis,
+		42	Darwinopterus_robustodens,
+		43	Dendrorhynchoides_curvidentatus,
+		44	Dendrorhynchoides_mutoudengensis,
+		45	Dimorphodon_macronyx,
+		46	Domeykodactylus_ceciliae,
+		47	Dorygnathus_banthensis,
+		48	Douzhanopterus_zhengi,
+		49	Dsungaripterus_weii,
+		50	Elanodactylus_prolatus,
+		51	Eoazhdarcho_liaoxiensis,
+		52	Eopteranodon_lii,
+		53	Eosipterus_yangi,
+		54	Eudimorphodon_ranzii,
+		55	Eudimorphodon_rosenfeldi,
+		56	Eurazhdarcho_langendorfensis,
+		57	Europejara_olcadesorum,
+		58	Feilongus_youngi,
+		59	Fenghuangopterus_lii,
+		60	Gallodactylus_canjuersensis,
+		61	Germanodactylus_cristatus,
+		62	Germanodactylus_rhamphastinus,
+		63	Gnathosaurus_macrurus,
+		64	Gnathosaurus_subulatus,
+		65	Guidraco_venator,
+		66	Haopterus_gracilis,
+		67	Harpactognathus_gentryii,
+		68	Hongshanopterus_lacustris,
+		69	Huanhepterus_quingyangensis,
+		70	Huaxiapterus_benxiensis,
+		71	Huaxiapterus_jii,
+		72	Istiodactylus_latidens,
+		73	Istiodactylus_sinensis,
+		74	Jeholopterus_ningchengensis,
+		75	Jidapterus_edentus,
+		76	Kepodactylus_insperatus,
+		77	Kryptodrakon_progenitor,
+		78	Kunpengopterus_sinensis,
+		79	Lacusovagus_magnificens,
+		80	Liaodactylus_primus,
+		81	Liaoningopterus_gui,
+		82	Liaoxipterus_brachyognathus,
+		83	Lonchodectes_compressirostris,
+		84	Lonchodraco_giganteus,
+		85	Longchengpterus_zhaoi,
+		86	Ludodactylus_sibbicki,
+		87	Microtuban_altivolans,
+		88	Moganopterus_zhuiana,
+		89	Montanazhdarcho_minor,
+		90	Muzquizopteryx_coahuilensis,
+		91	Nemicolopterus_crypticus,
+		92	Nesodactylus_hesperius,
+		93	Noripterus_complicidens,
+		94	Noripterus_parvus,
+		95	Normannognathus_wellnhoferi,
+		96	Nurhachius_ignaciobritoi,
+		97	Nyctosaurus_gracilis,
+		98	Nyctosaurus_lamegoi,
+		99	Nyctosaurus_nanus,
+		100	Orientognathus_chaoyangensis,
+		101	Ornithocheirus_simus,
+		102	Ornithostoma_sedgwicki,
+		103	Parapsicephalus_purdoni,
+		104	Phosphatodraco_mauritanicus,
+		105	Piksi_barbarulna,
+		106	Plataleorhynchus_streptophorodon,
+		107	Preondactylus_buffarinii,
+		108	Pteranodon_longiceps,
+		109	Pteranodon_sternbergi,
+		110	Pterodactylus_antiquus,
+		111	Pterodactylus_kochi,
+		112	Pterodaustro_guinazui,
+		113	Pterorhynchus_wellnhoferi,
+		114	Qinglongopterus_guoi,
+		115	Quetzalcoatlus_northropi,
+		116	Radiodactylus_langstoni,
+		117	Raeticodactylus_filisurensis,
+		118	Rhamphinion_jenkinsi,
+		119	Rhamphorhynchus_muensteri,
+		120	Scaphognathus_crassirostris,
+		121	Scleromochlus_taylori,
+		122	Sericipterus_wucaiwanensis,
+		123	Shenzhoupterus_chaoyangensis,
+		124	Simurghia_robusta,
+		125	Sinopterus_dongi,
+		126	Sinopterus_gui,
+		127	Sordes_pilosus,
+		128	Tapejara_wellnhoferi,
+		129	Tethydraco_regalis,
+		130	Thalassodromeus_sethi,
+		131	Tropeognathus_mesembrinus,
+		132	Tupandactylus_imperator,
+		133	Tupandactylus_navigans,
+		134	Tupuxuara_leonardii,
+		135	Tupuxuara_longicristatus,
+		136	Vectidraco_daisymorrisae,
+		137	Volgadraco_bogolubovi,
+		138	Wukongopterus_lii,
+		139	Zhejiangopterus_linhaiensis
+	;
+	TREE * UNTITLED = [&R] (((((((((((((((((((((((((((13:5.75,115:5.75):8.325,139:2.575):2.575,56:16.65):2.575,104:19.225):8.941666667,17:6.366666667):6.366666667,89:23.03333333):10.56666667,116:4.2):12.06666667,51:7.866666667):7.866666667,(87:32.7,(123:7.866666667,(31:3.933333333,75:3.933333333):3.933333333):3.933333333):3.933333333):3.933333333,((130:8.0875,(1:26.4,4:9.5):17.5875):8.0875,((79:5.391666667,134:5.391666667):5.391666667,135:10.78333333):5.391666667):5.391666667):13.09307359,((46:3.053246753,49:8.253246753):3.053246753,(93:5.653246753,94:5.653246753):5.653246753):3.053246753):3.053246753,(21:29.25285714,(((25:2.185,(132:0.95,133:0.95):3.135):11.34214286,(57:4.578571429,128:10.84857143,136:4.578571429):4.578571429):4.578571429,(18:50.45857143,(((71:2.185,125:2.185):7.679285714,((126:2.185,91:2.185):4.932142857,52:2.747142857):2.747142857):2.747142857,70:12.61142857):2.747142857):2.747142857):2.747142857):14.96012987):3.053246753,(((((((((((((10:0.475,9:0.475):0.475,11:0.95):0.475,8:1.425):10.625,81:10.15):10.15,(131:21.83333333,(101:34.76666667,34:0.3666666667):0.3666666667):0.3666666667):0.3666666667,(23:11.28333333,29:11.28333333):11.28333333):0.3666666667,(65:10.51666667,86:12.41666667):10.51666667):0.3666666667,(2:28.2,(32:14.1,33:14.1):14.1):14.1):0.3666666667,(96:18.28733333,(85:14.808,(82:11.32866667,(72:3.479333333,73:3.479333333):3.479333333):3.479333333):3.479333333):3.479333333):0.3666666667,(22:8.881666667,(83:12.635,84:12.635):21.51666667):8.881666667):0.3666666667,68:22.5):0.3666666667,((3:13.94,137:20.14,(35:7.38,((5:10.9,124:10.9):15.82,(90:2.46,(98:20.43333333,(97:1.366666667,99:1.366666667):1.366666667):3.826666667):2.46):2.46):2.46):31.01,(129:53.13333333,(102:9.516666667,(108:11.7,109:8.2):17.71666667):9.516666667):9.516666667):9.516666667):0.3666666667,105:61.03333333):15.63290043):3.053246753,66:37.54948052):3.053246753,((((((((((69:11.2,(106:5.4,(63:4.8,64:0.6):0.6):0.6):0.6,50:25.83):2.925,14:2.325):2.325,(58:15.54,88:15.54):15.54):2.325,76:9.975):4.152272727,((80:0.6090909091,(36:6.15,37:6.15):6.759090909):0.6090909091,(112:22.84409091,20:18.47409091):18.47409091):0.6090909091):0.6090909091,((39:3.912121212,60:6.912121212):3.912121212,95:7.824242424,15:10.82424242):3.912121212):0.6090909091,111:15.34545455):0.6090909091,110:15.95454545):0.6090909091,(38:5.481818182,(61:2.8,62:2.8):8.281818182):5.481818182):0.6090909091):0.6090909091,53:41.21181818):0.6090909091,77:6.090909091):5.409090909,(100:25.6,48:2.4):2.4):2.4,((19:9.1,44:2.4):2.4,(43:41.46333333,(12:17.06666667,74:0.9666666667):0.9666666667):5.766666667):2.4):2.4,30:9.6):2.4,(113:12.9,(78:8,(((41:2,42:2):2,40:4):2,138:6):2):2):2):2,127:20.7):13.46666667,(59:24.6,(120:40.73333333,(47:2.866666667,(((67:24.02,(7:2.66,122:12.06):2.66):2.66,114:10.68):2.66,(119:22.66,(24:6.68,92:10.28):6.68):6.68):5.526666667):2.866666667):2.866666667):2.866666667):2.866666667,(26:7.166666667,27:7.166666667):7.166666667):14.34166667,((45:3.825,6:24.825,103:21.025):3.825,118:9.55):3.825):20.865,((107:6.39,16:6.39):6.39,((28:1.75,117:1.75):10.27,(54:4.26,55:4.26):4.26):4.26):4.26):4.26,121:1);
+END;
