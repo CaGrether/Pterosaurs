@@ -40,17 +40,17 @@ library(ape)
 # 1. Load & organise tree file ------------------------------------------------
 
 ## Load the tree file:
-ptero_tree_raw <- read.nexus("Trees/Data_S3.nex")
-ages_info <- read.csv("Data/Output/ages_info.csv")
+ptero_tree_dated <- read.nexus("Trees/ptero_tree_dated.nex")
 
-#### Use ptero_tree_dated from phylo_plots.R 
-
-#### phylo_plots.R Script modified
+#### analysis
 # To include Quetzalcoatlus data, change eff.dat "Quetzalcoatlus spp" to "Quetzalcoatlus northropi"
 eff.dat$species[62] <- "Quetzalcoatlus_northropi"
 
+eff.dat$species[36] <- "Hatzegopteryx_thambema" # fixed spelling
+eff.dat$species[40] <- "Huaxiapterus_corollatus" # fixed spelling
+
 # compare species in tree and Venditti data
-setdiff(eff.dat$species, ptero_tree_dated$tip.label) # taxa in data but not on tree 1 (Quetzalcoatlus spp)
+setdiff(eff.dat$species, ptero_tree_dated$tip.label) # taxa in data but not on tree 
 setdiff(ptero_tree_dated$tip.label, eff.dat$species) # taxa on tree, but not in data 82
 
 # Drop tips from data that are not on the tree

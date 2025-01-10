@@ -106,8 +106,6 @@ unique(PCA_data_lateK$family) # check all groups, best is n<6
 
 # PCA: analysis and plots --------------------------------------------------
 
-## Perform a separate PCA and plot for each interval
-
 
 # early Jurassic
 # eJ_pca <- PCA_data_earlyJ[,2:5] %>%
@@ -279,7 +277,7 @@ Ven_climate <- merge(species_climate, Ven_taxa, by.x = "accepted_name", by.y = "
 PCA_Ven <- subset(Ven_climate, select = c(occurrence_no,  ## ALL PTEROS
                                           MAT, seasonal_temp, 
                                           MAP, seasonal_precip, 
-                                          family, ## ***** THIS IS THE GROUPING VARIABLE **** 
+                                          family, 
                                           early_interval
 ))
 
@@ -552,16 +550,6 @@ confellip_K4
 cloud_data <- PCA_data
 colnames(cloud_data)[6] <- "Pterosaur_taxa"
 colnames(cloud_data)
-
-# one dataset each for Azhd and Pteran
-# cloud_az <- cloud_data %>% 
-#   arrange(Pterosaur_taxa) %>% 
-#   .[which(.$Pterosaur_taxa=="Azhdarchoidea"),]
-# 
-# cloud_pt <- cloud_data %>% 
-#   arrange(Pterosaur_taxa) %>% 
-#   .[which(.$Pterosaur_taxa=="Pteranodontoidea"),]
-
 
 # Raincloud plots - entire Cretaceous
 ## MAT

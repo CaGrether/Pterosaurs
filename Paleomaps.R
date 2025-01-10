@@ -23,7 +23,8 @@ library(ggplot2) # for plotting
 library(ggpubr) # for plotting
 library(divDyn) # stages info
 library(dplyr) # functions
-data(stages) # age info
+
+data(stages) # age
 
 select <- dplyr::select # ensure the select function is coming from dplyr
 

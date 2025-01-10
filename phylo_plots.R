@@ -92,6 +92,8 @@ ptero_tree_dated <- DatePhylo(ptero_tree, ptero_timeData, method = "equal", rlen
 #ptero_tree_dated <- drop.tip(ptero_tree_dated, "Eurazhdarcho_langendorfensis")
 #ptero_tree_dated <- drop.tip(ptero_tree_dated, "Bakonydraco_galaczi")
 
+## save tree for later purpose
+writeNexus(ptero_tree_dated, file = "Trees/ptero_tree_dated.nex")
 
 # 3. Organise the climate data --------------------------------------------
 

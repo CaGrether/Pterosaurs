@@ -22,7 +22,7 @@ library(viridis)
 # 1. Prep data ------------------------------------------------------------
 
 
-bird_tree_raw <- read.nexus("Trees/tipdated.tre")
+bird_tree_raw <- read.nexus("Trees/birds_tipdated.tre")
 
 plot(bird_tree_raw, type = "fan", show.tip.label = F)
 
