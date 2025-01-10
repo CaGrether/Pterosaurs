@@ -63,17 +63,9 @@ intervals <- meso[,c(4,6,7,8)]
 
 # 1(a). Sampling proxy counts ---------------------------------------------------
 
-## Let's explore sampling patterns!
-## First we'll calculate counts of sampling proxies and plot these alongside raw diversity
+## calculate counts of sampling proxies and plot these alongside raw diversity
 
 # Taxa per interval 
-# count_taxa <- vector("numeric") # create empty vector for the loop below to populate
-# for (i in 1:nrow(intervals)) { # for-loop to count each taxon that appears in each interval
-#   out <- subset(occ_data, max_ma > intervals[i,]$min_ma & min_ma < intervals[i,]$max_ma) # uses our intervals dataframe
-#   count_taxa[i] <- (length(unique(out$accepted_name)))
-#   print(count_taxa[i])
-# }
-# MINE
 count_taxa <- vector("numeric") # create empty vector for the loop below to populate
 for (i in 1:nrow(intervals)) { # for-loop to count each taxon that appears in each interval
   out <- taxon.dat[which(taxon.dat$stage==intervals$stage[i]),]
@@ -98,22 +90,19 @@ for (i in 1:nrow(intervals)) {
 }
 
 
-## For equal-area gird cells, I recommend the package 'icosa' (Kocsis, 2017)
+## For equal-area gird cells package 'icosa' (Kocsis, 2017)
 ## For more info see: http://cran.nexr.com/web/packages/icosa/vignettes/icosaIntroShort.pdf
 
 
 
 ## Gather the proxy information together in a new dataframe for plotting:
-#proxy_counts <- data.frame(intervals$interval_name, intervals$mid_ma, count_taxa, count_colls, count_formations)
-proxy_counts <- data.frame(intervals$stage, intervals$mid, count_taxa, count_colls, count_formations) #MINE
+proxy_counts <- data.frame(intervals$stage, intervals$mid, count_taxa, count_colls, count_formations) 
 ## Rename the columns for ease:
 proxy_counts <- rename(proxy_counts, 
                        "interval_name" = "intervals.stage", 
                        "mid_ma" = "intervals.mid")
 
-## Finally, convert all zero's to NAs for plotting 
-## This means that the plots won't register zero and instead will leave gaps 
-## where there is no sampling instead - this gives a more realistic picture
+## Convert all zero's to NAs for plotting 
 proxy_counts[proxy_counts == 0] <- NA 
 
 
@@ -349,20 +338,17 @@ plot(sp_accum, ci.type = "poly", col = "#0E6A8A", lwd = 2, ci.lty = 0, ci.col = 
 
 # 5. Modern world map --------------------------------------------------------
 
-## Let's explore our data on a modern world map and see if we can spot
-##    any geographic (and even socio-economic) patterns...
-
-## First, let's pear down or occurrence data to only keep the info we need for making the map
+## keep the info we need for making the map
 locality_info <- occurrences_sp %>% 
   dplyr::select(collection_name, lat, lng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
   na.omit()
 
-## Grab a world map for ggplot to work with:
+## world map for ggplot to work with:
 world_map <- map_data("world")
 ggplot() + geom_map(data = world_map, map = world_map, aes(long, lat, map_id = region)) 
 
-## Let's make it pretty and add our data
+## our data
 modern_map <- ggplot() + 
   geom_map(data = world_map, map = world_map, aes(long, lat, map_id = region), 
            color = "grey80", fill = "grey90", linewidth = 0.1) +
@@ -370,7 +356,7 @@ modern_map <- ggplot() +
   theme_void() + theme(legend.position = "none")
 modern_map
 
-## And save as a .pdf
+## save as a .pdf
 ggsave(plot = modern_map,
        width = 8, height = 5, dpi = 600, 
        filename = "./plots/Modern_map.pdf", useDingbats=FALSE)
@@ -383,7 +369,7 @@ ggsave(plot = modern_map,
 
 ## Now let's look at our occurrences on a world map with palaeogeographic rotations
 
-## First, create a new, simplified data object to build our palaeomap:
+## simplified data object for palaeomap:
 paleomap_data <- occurrences_sp %>% 
   select(collection_name, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
@@ -392,20 +378,18 @@ paleomap_data <- occurrences_sp %>%
 # add mean age to each collection
 paleomap_data$mid_ma <- (paleomap_data$max_ma + paleomap_data$min_ma)/2
 
-## Now, let's split these data in Late Triassic and Early Jurassic 
-## (This is a very crude splitting for simplicity, but for a publication I would recommend
-##    being more specific about how intervals are divided)
+## split these data in Late Triassic and Early Jurassic 
 #-----------------------------------------------------------------------------
 ###### only FAD (earliest occurences) ################
 #-----------------------------------------------------------------------------
 map_data_LT <- paleomap_data %>% filter(max_ma >= 201.4) # one from MT
 map_data_EJ <- paleomap_data %>% filter(174.7 < max_ma & max_ma < 201.4)
 map_data_MJ <- paleomap_data %>% filter(161.5 < max_ma & max_ma < 174.7)
-map_data_LJ <- paleomap_data %>% filter(145.0 < max_ma & max_ma < 161.5)
-map_data_EK <- paleomap_data %>% filter(127.7 < max_ma & max_ma < 145.0)
-map_data_LEK <- paleomap_data %>% filter(100.5 < max_ma & max_ma < 127.7)
-map_data_ELK <- paleomap_data %>% filter(86.3 < max_ma & max_ma < 100.5)
-map_data_LK <- paleomap_data %>% filter(66.0 < max_ma & max_ma < 86.3) # only 2 - worth splitting?
+map_data_LJ <- paleomap_data %>% filter(143.1 < max_ma & max_ma < 161.5)
+map_data_EK <- paleomap_data %>% filter(125.7 < max_ma & max_ma < 143.1)
+map_data_LEK <- paleomap_data %>% filter(100.5 < max_ma & max_ma < 125.7)
+map_data_ELK <- paleomap_data %>% filter(85.7 < max_ma & max_ma < 100.5)
+map_data_LK <- paleomap_data %>% filter(66.0 < max_ma & max_ma < 85.7) # only 2 - worth splitting?
 
 ## Let's now grab our paleogeographies for the time bins from the GPlates (via rgplates)
 paleogeog_LT <- reconstruct("static_polygons", age = 215, model="MERDITH2021") 
