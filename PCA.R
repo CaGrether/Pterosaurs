@@ -18,8 +18,8 @@
 library(tidyverse)
 library(FactoMineR) # For PCA plots
 
-library(devtools)
-install_github("fawda123/ggord") ## For PCA plots
+library(devtools) # to install ggord
+install_github("fawda123/ggord") # For PCA plots
 library(ggord)
 library(ordr) # manipulating data objects
 

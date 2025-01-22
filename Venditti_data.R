@@ -39,8 +39,9 @@ library(ape)
 
 # 1. Load & organise tree file ------------------------------------------------
 
-## Load the tree file:
+## Load the tree and data files:
 ptero_tree_dated <- read.nexus("Trees/ptero_tree_dated.nex")
+eff.dat <- read.csv2("Data/Output/Species_eff_data.csv")
 
 #### analysis
 # To include Quetzalcoatlus data, change eff.dat "Quetzalcoatlus spp" to "Quetzalcoatlus northropi"
@@ -77,8 +78,8 @@ CoTmapped <- setMap(CoTmapped, invert = TRUE)
 #CoTmapped <- drop.tip(CoTmapped, "Bakonydraco_galaczi")
 #CoTmapped <- drop.tip(CoTmapped, "Eurazhdarcho_langendorfensis")
 n <- length(CoTmapped$cols)
-CoTmapped$cols[1:n] <- plasma(n)
-plot(CoTmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT")
+CoTmapped$cols[1:n] <- rocket(n)
+plot(CoTmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "CoT (kg m J")
 
 
 # ______________________________________________________
@@ -182,7 +183,7 @@ Pseason_matrix <- as.matrix(climate_eff_mean) [,4] # Mean seasonal precipitation
 MATmapped_eff <- contMap(tree_eff_pruned, MAT_eff_matrix, plot = FALSE)
 MATmapped_eff <- setMap(MATmapped_eff, invert = TRUE)
 n <- length(MATmapped_eff$cols)
-MATmapped_eff$cols[1:n] <- inferno(n)
+MATmapped_eff$cols[1:n] <- plasma(n)
 plot(MATmapped_eff, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
 
 ## Precipitation contMap()
@@ -196,12 +197,12 @@ plot(MAPmapped_eff, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt =
 Tseason_mapped <- contMap(tree_eff_pruned, Tseason_matrix, plot = FALSE)
 Tseason_mapped <- setMap(Tseason_mapped, invert = TRUE)
 n <- length(Tseason_mapped$cols)
-Tseason_mapped$cols[1:n] <- inferno(n)
-plot(Tseason_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+Tseason_mapped$cols[1:n] <- plasma(n)
+plot(Tseason_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "T (°C)")
 
 ## PSeason contMap()
 Pseason_mapped <- contMap(tree_eff_pruned, Pseason_matrix, plot = FALSE)
 Pseason_mapped <- setMap(Pseason_mapped, invert = TRUE)
 n <- length(Pseason_mapped$cols)
 Pseason_mapped$cols[1:n] <- viridis(n, direction = -1)
-plot(Pseason_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
+plot(Pseason_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")

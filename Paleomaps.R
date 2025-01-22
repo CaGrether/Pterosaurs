@@ -1,6 +1,6 @@
 # ******************************************************
 #
-#   AMaster Thesis
+#   Master Thesis
 #
 #   Mapping occurrences of pterosaurs
 #
@@ -120,8 +120,6 @@ proxy_counts[proxy_counts == 0] <- NA
 ##_________________________________
 
 ## Set interval boundaries for the dotted lines on the plot
-## We'll also use this vector again, so its handy to have :)
-#int_boundaries <- c(237.0, 228.0, 208.5, 201.3, 199.3, 190.8, 182.7, 174.1)
 int_boundaries <- c( 250, 241, 209, 183, 165, 149, 133, 113, 
                      89, 72) # NOT EXACT AGES
 #251.0,247.0,237.0, 228.0,201.3, 199.3, 190.8, 174.1,171.0, 168.0,162.0, 155.0, 143.0, 138.0, 
@@ -263,6 +261,21 @@ ggsave(plot = lat_plot,
        width = 20, height = 10, dpi = 500, units = "cm", 
        filename = "./plots/lat_alpha_div.pdf", useDingbats=FALSE)
 
+# find data point with exceptional number and low lat
+# minlat <- min(abs(lat_data$paleolat))
+# mincol <- lat_data[which(abs(lat_data$paleolat)== minlat),]
+# 
+# # exclude that point
+# latdat <- lat_data[-which(abs(lat_data$paleolat)== minlat),]
+# lat_data[which(abs(latdat$paleolat)== min(abs(latdat$paleolat))),]
+
+lat_dat_ord <- lat_data[order(abs(lat_data$paleolat),decreasing = F),]
+loc <- lat_dat_ord [6,]
+
+# # location today
+location <- select(occurrences_sp, collection_no, collection_name, lat, lng,
+                   paleolat, paleolng, max_ma, min_ma)
+location[which(location$paleolat == loc$paleolat),] # Brazil
 
 
 # 3. Regression -----------------------------------------------------------
@@ -321,7 +334,7 @@ abun_data <- table(occurrences_sp$collection_no, occurrences_sp$accepted_name)
 #abun_data[abun_data > 0] <- 1
 
 ## Turn this into a matrix:
-abun_matrix <- matrix(abun_data, ncol = length(unique(occ_data$accepted_name)))
+abun_matrix <- matrix(abun_data, ncol = length(unique(occurrences_sp$accepted_name)))
 colnames(abun_matrix) <- colnames(abun_data) # add the column names back in for when we need to check anything
 rownames(abun_matrix) <- rownames(abun_data) # same for the row names
 
@@ -331,9 +344,6 @@ sp_accum <- specaccum(abun_matrix, method = "collector")
 
 ## Plot the curve in base R - you can make this pretty in ggplot if you prefer!
 plot(sp_accum, ci.type = "poly", col = "#0E6A8A", lwd = 2, ci.lty = 0, ci.col = "#5CBCDD")
-
-
-
 
 
 # 5. Modern world map --------------------------------------------------------
@@ -479,7 +489,7 @@ paleomap_EK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Early Cretaceous") +
+  ggtitle("early Early Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_EK
@@ -494,7 +504,7 @@ paleomap_LEK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Late Early Cretaceous") +
+  ggtitle("late Early Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_LEK
@@ -509,7 +519,7 @@ paleomap_ELK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Early Late Cretaceous") +
+  ggtitle("early Late Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_ELK
@@ -524,7 +534,7 @@ paleomap_LK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Late Cretaceous") +
+  ggtitle("late Late Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_LK
@@ -568,6 +578,10 @@ T_and_J <- ggarrange(paleomap_LT, paleomap_EJ, paleomap_MJ, paleomap_LJ, ncol = 
 K_in_4 <- ggarrange(paleomap_EK, paleomap_LEK, paleomap_ELK, paleomap_LK, ncol = 2, nrow = 2)
 FAD_all <- ggarrange(paleomap_LT, paleomap_EJ, paleomap_MJ, paleomap_LJ, 
           paleomap_EK, paleomap_LEK, paleomap_ELK, paleomap_LK, ncol = 2, nrow = 4) 
+
+T_and_J
+K_in_4
+FAD_all
 
 ggsave(plot = FAD_all,
        width = 11, height = 14, dpi = 600, 
@@ -655,7 +669,7 @@ paleomap_mid_EK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Early Cretaceous") +
+  ggtitle("early Early Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_mid_EK
@@ -670,7 +684,7 @@ paleomap_mid_LEK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Late Early Cretaceous") +
+  ggtitle("late Early Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_mid_LEK
@@ -685,7 +699,7 @@ paleomap_mid_ELK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Early Late Cretaceous") +
+  ggtitle("early Late Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_mid_ELK
@@ -700,7 +714,7 @@ paleomap_mid_LK <-  ggplot() +
   #scale_y_continuous(breaks = seq(from = -90, to = 90, by = 30), limits = c(-90,90)) + 
   #scale_x_continuous(breaks = seq(from = -180, to = 180, by = 30), limits = c(-180,180)) + 
   ## Add the interval name to the title of each map 
-  ggtitle("Late Cretaceous") +
+  ggtitle("late Late Cretaceous") +
   ## Finally, add the custom theme
   palaeomap_theme
 paleomap_mid_LK
@@ -724,7 +738,7 @@ ggsave(plot = paleomap_mid_LJ,
 # EK
 ggsave(plot = paleomap_mid_EK,
        width = 12, height = 10, dpi = 600, 
-       filename = "./plots/Palaeomap_mid_EarlyCretaceous.pdf", useDingbats=FALSE)
+       filename = "./plots/Palaeomap_mid_erEarlyCretaceous.pdf", useDingbats=FALSE)
 # LEK
 ggsave(plot = paleomap_mid_LEK,
        width = 12, height = 10, dpi = 600, 
@@ -736,13 +750,17 @@ ggsave(plot = paleomap_mid_ELK,
 # LK
 ggsave(plot = paleomap_mid_LK,
        width = 12, height = 10, dpi = 600, 
-       filename = "./plots/Palaeomap_mid_LateCretaceous.pdf", useDingbats=FALSE)
+       filename = "./plots/Palaeomap_mid_ltLateCretaceous.pdf", useDingbats=FALSE)
 
 # plot as 2 grids
 T_and_J_mid <- ggarrange(paleomap_mid_LT, paleomap_mid_EJ, paleomap_mid_MJ, paleomap_mid_LJ, ncol = 2, nrow = 2)
 K_in_4_mid <- ggarrange(paleomap_mid_EK, paleomap_mid_LEK, paleomap_mid_ELK, paleomap_mid_LK, ncol = 2, nrow = 2)
 Mid_all <- ggarrange(paleomap_mid_LT, paleomap_mid_EJ, paleomap_mid_MJ, paleomap_mid_LJ, 
                      paleomap_mid_EK, paleomap_mid_LEK, paleomap_mid_ELK, paleomap_mid_LK, ncol = 2, nrow = 4) 
+
+T_and_J_mid
+K_in_4_mid
+Mid_all
 
 ggsave(plot = Mid_all,
        width = 11, height = 14, dpi = 600, 
