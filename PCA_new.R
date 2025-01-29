@@ -213,9 +213,7 @@ confellip_lK
 # https://www.rdocumentation.org/packages/RVAideMemoire/versions/0.9-80/topics/pairwise.perm.manova
 # citation("RVAideMemoire")
 
-# The "fact" argument will be your groups (a two-column data frame; first column with species names
-# and second column with the group they belong to [i.e., non-dinosaur tetrapods, non-sauropodomorph
-# dinosaurs, or sauropodomorphs]).
+# The "fact" argument will be the groups (here: Azhdarchoidea and Pteranodontoidea)
 
 EK_PCgroups <- PCA_data_earlyK$two.groups
 head(EK_PCgroups)
@@ -224,8 +222,7 @@ head(EK_PCgroups)
 LK_PCgroups <- PCA_data_lateK$two.groups
 head(LK_PCgroups)
 
-# The "resp" argument will be the euclidian distance of the PC scores. Again, you'll need the PC scores as a data frame. First column being the taxa;
-# other columns the PCs.
+# The "resp" argument will be the euclidian distance of the PC scores. 
 
 EK_PCscores <- as.data.frame(eK_pca$x) # PC scores from above
 EK_PCscores <- cbind(EK_PCgroups, EK_PCscores)
@@ -604,10 +601,11 @@ colnames(cloud_data)
 median(cloud_data$MAT[which(cloud_data$Pterosaur_taxa=="Azhdarchoidea")])
 median(cloud_data$MAT[which(cloud_data$Pterosaur_taxa=="Pteranodontoidea")])
 
+# split into early K and late K
 cloud_EK <- cloud_data[which(cloud_data$epoch=="Early Cretaceous"),]
 cloud_LK <- cloud_data[which(cloud_data$epoch=="Late Cretaceous"),]
 
-# Raincloud plots - entire Cretaceous
+# Raincloud plots
 ## MAT EK
 ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
@@ -666,7 +664,7 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) +
 
 
 # Mann-Whitney U test
-####### but MAT apparently is normal
+####### but MAT is normal
 
 ## seasonal temp EK
 ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 

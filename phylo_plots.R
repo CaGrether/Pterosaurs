@@ -19,7 +19,7 @@ library(phytools)
 library(tidyverse)
 library(strap)
 library(viridis)
-
+library(desk) # for Jarque Bera test
 
 
 
@@ -133,8 +133,6 @@ P_matrix <- as.matrix(climate_mean) [,4] # Mean seasonal precipitation
 
 
 # Jarque Bera test for normal distribution
-library(desk) # for Jarque Bera test
-
 jbMAT <- jb.test(MAT_matrix)
 jbMAP <- jb.test(MAP_matrix)
 jbT <- jb.test(T_matrix)
@@ -230,8 +228,31 @@ xclimate_mean <- xspec_climatree %>%
 xclimate_mean <- column_to_rownames(xclimate_mean, var = "accepted_name")
 
 ## Convert to matrix:
+MATx_matrix <- as.matrix(xclimate_mean) [,1]
+MAPx_matrix <- as.matrix(xclimate_mean) [,2]
+Tx_matrix <- as.matrix(xclimate_mean) [,3]
 Px_matrix <- as.matrix(xclimate_mean) [,4] # seasonal Preciptiation
 
+## MAT (see impact)
+MAT_x_mapped <- contMap(x.tree, MATx_matrix, plot = FALSE)
+MAT_x_mapped <- setMap(MAT_x_mapped, invert = TRUE)
+n <- length(MAT_x_mapped$cols)
+MAT_x_mapped$cols[1:n] <- plasma(n)
+plot(MAT_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+
+## MAP (see impact)
+MAP_x_mapped <- contMap(x.tree, MAPx_matrix, plot = FALSE)
+MAP_x_mapped <- setMap(MAP_x_mapped, invert = TRUE)
+n <- length(MAP_x_mapped$cols)
+MAP_x_mapped$cols[1:n] <- viridis(n, direction = -1)
+plot(MAP_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
+
+## seasonal Temperature (see impact)
+T_x_mapped <- contMap(x.tree, Tx_matrix, plot = FALSE)
+T_x_mapped <- setMap(T_x_mapped, invert = TRUE)
+n <- length(T_x_mapped$cols)
+T_x_mapped$cols[1:n] <- plasma(n)
+plot(T_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "T (°C)")
 
 ## seasonal Precipitation (see impact)
 P_x_mapped <- contMap(x.tree, Px_matrix, plot = FALSE)

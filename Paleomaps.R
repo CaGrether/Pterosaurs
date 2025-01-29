@@ -39,7 +39,6 @@ taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name,
 
 
 ints_standard <- read.csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
-#early_int <- read.csv2("Data/Input/stages_for_climate_data_early.csv", sep = ",")
 late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
 
 # ages_data <- read_delim("Data/Output/ages_info.csv", delim = ",")
@@ -344,6 +343,39 @@ sp_accum <- specaccum(abun_matrix, method = "collector")
 
 ## Plot the curve in base R - you can make this pretty in ggplot if you prefer!
 plot(sp_accum, ci.type = "poly", col = "#0E6A8A", lwd = 2, ci.lty = 0, ci.col = "#5CBCDD")
+
+#----------------------------------------------------------------------------------
+
+# Data
+occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
+occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
+## take necessary columns
+taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name, 
+                    early_interval, late_interval, max_ma, min_ma, formation)
+
+
+
+ints_standard <- read.csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
+late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
+
+# ages_data <- read_delim("Data/Output/ages_info.csv", delim = ",")
+# ptero_data <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
+
+# 0. put data into correct format -----------------------------------------------------------
+
+## add stage names to data
+# left join with early and late data respectively
+Adat <- left_join(taxon_inf, ints_standard, by = "early_interval")
+Bdat <- left_join(taxon_inf, late_int, by = "late_interval")
+
+# merge datasets
+big.dat <- rbind(Adat,Bdat)
+# remove duplicates
+taxon.dat <- big.dat[!duplicated(big.dat),]
+
+## add ages to intervals
+meso <- stages[52:81,]
+intervals <- meso[,c(4,6,7,8)]
 
 
 # 5. Modern world map --------------------------------------------------------
