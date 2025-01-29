@@ -40,13 +40,9 @@ taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name,
 ints_standard <- read.csv2("Data/Input/ints_standard_copy.csv") # manually fixed data
 late_int <- read.csv2("Data/Input/stages_for_climate_data_late.csv")
 
-# ages_data <- read_delim("Data/Output/ages_info.csv", delim = ",")
-# ptero_data <- read.csv2("Data/Input/ptero_groups_copy.csv") # all PBDB pterosaurs
-
 # 0. put data into correct format -----------------------------------------------------------
 
 ## add stage names to data
-# left join with early and late data respectively
 Adat <- left_join(taxon_inf, ints_standard, by = "early_interval")
 Bdat <- left_join(taxon_inf, late_int, by = "late_interval")
 
@@ -88,14 +84,9 @@ for (i in 1:nrow(intervals)) {
 }
 
 
-## For equal-area gird cells package 'icosa' (Kocsis, 2017)
-## For more info see: http://cran.nexr.com/web/packages/icosa/vignettes/icosaIntroShort.pdf
-
-
-
 ## Gather the proxy information together in a new dataframe for plotting:
 proxy_counts <- data.frame(intervals$stage, intervals$mid, count_taxa, count_colls, count_formations) 
-## Rename the columns for ease:
+## Rename the columns
 proxy_counts <- rename(proxy_counts, 
                        "interval_name" = "intervals.stage", 
                        "mid_ma" = "intervals.mid")
@@ -107,23 +98,14 @@ proxy_counts[proxy_counts == 0] <- NA
 
 # 1(b). Sampling plots ----------------------------------------------------------
 
-
-## Let's get plotting these patterns!
-## Below are two options depending on your preferred aesthetic
-##    1. via ggplot
-##    2. using geoscale to plot a geological time scale on the x-axis (similar to 'deeptime')
-
-
 ## Option 1: Plotting using ggplot
 ##_________________________________
 
 ## Set interval boundaries for the dotted lines on the plot
-int_boundaries <- c( 250, 241, 209, 183, 165, 149, 133, 113, 
-                     89, 72) # NOT EXACT AGES
-#251.0,247.0,237.0, 228.0,201.3, 199.3, 190.8, 174.1,171.0, 168.0,162.0, 155.0, 143.0, 138.0, 
-#126.5, 121.0,100.5, 94.0, 86.0, 84.0,
+int_boundaries <- c( 250, 241, 209, 183, 165, 149, 133, 113, 89, 72)
+                    
 
-## Set up your ggplot layers (first layer goes on the bottom, etc):
+## Set up ggplot layers
 proxy_plot <- ggplot() + 
   # Formations (as dots and a line):
   geom_line(data = proxy_counts, aes(mid_ma, count_formations), colour = "orangered3", linewidth = 1.2, linetype = "dashed")  +
@@ -134,18 +116,17 @@ proxy_plot <- ggplot() +
   # Taxa (as dots and a line):
   geom_line(data = proxy_counts, aes(mid_ma, count_taxa), colour = 'black', linewidth = 1.2)  +
   geom_point(data = proxy_counts, aes(mid_ma, count_taxa), colour = "black", size = 4, shape = 16) +
-  # Add a minimal theme - but you can make your own custom themes too!
+  # Add a minimal theme
   theme_minimal() + 
   labs(x = "Time (Ma)", y = "Sampling proxy counts") +
-  # Make sure to reverse the x-axis to match geological time!
+  # reverse the x-axis to match geological time
   scale_x_reverse(breaks = int_boundaries) +
-  # And tidy up our y-axis with even breaks that match the totals in our dataframe:
+  # y-axis with even breaks that match the totals in the dataframe:
   scale_y_continuous(breaks = seq(0, 100, 20))
-## Call the finished plot to the RStudio plots tab:
+## Call the finished plot
 proxy_plot
 
-## Set dimensions and save plot (as pdf) to the plots folder
-#dir.create("./plots") # create new folder if one doesn't already exist
+## Set dimensions and save plot
 ggsave(plot = proxy_plot,
        width = 20, height = 15, dpi = 500, units = "cm", 
        filename = "./plots/sampling_proxies.pdf", useDingbats=FALSE)
@@ -155,28 +136,24 @@ ggsave(plot = proxy_plot,
 ## Option 2: Plotting using geoscale
 ##__________________________________
 
-## NB: this is base R syntax, not ggplot syntax, so its a little different!
-## Take a look at the helpfile for the geoscale package for more info on each function
-## RStudio > Help panel (bottom right) > Search "geoscalePlot"
-
-## Before you make the plot, set up parameters for exporting a PDF of the plot to:
+## set up parameters for exporting a PDF of the plot
 pdf("./plots/sampling_proxies_geoscale.pdf", width = 9, height = 8) 
 
 ## Set up the base of the plot with the timescale:
 geoscalePlot(proxy_counts$mid_ma, proxy_counts$count_taxa, # ages and main data points
-             units = c("Period", "Age"), # which intervals to show in your timeline  (can also add Epoch)
+             units = c("Period", "Age"), # which intervals to show in the timeline  
              tick.scale = "Epoch", # resolution of the tick marks on timescale
              boxes = "Age", # option to include grey boxes for individual time bins
              abbrev = c("Age"), # option to abbreviate names of geological units
              lty = 1, pch = NA, 
              cex.age = 0.6, cex.ts = 1, cex.pt = 1, # size of numbers, text, and points on the scale bar
-             age.lim = c(245.5, 72.0), # oldest and youngest ages of the entire time interval you're plotting (i.e. temporal range)
-             data.lim = c(0, 100), # range of the data you're plotting - check it matches the largest number in your dataframe!
-             ts.col = TRUE, # include colours in the timescale? 
-             ts.width = 0.17, # space taken up by plotting the time scale (value = 0-1)
+             age.lim = c(245.5, 72.0), # oldest and youngest ages of the entire time interval
+             data.lim = c(0, 100), # range of the data
+             ts.col = TRUE, # include colours in the timescale 
+             ts.width = 0.17, # space taken up by plotting the time scale
              label = "Counts", # label for y-axis
              direction ="horizontal", # orientation of the plot
-             erotate = 0) # numerical value for the rotation for the temporal units (default is 90)
+             erotate = 0) # numerical value for the rotation for the temporal units
 
 # Now add the different lines and points separately:
 # Formations (as dots and a line):
