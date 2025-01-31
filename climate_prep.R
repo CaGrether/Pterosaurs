@@ -50,7 +50,7 @@ climate_data <- climate_data_varis %>% select(collection_no, plng, plat,
                                               MAP, seasonal_precip)
 
 
-## Import the cleaned data (species and ody fossils only)
+## Import the cleaned data (species and body fossils only)
 occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20) # fix file path if necessary
 glimpse(occurrences)
 
@@ -69,5 +69,15 @@ View(species_climate)
 
 ## Save a copy as a .csv:
 write_csv(species_climate, "Data/climate/species_climate.csv")
+
+## test for normality
+# which rows to remove in seasonal_temp (contain NA)
+which(is.na(species_climate$seasonal_temp))
+
+# Jarque Bera test for normal distribution
+jbMAT <- jb.test(species_climate$MAT)
+jbMAP <- jb.test(species_climate$MAP)
+jbT <- jb.test(species_climate[-c(1090,1123),]$seasonal_temp) 
+jbP <- jb.test(species_climate$seasonal_precip)
 
 

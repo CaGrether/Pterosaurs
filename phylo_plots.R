@@ -133,10 +133,11 @@ P_matrix <- as.matrix(climate_mean) [,4] # Mean seasonal precipitation
 
 
 # Jarque Bera test for normal distribution
-jbMAT <- jb.test(MAT_matrix)
-jbMAP <- jb.test(MAP_matrix)
-jbT <- jb.test(T_matrix)
-jbP <- jb.test(P_matrix)
+# jbMAT <- jb.test(MAT_matrix)
+# jbMAP <- jb.test(MAP_matrix)
+# jbT <- jb.test(T_matrix)
+# jbP <- jb.test(P_matrix)
+
 
 ## Temperature contMap()
 MATmapped <- contMap(tree_pruned, MAT_matrix, plot = FALSE)
@@ -261,35 +262,3 @@ n <- length(P_x_mapped$cols)
 P_x_mapped$cols[1:n] <- viridis(n, direction = -1)
 plot(P_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")
 
-
-
-
-# 4. Select groups of pterosaurs (work in progress) ----------------------------------------
-
-# ## remove specimens
-# ptero_taxa_clean <- as.data.frame(ptero_taxa[-c(which(ptero_taxa == "OCP_DEK_GE_716"),
-#                                           which(ptero_taxa == "LPM_L112113"),
-#                                           which(ptero_taxa == "LPM_N081607")),])
-# names(ptero_taxa_clean) <- "ptero_taxa"
-# 
-# 
-# ## get families from PBDB
-# family_info <- select(occurrences_sp, accepted_name, family)
-# 
-# 
-# ## add underscore to match names
-# family_info$accepted_name <- gsub(" ", "_", family_info$accepted_name)
-# 
-# 
-# ## merge
-# ptero_fam <- merge(ptero_taxa_clean, family_info, by.x = "ptero_taxa", 
-#       by.y = "accepted_name")
-# 
-# 
-# ## remove duplicates
-# ptero_groups <- ptero_fam[!duplicated(ptero_fam),]
-# names(ptero_groups) <- c("ptero_taxa", "family")
-# 
-# 
-# ## save a copy
-# write_csv(ptero_groups, "Data/Output/ptero_groups.csv")

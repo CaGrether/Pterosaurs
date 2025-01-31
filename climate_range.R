@@ -27,7 +27,6 @@ library(ggdist)
 ## Pterosaur clades
   ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # Azhdarchoidea and Pteranodontoidea
 
-
 ## merge species climate and group data here
   species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
   species_climate_group <- merge(species_climate, ptero_grouping, by.x = "accepted_name", by.y = "ptero_taxa")
@@ -128,7 +127,9 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) +
 
 
 # Mann-Whitney U test
-####### but MAT is normal
+Wilcox_MAT <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_data, exact = FALSE)
+Wilcox_MAT_EK <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_EK, exact = FALSE)
+Wilcox_MAT_LK <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_LK, exact = FALSE)
 
 ## seasonal temp EK
 ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
