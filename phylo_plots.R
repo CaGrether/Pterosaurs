@@ -19,7 +19,7 @@ library(phytools)
 library(tidyverse)
 library(strap)
 library(viridis)
-library(desk) # for Jarque Bera test
+#library(desk) # for Jarque Bera test
 
 
 

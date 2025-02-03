@@ -15,6 +15,7 @@
 
 ## Load packages
 library(tidyverse)  # data manipulation and organisation
+library(desk) # for Jarque Bera test
 
 
 ## Climate data - Scotese model output
