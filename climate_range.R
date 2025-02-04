@@ -26,6 +26,7 @@ library(ggdist)
 
 ## Pterosaur clades
   ptero_grouping <- read.csv2("Data/Input/azhd_and_pteran.csv") # Azhdarchoidea and Pteranodontoidea
+  glimpse(ptero_grouping)
 
 ## merge species climate and group data here
   species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
