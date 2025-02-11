@@ -32,9 +32,16 @@ library(ggdist)
   species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
   species_climate_group <- merge(species_climate, ptero_grouping, by.x = "accepted_name", by.y = "ptero_taxa")
 
-  #unique(species_climate_group$family)
+## get collection names
+  occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
+  occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
+  
+  forfourty_sp <- occurrences_sp %>% 
+    select(collection_name, occurrence_no, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
+    distinct(collection_name, .keep_all = TRUE) %>% 
+    na.omit(collection_name)
 
-
+## data for raincloud plots
   cloud_data <- subset(species_climate_group, select = c(occurrence_no,   
                                                      MAT, seasonal_temp,
                                                      MAP, seasonal_precip,
@@ -61,6 +68,7 @@ library(ggdist)
   colnames(cloud_data)[6] <- "Pterosaur_taxa"
   colnames(cloud_data)
   
+  # find out medians
   median(cloud_data$MAT[which(cloud_data$Pterosaur_taxa=="Azhdarchoidea")])
   median(cloud_data$MAT[which(cloud_data$Pterosaur_taxa=="Pteranodontoidea")])
   
