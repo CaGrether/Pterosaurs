@@ -17,6 +17,8 @@ library(tidyverse)
 library(ggplot2)
 library(ggdist)
 
+library(geoscale) # for plotting with the geological time scale on the x-axis (uses base R syntax)
+library(rgplates) # paleogeographic reconstructions
 
 # 1. Organise data -----------------------------------------------------------
 
@@ -33,13 +35,13 @@ library(ggdist)
   species_climate_group <- merge(species_climate, ptero_grouping, by.x = "accepted_name", by.y = "ptero_taxa")
 
 ## get collection names
-  occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
-  occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
-  
-  forfourty_sp <- occurrences_sp %>% 
-    select(collection_name, occurrence_no, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
-    distinct(collection_name, .keep_all = TRUE) %>% 
-    na.omit(collection_name)
+  # occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
+  # occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
+  # 
+  # forfourty_sp <- occurrences_sp %>% 
+  #   select(collection_name, occurrence_no, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
+  #   distinct(collection_name, .keep_all = TRUE) %>% 
+  #   na.omit(collection_name)
 
 ## data for raincloud plots
   cloud_data <- subset(species_climate_group, select = c(occurrence_no,   
@@ -47,7 +49,8 @@ library(ggdist)
                                                      MAP, seasonal_precip,
                                                      two.groups, 
                                                      early_interval,
-                                                     accepted_name
+                                                     accepted_name,
+                                                     plat, plng
   ))
 
 ## Load auxillary dataset to standardise the time intervals
@@ -167,6 +170,32 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_tax
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Temperature (°C)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
+
+
+## find location of problematic species T > 40°C
+# subset species
+hot_sp <- cloud_EK[which(cloud_EK$seasonal_temp>40),]
+# assign EK age
+hot_sp$age <- 121
+# reconstruct model
+palgeoEK_hot <- reconstruct("coastlines", age = 121, model="MERDITH2021")
+## map theme
+palaeomap_theme <- theme_minimal() + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
+                                           axis.title.y=element_blank(), axis.text.y=element_blank(),
+                                           axis.ticks.x=element_blank(), axis.ticks.y=element_blank(),
+                                           legend.title=element_blank())
+Map_hot <-  ggplot() +
+  ## Landmasses
+  geom_sf(data = palgeoEK_hot, colour = "grey75", fill = "grey75") +
+  ## occurrence data
+  geom_point(data = cloud_EK, aes(x = plng, y = plat), color = "#FF8899", size = 4,  alpha = 0.8) + 
+  ## title 
+  ggtitle("Hot species") +
+  ## theme
+  palaeomap_theme
+Map_hot
+
+
 
 # seasonal temp LK
 ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
