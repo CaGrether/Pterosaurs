@@ -44,7 +44,8 @@ library(rgplates) # paleogeographic reconstructions
   #   na.omit(collection_name)
 
 ## data for raincloud plots
-  cloud_data <- subset(species_climate_group, select = c(occurrence_no,   
+  cloud_data <- subset(species_climate_group, select = c(collection_no,
+                                                         occurrence_no,   
                                                      MAT, seasonal_temp,
                                                      MAP, seasonal_precip,
                                                      two.groups, 
@@ -173,6 +174,67 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_tax
 
 
 ## find location of problematic species T > 40°C
+
+# ----------------- method without corrections (species in ocean)
+# subset species
+# hot_sp <- cloud_EK[which(cloud_EK$seasonal_temp>40),]
+# # assign EK age
+# hot_sp$age <- 121
+# # reconstruct model
+# palgeoEK_hot <- reconstruct("plate_polygons", age = 121, model="MERDITH2021")
+# ## map theme
+# palaeomap_theme <- theme_minimal() + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
+#                                            axis.title.y=element_blank(), axis.text.y=element_blank(),
+#                                            axis.ticks.x=element_blank(), axis.ticks.y=element_blank(),
+#                                            legend.title=element_blank())
+# Map_hot <-  ggplot() +
+#   ## Landmasses
+#   geom_sf(data = palgeoEK_hot, colour = "grey75", fill = "grey75") +
+#   ## occurrence data
+#   geom_point(data = cloud_EK, aes(x = plng, y = plat), color = "#FF8899", size = 4,  alpha = 0.8) + 
+#   ## title 
+#   ggtitle("Hot species") +
+#   ## theme
+#   palaeomap_theme
+# Map_hot
+
+# ------------------ corrections applied
+
+## code to fix locations
+# Data
+occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
+occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
+
+## take necessary columns
+taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name, 
+                    early_interval, late_interval, max_ma, min_ma, formation, lng, lat)
+# rename object
+colls <- taxon_inf
+
+# add mean age to each collection
+colls$mid_ma <- (colls$max_ma + colls$min_ma)/2
+
+# add strat info to filter for EK
+## rename 'early interval'
+colls <- rename(colls, interval_std = early_interval)
+
+## join aux. dataset to main PCA data
+colls <- left_join(colls, ints_standard, by = "interval_std")
+
+## Remove those that have NA (stratigraphic range is too long)
+colls <- na.omit(colls, epoch)
+glimpse(colls)
+
+## Filter to the specific intervals (EK and LK)
+colls_EK <- colls %>% filter(epoch == "Early Cretaceous") 
+
+# generate paleocoordinates (needs GPlates to be installed if using a Mac)
+paleo <- reconstruct(colls_EK[, c("lng", "lat")], age=colls_EK$mid_ma, model="MERDITH2021", enumerate=FALSE)
+colnames(paleo) <- c("plng", "plat")
+
+# add to the rest
+colls_EK<- cbind(colls_EK, paleo)
+
 # subset species
 hot_sp <- cloud_EK[which(cloud_EK$seasonal_temp>40),]
 # assign EK age
@@ -184,17 +246,16 @@ palaeomap_theme <- theme_minimal() + theme(axis.title.x=element_blank(), axis.te
                                            axis.title.y=element_blank(), axis.text.y=element_blank(),
                                            axis.ticks.x=element_blank(), axis.ticks.y=element_blank(),
                                            legend.title=element_blank())
-Map_hot <-  ggplot() +
+Map_hot_fx <-  ggplot() +
   ## Landmasses
   geom_sf(data = palgeoEK_hot, colour = "grey75", fill = "grey75") +
   ## occurrence data
-  geom_point(data = cloud_EK, aes(x = plng, y = plat), color = "#FF8899", size = 4,  alpha = 0.8) + 
+  geom_point(data = colls_EK, aes(x = plng, y = plat), color = "#FF8899", size = 4,  alpha = 0.8) + 
   ## title 
   ggtitle("Hot species") +
   ## theme
   palaeomap_theme
-Map_hot
-
+Map_hot_fx
 
 
 # seasonal temp LK
