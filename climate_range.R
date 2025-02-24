@@ -16,6 +16,7 @@
 library(tidyverse)
 library(ggplot2)
 library(ggdist)
+library(ggpubr) # for plotting
 
 library(geoscale) # for plotting with the geological time scale on the x-axis (uses base R syntax)
 library(rgplates) # paleogeographic reconstructions
@@ -44,11 +45,11 @@ library(rgplates) # paleogeographic reconstructions
   #   na.omit(collection_name)
 
 ## data for raincloud plots
-  cloud_data <- subset(species_climate_group, select = c(collection_no,
-                                                         occurrence_no,   
+  cloud_data <- subset(species_climate_group, select = c(occurrence_no,   
                                                      MAT, seasonal_temp,
                                                      MAP, seasonal_precip,
-                                                     two.groups, 
+                                                     two.groups,
+                                                     collection_no,
                                                      early_interval,
                                                      accepted_name,
                                                      plat, plng
@@ -83,7 +84,7 @@ library(rgplates) # paleogeographic reconstructions
 
 # Raincloud plots -------------------------------------------------------------
 ## MAT EK
-ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
+mat_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -109,9 +110,10 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Temperature (°C)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
+mat_EK
 
 ## MAT LK
-ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
+mat_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -137,7 +139,7 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAT, fill = Pterosaur_taxa)) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Temperature (°C)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
-
+mat_LK
 
 # Mann-Whitney U test
 Wilcox_MAT <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_data, exact = FALSE)
@@ -145,7 +147,7 @@ Wilcox_MAT_EK <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_EK, exact = FALS
 Wilcox_MAT_LK <- wilcox.test(MAT ~ Pterosaur_taxa, data = cloud_LK, exact = FALSE)
 
 ## seasonal temp EK
-ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
+t_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -171,7 +173,7 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_tax
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Temperature (°C)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
-
+t_EK
 
 ## find location of problematic species T > 40°C
 
@@ -259,7 +261,7 @@ Map_hot_fx
 
 
 # seasonal temp LK
-ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
+t_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -285,6 +287,7 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Pterosaur_tax
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Temperature (°C)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
+t_LK
 
 # Mann-Whitney U test
 Wilcox_T <- wilcox.test(seasonal_temp ~ Pterosaur_taxa, data = cloud_data, exact = FALSE)
@@ -292,7 +295,7 @@ Wilcox_T_EK <- wilcox.test(seasonal_temp ~ Pterosaur_taxa, data = cloud_EK, exac
 Wilcox_T_LK <- wilcox.test(seasonal_temp ~ Pterosaur_taxa, data = cloud_LK, exact = FALSE)
 
 ## MAP EK
-ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) + 
+map_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -318,9 +321,10 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Precipitation (mm/day)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
+map_EK
 
 ## MAP LK
-ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) + 
+map_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -346,7 +350,7 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_taxa)) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Precipitation (mm/day)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
-
+map_LK
 
 # Mann-Whitney U test
 Wilcox_MAP <- wilcox.test(MAP ~ Pterosaur_taxa, data = cloud_data, exact = FALSE)
@@ -354,7 +358,7 @@ Wilcox_MAP_EK <- wilcox.test(MAP ~ Pterosaur_taxa, data = cloud_EK, exact = FALS
 Wilcox_MAP_LK <- wilcox.test(MAP ~ Pterosaur_taxa, data = cloud_LK, exact = FALSE)
 
 ## seasonal Precip EK
-ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_taxa)) + 
+p_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -380,9 +384,10 @@ ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_t
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Precipitation (mm/day)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
-
+p_EK
+  
 ## seasonal Precip LK
-ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_taxa)) + 
+p_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_taxa)) + 
   ggdist::stat_halfeye(
     adjust = .5, 
     width = .6, 
@@ -408,12 +413,35 @@ ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pterosaur_t
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Precipitation (mm/day)") + #coord_flip()
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
-
+p_LK
 
 # Mann-Whitney U test
 Wilcox_P <- wilcox.test(seasonal_precip ~ Pterosaur_taxa, data = cloud_data, exact = FALSE)
 Wilcox_P_EK <- wilcox.test(seasonal_precip ~ Pterosaur_taxa, data = cloud_EK, exact = FALSE)
 Wilcox_P_LK <- wilcox.test(seasonal_precip ~ Pterosaur_taxa, data = cloud_LK, exact = FALSE)
+
+
+
+# plot as 2 grids
+EK <- ggarrange(mat_EK, t_EK, map_EK, p_EK, ncol = 2, nrow = 2, 
+                common.legend = TRUE, legend = "none")
+LK <- ggarrange(mat_LK, t_LK, map_LK, p_LK, ncol = 2, nrow = 2, 
+                common.legend = TRUE, legend = "none")
+rain_all <- ggarrange(mat_EK, t_EK, map_EK, p_EK, 
+                      mat_LK, t_LK, map_LK, p_LK, ncol = 4, nrow = 2, 
+                      common.legend = TRUE, legend = "none") 
+
+EK
+LK
+rain_all
+
+ggsave(plot = rain_all,
+       width = 14, height = 12, dpi = 600, 
+       filename = "./plots/rain_all.pdf", useDingbats=FALSE)
+
+
+
+
 
 
 ###########################
