@@ -19,7 +19,6 @@ library(phytools)
 library(tidyverse)
 library(strap)
 library(viridis)
-#library(desk) # for Jarque Bera test
 
 
 
@@ -130,13 +129,6 @@ MAT_matrix <- as.matrix(climate_mean) [,1] # Mean annual temperature
 MAP_matrix <- as.matrix(climate_mean) [,2] # Mean annual precipitation
 T_matrix <-as.matrix(climate_mean) [,3] # Mean seasonal temperature
 P_matrix <- as.matrix(climate_mean) [,4] # Mean seasonal precipitation
-
-
-# Jarque Bera test for normal distribution
-# jbMAT <- jb.test(MAT_matrix)
-# jbMAP <- jb.test(MAP_matrix)
-# jbT <- jb.test(T_matrix)
-# jbP <- jb.test(P_matrix)
 
 
 ## Temperature contMap()
