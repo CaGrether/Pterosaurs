@@ -43,6 +43,11 @@ library(ape)
 ptero_tree_dated <- read.nexus("Trees/ptero_tree_dated.nex")
 eff.dat <- read.csv2("Data/Output/Species_eff_data.csv")
 
+## Drop two outlier taxa Bakonydraco galaczi Eurazhdarcho langendorfensis (if wanted)
+
+# ptero_tree_dated <- drop.tip(ptero_tree_dated, "Eurazhdarcho_langendorfensis")
+# ptero_tree_dated <- drop.tip(ptero_tree_dated, "Bakonydraco_galaczi")
+
 #### analysis
 # To include Quetzalcoatlus data, change eff.dat "Quetzalcoatlus spp" to "Quetzalcoatlus northropi"
 eff.dat$species[62] <- "Quetzalcoatlus_northropi"
@@ -206,3 +211,65 @@ Pseason_mapped <- setMap(Pseason_mapped, invert = TRUE)
 n <- length(Pseason_mapped$cols)
 Pseason_mapped$cols[1:n] <- viridis(n, direction = -1)
 plot(Pseason_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")
+
+
+### remove extreme Cuban and German species
+# get these species
+xtaxa <- c("Nesodactylus_hesperius", "Rhamphorhynchus_muensteri")
+xf.tree <- drop.clade(tree_eff_pruned, xtaxa)
+xf.tree <- drop.tip(xf.tree, "NA")
+
+# get list of taxa in that tree
+xftree_spec <- xf.tree$tip.label
+
+## Remove taxa that are in climate data but not on the tree:
+taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% xftree_spec ] # in MAT data but not on tree
+species_climxf_tree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
+
+## drop tips for taxa on tree that do not have climate data (there should not be (m)any!)
+tree_xf_pruned <- drop.tip(xf.tree, xf.tree$tip.label[!(xf.tree$tip.label %in% species_climxf_tree$accepted_name)])
+setdiff(tree_xf_pruned$tip.label, species_climxf_tree$accepted_name) # taxa on tree, but not in data - should = "character(0)" 
+
+
+## Get averages of the climate variable for all species:
+climate_xf_mean <- species_climxf_tree %>% 
+  group_by(accepted_name) %>% 
+  summarise(mean_MAT = mean(MAT), mean_MAP = mean(MAP), 
+            mean_Tseason = mean(seasonal_temp), mean_Pseason = mean(seasonal_precip))
+
+## turn the accepted_name column into the row names
+climate_xf_mean <- column_to_rownames(climate_xf_mean, var = "accepted_name")
+
+## Convert to matrix:
+MAT_xf_matrix <- as.matrix(climate_xf_mean) [,1] # Mean annual temperature
+MAP_xf_matrix <- as.matrix(climate_xf_mean) [,2] # Mean annual precipitation
+Tseason_xf_matrix <- as.matrix(climate_xf_mean) [,3] # Mean seasonal temperature
+Pseason_xf_matrix <- as.matrix(climate_xf_mean) [,4] # Mean seasonal precipitation
+
+## Temperature contMap()
+MATmapped_xf <- contMap(tree_xf_pruned, MAT_xf_matrix, plot = FALSE)
+MATmapped_xf <- setMap(MATmapped_xf, invert = TRUE)
+n <- length(MATmapped_xf$cols)
+MATmapped_xf$cols[1:n] <- plasma(n)
+plot(MATmapped_xf, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+
+## Precipitation contMap()
+MAPmapped_xf <- contMap(tree_xf_pruned, MAP_xf_matrix, plot = FALSE)
+MAPmapped_xf <- setMap(MAPmapped_xf, invert = TRUE)
+n <- length(MAPmapped_xf$cols)
+MAPmapped_xf$cols[1:n] <- viridis(n, direction = -1)
+plot(MAPmapped_xf, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
+
+## TSeason contMap()
+Tseason_xf_mapped <- contMap(tree_xf_pruned, Tseason_xf_matrix, plot = FALSE)
+Tseason_xf_mapped <- setMap(Tseason_xf_mapped, invert = TRUE)
+n <- length(Tseason_xf_mapped$cols)
+Tseason_xf_mapped$cols[1:n] <- plasma(n)
+plot(Tseason_xf_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "T (°C)")
+
+## PSeason contMap()
+Pseason_xf_mapped <- contMap(tree_xf_pruned, Pseason_xf_matrix, plot = FALSE)
+Pseason_xf_mapped <- setMap(Pseason_xf_mapped, invert = TRUE)
+n <- length(Pseason_xf_mapped$cols)
+Pseason_xf_mapped$cols[1:n] <- viridis(n, direction = -1)
+plot(Pseason_xf_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")
