@@ -100,7 +100,7 @@ map_data_mid_ELK <- paleomap_data %>% filter(86.3 < mid_ma & mid_ma <= 100.5)
 map_data_mid_LK <- paleomap_data %>% filter(66.0 < mid_ma & mid_ma <= 86.3)
 
 ## paleogeographies for the time bins from the GPlates (via rgplates)
-paleogeog_LT <- reconstruct("static_polygons", age = 215, model="MERDITH2021") 
+paleogeog_LT <- reconstruct("coastlines", age = 215, model="MERDITH2021") 
 paleogeog_EJ <- reconstruct("coastlines", age = 190, model="MERDITH2021") 
 paleogeog_MJ <- reconstruct("coastlines", age = 167, model="MERDITH2021")
 paleogeog_LJ <- reconstruct("coastlines", age = 153, model="MERDITH2021")
