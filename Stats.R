@@ -33,7 +33,8 @@ occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
 occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
 ## take necessary columns
 taxon_inf <- select(occurrences_sp, collection_no, occurrence_no, accepted_name, 
-                    early_interval, late_interval, max_ma, min_ma, formation)
+                    early_interval, late_interval, max_ma, min_ma, formation, 
+                    collection_name, lagerstatten)
 
 
 
@@ -54,6 +55,13 @@ taxon.dat <- big.dat[!duplicated(big.dat),]
 ## add ages to intervals
 meso <- stages[52:81,]
 intervals <- meso[,c(4,6,7,8)]
+
+## finding Lagerstätten in Aptian
+tax.dat_Apt <- taxon.dat %>% filter(stage == "Aptian")
+tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")]
+# unique names of Lagerstätten
+L_names <- unique(tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")])
+length(L_names)
 
 # 1(a). Sampling proxy counts ---------------------------------------------------
 
