@@ -56,14 +56,7 @@ taxon.dat <- big.dat[!duplicated(big.dat),]
 meso <- stages[52:81,]
 intervals <- meso[,c(4,6,7,8)]
 
-## finding Lagerstätten in Aptian
-tax.dat_Apt <- taxon.dat %>% filter(stage == "Aptian")
-tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")]
-# unique names of Lagerstätten
-L_names <- unique(tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")])
-length(L_names)
-
-# 1(a). Sampling proxy counts ---------------------------------------------------
+#  Sampling proxy counts
 
 ## calculate counts of sampling proxies and plot these alongside raw diversity
 
@@ -104,10 +97,9 @@ proxy_counts[proxy_counts == 0] <- NA
 
 
 
-# 1(b). Sampling plots ----------------------------------------------------------
+# 1. Sampling plots ----------------------------------------------------------
 
 ## Option 1: Plotting using ggplot
-##_________________________________
 
 ## Set interval boundaries for the dotted lines on the plot
 int_boundaries <- c( 250, 241, 209, 183, 165, 149, 133, 113, 89, 72)
@@ -142,7 +134,6 @@ ggsave(plot = proxy_plot,
 
 
 ## Option 2: Plotting using geoscale
-##__________________________________
 
 ## set up parameters for exporting a PDF of the plot
 pdf("./plots/sampling_proxies_geoscale.pdf", width = 9, height = 8) 
@@ -163,7 +154,7 @@ geoscalePlot(proxy_counts$mid_ma, proxy_counts$count_taxa, # ages and main data 
              direction ="horizontal", # orientation of the plot
              erotate = 0) # numerical value for the rotation for the temporal units
 
-# Now add the different lines and points separately:
+# Add the different lines and points separately:
 # Formations (as dots and a line):
 lines(proxy_counts$mid_ma, proxy_counts$count_formations, col="peru", lty = 2, lwd = 3)
 points(proxy_counts$mid_ma, proxy_counts$count_formations, pch =16, cex = 1.5, col = "peru")
@@ -180,9 +171,18 @@ legend('topright', legend = c("Formations", "Collections", "Taxa"),
        pch = c(16), box.lty = 1, pt.cex=2, bg= "white")
 
 dev.off() ## Turn off graphic device, to trigger the export of the pdf
-## Sometimes this doesn't look good in the RStudio window so you might need 
-## to navigate to the plots folder to see it properly
 
+### find and compare number of Lagerstätten in Aptian and Campanian 
+# filter to stage
+tax.dat_Apt <- taxon.dat %>% filter(stage == "Aptian")
+tax.dat_Cam <- taxon.dat %>% filter(stage == "Campanian")
+
+# unique names of Lagerstätten
+L_names_Apt <- unique(tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")])
+length(L_names_Apt)
+
+L_names_Cam <- unique(tax.dat_Cam$collection_name[which(tax.dat_Cam$lagerstatten=="conservation")])
+length(L_names_Cam)
 
 
 # 2. Collections per latitude ------------------------------------------------
