@@ -176,6 +176,7 @@ dev.off() ## Turn off graphic device, to trigger the export of the pdf
 # filter to stage
 tax.dat_Apt <- taxon.dat %>% filter(stage == "Aptian")
 tax.dat_Cam <- taxon.dat %>% filter(stage == "Campanian")
+tax.dat_Toa <- taxon.dat %>% filter(stage == "Toarcian")
 
 # unique names of Lagerstätten
 L_names_Apt <- unique(tax.dat_Apt$collection_name[which(tax.dat_Apt$lagerstatten=="conservation")])
@@ -183,6 +184,9 @@ length(L_names_Apt)
 
 L_names_Cam <- unique(tax.dat_Cam$collection_name[which(tax.dat_Cam$lagerstatten=="conservation")])
 length(L_names_Cam)
+
+L_names_Toa <- unique(tax.dat_Toa$collection_name[which(tax.dat_Toa$lagerstatten=="conservation")])
+length(L_names_Toa)
 
 
 # 2. Collections per latitude ------------------------------------------------
