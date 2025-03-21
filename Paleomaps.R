@@ -53,7 +53,7 @@ taxon.dat <- big.dat[!duplicated(big.dat),]
 locality_info <- occurrences_sp %>% 
   dplyr::select(collection_name, lat, lng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
-  na.omit()
+  drop_na()
 
 ## world map for ggplot to work with:
 world_map <- map_data("world")
@@ -80,7 +80,7 @@ ggsave(plot = modern_map,
 paleomap_data <- occurrences_sp %>% 
   select(collection_name, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
   distinct(collection_name, .keep_all = TRUE) %>% 
-  na.omit(collection_name)
+  drop_na(collection_name)
 
 # add mean age to each collection
 paleomap_data$mid_ma <- (paleomap_data$max_ma + paleomap_data$min_ma)/2

@@ -224,7 +224,8 @@ colls <- rename(colls, interval_std = early_interval)
 colls <- left_join(colls, ints_standard, by = "interval_std")
 
 ## Remove those that have NA (stratigraphic range is too long)
-colls <- na.omit(colls, epoch)
+colls <- colls %>% drop_na(epoch)
+#colls <- na.omit(colls, epoch)
 glimpse(colls)
 
 ## Filter to the specific intervals (EK and LK)
@@ -258,6 +259,11 @@ Map_hot_fx <-  ggplot() +
   ## theme
   palaeomap_theme
 Map_hot_fx
+
+# save as pdf
+ggsave(plot = Map_hot_fx,
+       width = 14, height = 14, dpi = 600, 
+       filename = "./plots/Map_hotfx_azpt.pdf", useDingbats=FALSE)
 
 
 # seasonal temp LK
