@@ -158,7 +158,7 @@ Tmapped <- setMap(Tmapped, invert = TRUE)
 #Tmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(Tmapped$cols)
 Tmapped$cols[1:n] <- plasma(n)
-plot(Tmapped, fsize = c(0.5, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), leg.txt = "T (°C)")
+plot(Tmapped, fsize = c(0.5, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), leg.txt = "ST (°C)")
 
 
 ## seasonal Precipitation contMap
@@ -168,7 +168,7 @@ Pmapped <- setMap(Pmapped, invert = TRUE)
 #Pmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(Pmapped$cols)
 Pmapped$cols[1:n] <- viridis(n, direction = -1)
-plot(Pmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")
+plot(Pmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "SP (mm/day)")
 
 
 # phylogenetic signal
@@ -245,12 +245,12 @@ T_x_mapped <- contMap(x.tree, Tx_matrix, plot = FALSE)
 T_x_mapped <- setMap(T_x_mapped, invert = TRUE)
 n <- length(T_x_mapped$cols)
 T_x_mapped$cols[1:n] <- plasma(n)
-plot(T_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "T (°C)")
+plot(T_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "ST (°C)")
 
 ## seasonal Precipitation (see impact)
 P_x_mapped <- contMap(x.tree, Px_matrix, plot = FALSE)
 P_x_mapped <- setMap(P_x_mapped, invert = TRUE)
 n <- length(P_x_mapped$cols)
 P_x_mapped$cols[1:n] <- viridis(n, direction = -1)
-plot(P_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "P (mm/day)")
+plot(P_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "SP (mm/day)")
 
