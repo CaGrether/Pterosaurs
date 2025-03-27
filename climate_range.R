@@ -20,6 +20,7 @@ library(ggpubr) # for plotting
 
 library(geoscale) # for plotting with the geological time scale on the x-axis (uses base R syntax)
 library(rgplates) # paleogeographic reconstructions
+library(scales)
 
 # 1. Organise data -----------------------------------------------------------
 
@@ -291,7 +292,8 @@ map_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_tax
   scale_color_manual(values = c("#FFA93D", "#572AAC")) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Precipitation (mm/day)") + #coord_flip()
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")+
+  scale_y_continuous(labels = number_format(scale = 1, accuracy = 0.00001))
 map_EK
 
 ## MAP LK
@@ -320,7 +322,8 @@ map_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = MAP, fill = Pterosaur_tax
   scale_color_manual(values = c("#FFA93D", "#572AAC")) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Mean Annual Precipitation (mm/day)") + #coord_flip()
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")+
+  scale_y_continuous(labels = number_format(scale = 1, accuracy = 0.00001))
 map_LK
 
 # Mann-Whitney U test
@@ -354,7 +357,8 @@ p_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pte
   scale_color_manual(values = c("#FFA93D", "#572AAC")) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Precipitation (mm/day)") + #coord_flip()
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")+
+  scale_y_continuous(labels = number_format(scale = 1, accuracy = 0.00001))
 p_EK
   
 ## seasonal Precip LK
@@ -383,7 +387,8 @@ p_LK <- ggplot(cloud_LK, aes(x = Pterosaur_taxa, y = seasonal_precip, fill = Pte
   scale_color_manual(values = c("#FFA93D", "#572AAC")) +
   scale_fill_manual(values = c("#FFA93D", "#572AAC")) +
   labs(x = NULL, y = "Seasonal Precipitation (mm/day)") + #coord_flip()
-  coord_cartesian(xlim = c(1.2, NA), clip = "off")
+  coord_cartesian(xlim = c(1.2, NA), clip = "off")+
+  scale_y_continuous(labels = number_format(scale = 1, accuracy = 0.00001))
 p_LK
 
 # Mann-Whitney U test

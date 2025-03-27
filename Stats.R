@@ -1,10 +1,11 @@
 # ******************************************************
 #
-#   Master Thesis
+#   Pterosaur climate niche evolution
 #
-#   Occurrences of pterosaurs
+#   MSc thesis 2025
 #
-#   Carolin Grether
+#   Lead: Carolin M. Grether (carolin.grether@fau.de)
+#   Supervisor: Emma Dunne (emma.dunne@fau.de)
 # ______________________________________________________
 #
 #   Various statistics on raw occurrence data
@@ -165,7 +166,7 @@ points(proxy_counts$mid_ma, proxy_counts$count_colls, pch =16, cex = 1.5, col = 
 lines(proxy_counts$mid_ma, proxy_counts$count_taxa, col="black", lty = 1, lwd = 3)
 points(proxy_counts$mid_ma, proxy_counts$count_taxa, pch =16, cex = 1.5, col = "black")
 
-# Finally, add a legend
+# Add a legend
 legend('topright', legend = c("Formations", "Collections", "Taxa"), 
        col = c("peru", "orange", "black"), 
        pch = c(16), box.lty = 1, pt.cex=2, bg= "white")
@@ -191,38 +192,26 @@ length(L_names_Toa)
 
 # 2. Collections per latitude ------------------------------------------------
 
-## Yesterday, you had a look with alpha diversity ('local richness') 
-##    When visualised, alpha diversity can also provide more insights into sampling patterns
-##    especially as it adds a spatial element as opposed to just temporal patterns.
-## Let's create a plot to see where the collections across time and palaeolatitude.
-##    We'll also colour our plot according to the number of taxa in each collection
-
-## There is evidence to suggest that alpha diversity is not as strongly affected by sampling biases
-##    as gamma (or 'global') diversity. For a more sophisticated way to calculate alpha diversity by
-##    treating taxonomically indeterminate occurrences as valid, see the method described in 
-##    Close et al. (2019) - code available here: https://github.com/emmadunne/local_richness
-
-## Let's get our data set up:
+## data set up
 lat_data <- occurrences_sp # rename object to keep the original separate
 
 ## Create new column for mid_ma
 lat_data$mid_ma <- (lat_data$max_ma + lat_data$min_ma)/2 
 
-## Next, we'll need to count the number of taxa per collection (i.e. their frequency):
+## Count the number of taxa per collection (i.e. their frequency)
 taxa_freqs <- count(lat_data, collection_no)
 
-## Subset lat_data to only the columns we need:
+## Subset lat_data to only the columns we need
 lat_data <- lat_data %>% 
   select(collection_no, paleolat, paleolng, mid_ma) %>% 
   distinct() %>% na.omit()
 
-## And add the frequency information:
+## Add the frequency information
 lat_data <- left_join(taxa_freqs, lat_data, by = "collection_no")
 
-## Before we plot, let's order the frequencies and remove any NAs that have crept in:
+## Order the frequencies and remove any NAs
 lat_data <- lat_data %>% arrange(n) %>% na.omit()
 
-## Take a look:
 View(lat_data)
 
 
@@ -248,13 +237,6 @@ ggsave(plot = lat_plot,
        width = 20, height = 10, dpi = 500, units = "cm", 
        filename = "./plots/lat_alpha_div.pdf", useDingbats=FALSE)
 
-# find data point with exceptional number and low lat
-# minlat <- min(abs(lat_data$paleolat))
-# mincol <- lat_data[which(abs(lat_data$paleolat)== minlat),]
-# 
-# # exclude that point
-# latdat <- lat_data[-which(abs(lat_data$paleolat)== minlat),]
-# lat_data[which(abs(latdat$paleolat)== min(abs(latdat$paleolat))),]
 
 lat_dat_ord <- lat_data[order(abs(lat_data$paleolat),decreasing = F),]
 loc <- lat_dat_ord [6,]
@@ -266,10 +248,6 @@ location[which(location$paleolat == loc$paleolat),] # Brazil
 
 
 # 3. Regression -----------------------------------------------------------
-
-## We can also apply some simple statistics to better quantify the
-##    relationship between raw richness and sampling proxies/effort
-## Let's do some simple regression plots:
 
 ## Raw richness vs. collections
 reg_colls <- ggplot(proxy_counts, aes(x=count_taxa, y=count_colls)) + 
@@ -286,7 +264,7 @@ reg_forms <- ggplot(proxy_counts, aes(x=count_taxa, y=count_formations)) +
 reg_forms
 
 
-## Let's quantify these relationships through a linear model:
+## Quantify through a linear model
 
 ## Raw richness vs. collections
 lm_colls = lm(count_colls ~ count_taxa, proxy_counts)
@@ -295,40 +273,18 @@ summary(lm_colls) # summary of results
 lm_forms = lm(count_formations ~ count_taxa, proxy_counts)
 summary(lm_forms)
 
-## We can test the sensitivity of the data to well-sampled intervals
-## In this case, we could remove the Norian and/or the Carnian and re-run 
-##    the analyses using the code above
-
-## Take out row 6, which is the Norian
-proxy_counts_N <- proxy_counts[-6,]
-## Take out row 6 + 7 (Norian + Carnian)
-proxy_counts_NC <- proxy_counts[-c(6,7),]
-
-## Are there any changes to your results? 
-
-
-
 # 4. Collector's curve -------------------------------------------------------
 
-## Collector's curves, also known as a species accumulation curves, can also tell us about 
-##    sampling: they display the cumulative number of taxa as a function of the cumulative 
-##    effort (i.e. sampling proxy)
-
-## First, get our data into shape:
-## Table the number of each species per collection (abundance)
+## Data preparation
+## abundance
 abun_data <- table(occurrences_sp$collection_no, occurrences_sp$accepted_name)
-## If we want a presence/absence table, we can add this step:
-#abun_data[abun_data > 0] <- 1
 
-## Turn this into a matrix:
+## Turn into a matrix
 abun_matrix <- matrix(abun_data, ncol = length(unique(occurrences_sp$accepted_name)))
 colnames(abun_matrix) <- colnames(abun_data) # add the column names back in for when we need to check anything
 rownames(abun_matrix) <- rownames(abun_data) # same for the row names
 
-## Using the vegan package, we can make the collectors or species accumulation curve
-## Check out the help file for specaccum() to find out more about the methods
 sp_accum <- specaccum(abun_matrix, method = "collector")
 
-## Plot the curve in base R - you can make this pretty in ggplot if you prefer!
+## Plot
 plot(sp_accum, ci.type = "poly", col = "#0E6A8A", lwd = 2, ci.lty = 0, ci.col = "#5CBCDD")
-

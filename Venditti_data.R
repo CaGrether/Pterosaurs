@@ -2,9 +2,9 @@
 #
 #   Pterosaur climate niche evolution
 #
-#   MSc thesis 2024
+#   MSc thesis 2025
 #
-#   Lead: Carolin Grether (carolin.grether@fau.de)
+#   Lead: Carolin M. Grether (carolin.grether@fau.de)
 #   Supervisor: Emma Dunne (emma.dunne@fau.de)
 # ______________________________________________________
 #

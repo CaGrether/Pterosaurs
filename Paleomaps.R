@@ -1,13 +1,14 @@
 # ******************************************************
 #
-#   Master Thesis
+#   Pterosaur climate niche evolution
 #
-#   Mapping occurrences of pterosaurs
+#   MSc thesis 2025
 #
-#   Carolin Grether
+#   Lead: Carolin M. Grether (carolin.grether@fau.de)
+#   Supervisor: Emma Dunne (emma.dunne@fau.de)
 # ______________________________________________________
 #
-#   Modern map and Paleomaps
+#   Modern map and Paleogeographic maps
 # 
 # ******************************************************
 
@@ -69,7 +70,7 @@ modern_map
 
 ## save as a pdf
 ggsave(plot = modern_map,
-       width = 8, height = 5, dpi = 600, 
+       width = 9, height = 5, dpi = 600, 
        filename = "./plots/Modern_map.pdf", useDingbats=FALSE)
 
 
@@ -267,7 +268,7 @@ ggsave(plot = Mid_all,
 #-----------------------------------------------------------------------------
 
 
-map_data_MT <- paleomap_data %>% filter(max_ma > 237.0) # one MT occurrence
+map_data_MT <- paleomap_data %>% filter(max_ma > 237.0) 
 map_data_LT <- paleomap_data %>% filter(201.4 < max_ma & max_ma <= 237.0) 
 map_data_EJ <- paleomap_data %>% filter(174.7 < max_ma & max_ma <= 201.4)
 map_data_MJ <- paleomap_data %>% filter(161.5 < max_ma & max_ma <= 174.7)
@@ -284,7 +285,7 @@ paleomap_LT <-  ggplot() +
   geom_sf(data = paleogeog_LT, colour = "grey75", fill = "grey75") +
   ## occurrence data
   geom_point(data = map_data_LT, aes(x = paleolng, y = paleolat), color = "#0DA69B", size = 4,  alpha = 0.8) + 
-  ## add MT occurrence
+  ## add MT occurrences
   geom_point(data = map_data_MT, aes(x = paleolng, y = paleolat), color = "#FFA93D", size = 4,  alpha = 0.8) + 
   ## title 
   ggtitle("Late Triassic") +
