@@ -2,9 +2,9 @@
 #
 #   Pterosaur climate niche evolution
 #
-#   MSc thesis 2024
+#   MSc thesis 2025
 #
-#   Lead: Carolin Grether (carolin.grether@fau.de)
+#   Lead: Carolin M. Grether (carolin.grether@fau.de)
 #   Supervisor: Emma Dunne (emma.dunne@fau.de)
 # ______________________________________________________
 #
@@ -34,15 +34,6 @@ library(rgplates) # paleogeographic reconstructions
 ## merge species climate and group data here
   species_climate$accepted_name <- gsub(" ", "_", species_climate$accepted_name)
   species_climate_group <- merge(species_climate, ptero_grouping, by.x = "accepted_name", by.y = "ptero_taxa")
-
-## get collection names
-  # occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
-  # occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
-  # 
-  # forfourty_sp <- occurrences_sp %>% 
-  #   select(collection_name, occurrence_no, lat, lng, paleolat, paleolng, early_interval, late_interval, max_ma, min_ma) %>% 
-  #   distinct(collection_name, .keep_all = TRUE) %>% 
-  #   na.omit(collection_name)
 
 ## data for raincloud plots
   cloud_data <- subset(species_climate_group, select = c(occurrence_no,   
@@ -175,34 +166,9 @@ t_EK <- ggplot(cloud_EK, aes(x = Pterosaur_taxa, y = seasonal_temp, fill = Ptero
   coord_cartesian(xlim = c(1.2, NA), clip = "off")
 t_EK
 
-## find location of problematic species T > 40°C
+# ------------------ Plot locations of >40°C taxa
 
-# ----------------- method without corrections (species in ocean)
-# subset species
-# hot_sp <- cloud_EK[which(cloud_EK$seasonal_temp>40),]
-# # assign EK age
-# hot_sp$age <- 121
-# # reconstruct model
-# palgeoEK_hot <- reconstruct("plate_polygons", age = 121, model="MERDITH2021")
-# ## map theme
-# palaeomap_theme <- theme_minimal() + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
-#                                            axis.title.y=element_blank(), axis.text.y=element_blank(),
-#                                            axis.ticks.x=element_blank(), axis.ticks.y=element_blank(),
-#                                            legend.title=element_blank())
-# Map_hot <-  ggplot() +
-#   ## Landmasses
-#   geom_sf(data = palgeoEK_hot, colour = "grey75", fill = "grey75") +
-#   ## occurrence data
-#   geom_point(data = cloud_EK, aes(x = plng, y = plat), color = "#FF8899", size = 4,  alpha = 0.8) + 
-#   ## title 
-#   ggtitle("Hot species") +
-#   ## theme
-#   palaeomap_theme
-# Map_hot
-
-# ------------------ corrections applied
-
-## code to fix locations
+## Plot locations (fixed)
 # Data
 occurrences <- read_csv("Data/Input/pbdb_pterosauromorpha.csv", skip = 20)
 occurrences_sp <- occurrences %>% filter(accepted_rank == "species")
@@ -225,7 +191,6 @@ colls <- left_join(colls, ints_standard, by = "interval_std")
 
 ## Remove those that have NA (stratigraphic range is too long)
 colls <- colls %>% drop_na(epoch)
-#colls <- na.omit(colls, epoch)
 glimpse(colls)
 
 ## Filter to the specific intervals (EK and LK)
@@ -444,52 +409,3 @@ rain_all
 ggsave(plot = rain_all,
        width = 14, height = 12, dpi = 600, 
        filename = "./plots/rain_all.pdf", useDingbats=FALSE)
-
-
-
-
-
-
-###########################
-
-### fix seasonal temp that is above 40°C
-## why is their seasonal temp so high? Is there a bias?
-
-# dataset to get info of raincloud taxa
-fix_data <- occurrences_sp # rename to keep original
-fix_data$accepted_name <- gsub(" ", "_", fix_data$accepted_name)
-fix_data$mid_ma <- (fix_data$max_ma + fix_data$min_ma)/2 # add mean age
-
-# merge with all raincloud taxa
-occ_info <- fix_data %>% 
-  select(accepted_name, occurrence_no, mid_ma, collection_name, paleolat, paleolng, 
-         taxon_environment, lagerstatten, collection_no) # columns that are of interest
-cloud_all <- cloud_data %>% 
-  merge(., occ_info, by = "occurrence_no") %>% 
-  select(accepted_name, everything()) %>% 
-  arrange(accepted_name) 
-
-# subset for only >40°C taxa
-cloud_40 <- cloud_all %>% 
-  subset(.,.$seasonal_temp>40)
-
-####1. "Problematic" localities
-# check unique localities - how many occ nos are in there and are they the same as the >40 taxa?
-# length(which(cloud_40$collection_name == "Chaoyang pterosaurs (PROXY)"))
-# length(which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)")) # same length
-
-## Chaoyang pterosaurs (PROXY)
-cloud_all$occurrence_no[which(cloud_all$collection_name == "Chaoyang pterosaurs (PROXY)")] %in% cloud_40$occurrence_no
-# all Chaoyang pterosaurs (PROXY) are >40
-
-## Yuanjiawa, Dapingfang
-cloud_all$occurrence_no[which(cloud_all$collection_name == "Yuanjiawa, Dapingfang")] %in% cloud_40$occurrence_no
-# all are > 40
-
-#### 2. Lagerstatten
-cloud_all$occurrence_no[which(cloud_all$lagerstatten == "conservation")] %in% cloud_40$occurrence_no
-# not all conservation Lagerstatten are >40
-
-#### 3. cold MAT's 
-cloud_all$occurrence_no[which(cloud_all$MAT < 10)] %in% cloud_40$occurrence_no
-# not all MAT < 10 are in seasonal temp > 40
