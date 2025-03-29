@@ -136,22 +136,9 @@ MATmapped <- setMap(MATmapped, invert = TRUE)
 n <- length(MATmapped$cols)
 MATmapped$cols[1:n] <- plasma(n)
 plot(MATmapped, fsize = c(0.4, 1), fcol = "red", outline = FALSE, lwd = c(3, 7),
-     leg.txt = "MAT (°C)", legend = 80)
+     leg.txt = "MAT (°C)", mar = c(4.1, 0, 0, 0),legend = 80)
 axis(1)
 title(xlab = "Time from root (Ma)")
-
-# try getting geoscale
-
-Triassic <- c(251.900, 201.400)
-Jurassic <- c(201.400, 143.100)
-Cretaceous <- c(143.100, 66.000)
-color <- c("#7FC64E","#34B2C9","#812B92")
-
-obj <- rbind(Cretaceous, Jurassic, Triassic)
-colnames(obj) <- c("start", "end" )
-
-geo.legend(leg = obj, colors = color, alpha = 1)
-
 
 ## Precipitation contMap()
 MAPmapped <- contMap(tree_pruned, MAP_matrix, plot = FALSE)
