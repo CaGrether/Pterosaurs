@@ -130,22 +130,32 @@ MAP_matrix <- as.matrix(climate_mean) [,2] # Mean annual precipitation
 T_matrix <-as.matrix(climate_mean) [,3] # Mean seasonal temperature
 P_matrix <- as.matrix(climate_mean) [,4] # Mean seasonal precipitation
 
-
 ## Temperature contMap()
 MATmapped <- contMap(tree_pruned, MAT_matrix, plot = FALSE)
 MATmapped <- setMap(MATmapped, invert = TRUE)
-#MATmapped <- drop.tip(MATmapped, "Bakonydraco_galaczi")
-#MATmapped <- drop.tip(MATmapped, "Eurazhdarcho_langendorfensis")
 n <- length(MATmapped$cols)
 MATmapped$cols[1:n] <- plasma(n)
-plot(MATmapped, fsize = c(0.4, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+plot(MATmapped, fsize = c(0.4, 1), fcol = "red", outline = FALSE, lwd = c(3, 7),
+     leg.txt = "MAT (°C)", legend = 80)
+axis(1)
+title(xlab = "Time from root (Ma)")
+
+# try getting geoscale
+
+Triassic <- c(251.900, 201.400)
+Jurassic <- c(201.400, 143.100)
+Cretaceous <- c(143.100, 66.000)
+color <- c("#7FC64E","#34B2C9","#812B92")
+
+obj <- rbind(Cretaceous, Jurassic, Triassic)
+colnames(obj) <- c("start", "end" )
+
+geo.legend(leg = obj, colors = color, alpha = 1)
 
 
 ## Precipitation contMap()
 MAPmapped <- contMap(tree_pruned, MAP_matrix, plot = FALSE)
 MAPmapped <- setMap(MAPmapped, invert = TRUE)
-#MAPmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
-#MAPmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(MAPmapped$cols)
 MAPmapped$cols[1:n] <- viridis(n, direction = -1)
 plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
@@ -154,8 +164,6 @@ plot(MAPmapped, fsize = c(0.3, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MA
 ## seasonal Temperature contMap
 Tmapped <- contMap(tree_pruned, T_matrix, plot = FALSE)
 Tmapped <- setMap(Tmapped, invert = TRUE)
-#Tmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
-#Tmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(Tmapped$cols)
 Tmapped$cols[1:n] <- plasma(n)
 plot(Tmapped, fsize = c(0.5, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), leg.txt = "ST (°C)")
@@ -164,8 +172,6 @@ plot(Tmapped, fsize = c(0.5, 1), fcol = "red", outline = FALSE, lwd = c(3, 7), l
 ## seasonal Precipitation contMap
 Pmapped <- contMap(tree_pruned, P_matrix, plot = FALSE)
 Pmapped <- setMap(Pmapped, invert = TRUE)
-#Pmapped <- drop.tip(MAPmapped, "Bakonydraco_galaczi")
-#Pmapped <- drop.tip(MAPmapped, "Eurazhdarcho_langendorfensis")
 n <- length(Pmapped$cols)
 Pmapped$cols[1:n] <- viridis(n, direction = -1)
 plot(Pmapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "SP (mm/day)")
@@ -198,59 +204,59 @@ KP <- phylosig(tree_pruned, P_matrix, method = "K", test = TRUE, nsim = 10000)
 KP 
 
 
-##### exclude extreme group of Cuban/German pterosaurs
-xtaxa <- c("Nesodactylus_hesperius", "Rhamphorhynchus_muensteri")
-x.tree <- drop.clade(tree_pruned, xtaxa)
-x.tree <- drop.tip(x.tree, "NA")
-
-# get list of taxa in that tree
-xtree_spec <- x.tree$tip.label
-
-# fit climate data to new number of taxa
-## Remove taxa that are in climate data but not on the tree:
-taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% xtree_spec ] # in data but not on tree
-xspec_climatree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
-
-## Get averages of the climate variable for xtree species:
-xclimate_mean <- xspec_climatree %>% 
-  group_by(accepted_name) %>% 
-  summarise(mean_MAT = mean(MAT), mean_MAP = mean(MAP), 
-            mean_T = mean(seasonal_temp), mean_P = mean(seasonal_precip))
-
-## turn the accepted_name column into the row names
-xclimate_mean <- column_to_rownames(xclimate_mean, var = "accepted_name")
-
-## Convert to matrix:
-MATx_matrix <- as.matrix(xclimate_mean) [,1]
-MAPx_matrix <- as.matrix(xclimate_mean) [,2]
-Tx_matrix <- as.matrix(xclimate_mean) [,3]
-Px_matrix <- as.matrix(xclimate_mean) [,4] # seasonal Preciptiation
-
-## MAT (see impact)
-MAT_x_mapped <- contMap(x.tree, MATx_matrix, plot = FALSE)
-MAT_x_mapped <- setMap(MAT_x_mapped, invert = TRUE)
-n <- length(MAT_x_mapped$cols)
-MAT_x_mapped$cols[1:n] <- plasma(n)
-plot(MAT_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
-
-## MAP (see impact)
-MAP_x_mapped <- contMap(x.tree, MAPx_matrix, plot = FALSE)
-MAP_x_mapped <- setMap(MAP_x_mapped, invert = TRUE)
-n <- length(MAP_x_mapped$cols)
-MAP_x_mapped$cols[1:n] <- viridis(n, direction = -1)
-plot(MAP_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
-
-## seasonal Temperature (see impact)
-T_x_mapped <- contMap(x.tree, Tx_matrix, plot = FALSE)
-T_x_mapped <- setMap(T_x_mapped, invert = TRUE)
-n <- length(T_x_mapped$cols)
-T_x_mapped$cols[1:n] <- plasma(n)
-plot(T_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "ST (°C)")
-
-## seasonal Precipitation (see impact)
-P_x_mapped <- contMap(x.tree, Px_matrix, plot = FALSE)
-P_x_mapped <- setMap(P_x_mapped, invert = TRUE)
-n <- length(P_x_mapped$cols)
-P_x_mapped$cols[1:n] <- viridis(n, direction = -1)
-plot(P_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "SP (mm/day)")
+##### exclude group of Cuban/German pterosaurs --------------------------------------
+# xtaxa <- c("Nesodactylus_hesperius", "Rhamphorhynchus_muensteri")
+# x.tree <- drop.clade(tree_pruned, xtaxa)
+# x.tree <- drop.tip(x.tree, "NA")
+# 
+# # get list of taxa in that tree
+# xtree_spec <- x.tree$tip.label
+# 
+# # fit climate data to new number of taxa
+# ## Remove taxa that are in climate data but not on the tree:
+# taxa_to_remove <- species_climate$accepted_name[ !species_climate$accepted_name %in% xtree_spec ] # in data but not on tree
+# xspec_climatree <- species_climate[!species_climate$accepted_name %in% taxa_to_remove , ]
+# 
+# ## Get averages of the climate variable for xtree species:
+# xclimate_mean <- xspec_climatree %>% 
+#   group_by(accepted_name) %>% 
+#   summarise(mean_MAT = mean(MAT), mean_MAP = mean(MAP), 
+#             mean_T = mean(seasonal_temp), mean_P = mean(seasonal_precip))
+# 
+# ## turn the accepted_name column into the row names
+# xclimate_mean <- column_to_rownames(xclimate_mean, var = "accepted_name")
+# 
+# ## Convert to matrix:
+# MATx_matrix <- as.matrix(xclimate_mean) [,1]
+# MAPx_matrix <- as.matrix(xclimate_mean) [,2]
+# Tx_matrix <- as.matrix(xclimate_mean) [,3]
+# Px_matrix <- as.matrix(xclimate_mean) [,4] # seasonal Preciptiation
+# 
+# ## MAT (see impact)
+# MAT_x_mapped <- contMap(x.tree, MATx_matrix, plot = FALSE)
+# MAT_x_mapped <- setMap(MAT_x_mapped, invert = TRUE)
+# n <- length(MAT_x_mapped$cols)
+# MAT_x_mapped$cols[1:n] <- plasma(n)
+# plot(MAT_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAT (°C)")
+# 
+# ## MAP (see impact)
+# MAP_x_mapped <- contMap(x.tree, MAPx_matrix, plot = FALSE)
+# MAP_x_mapped <- setMap(MAP_x_mapped, invert = TRUE)
+# n <- length(MAP_x_mapped$cols)
+# MAP_x_mapped$cols[1:n] <- viridis(n, direction = -1)
+# plot(MAP_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "MAP (mm/day)")
+# 
+# ## seasonal Temperature (see impact)
+# T_x_mapped <- contMap(x.tree, Tx_matrix, plot = FALSE)
+# T_x_mapped <- setMap(T_x_mapped, invert = TRUE)
+# n <- length(T_x_mapped$cols)
+# T_x_mapped$cols[1:n] <- plasma(n)
+# plot(T_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "ST (°C)")
+# 
+# ## seasonal Precipitation (see impact)
+# P_x_mapped <- contMap(x.tree, Px_matrix, plot = FALSE)
+# P_x_mapped <- setMap(P_x_mapped, invert = TRUE)
+# n <- length(P_x_mapped$cols)
+# P_x_mapped$cols[1:n] <- viridis(n, direction = -1)
+# plot(P_x_mapped, fsize = c(0.4, 1), outline = FALSE, lwd = c(3, 7), leg.txt = "SP (mm/day)")
 
